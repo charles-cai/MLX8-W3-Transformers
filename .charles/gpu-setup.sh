@@ -61,4 +61,5 @@ echo "!!Please finish the following tasks!!"
 echo "Manully install Python extension in VS Code (remotely on SSH host for debugging)"
 echo "cp .env.example to .env, and edit with your API_Keys!!"
 echo "git config --global user.name 'Your Name'"
-echo "git config --global user.email 'Your Email'"mlx8-w3-transformersroot@1ed46f2e683f:/workspace/_github/MLX8-W3-Transformers/.charles# 
+echo "git config --global user.email 'Your Email'"
+echo "Setup complete!"
