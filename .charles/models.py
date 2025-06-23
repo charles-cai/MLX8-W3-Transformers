@@ -6,78 +6,21 @@ import os
 import glob
 from tqdm import tqdm
 import numpy as np
+from dotenv import load_dotenv
 
 from datasets import load_dataset
+from wandb_utils import WandbLogger
 
-# class MNISTDataset(Dataset):
-#     def __init__(self, parquet_files):
-#         # Load all parquet files and combine them
-#         dfs = []
-#         for file in parquet_files:
-#             df = pd.read_parquet(file)
-#             dfs.append(df)
-        
-#         if dfs:
-#             self.data = pd.concat(dfs, ignore_index=True)
-#         else:
-#             raise ValueError(f"No parquet files found: {parquet_files}")
-        
-#         print(f"Loaded {len(self.data)} samples")
-        
-#     def __len__(self):
-#         return len(self.data)
-    
-#     def __getitem__(self, idx):
-#         row = self.data.iloc[idx]
-        
-#         # Handle image data - MNIST in HF parquet format stores images differently
-#         image_data = row['image']
-        
-#         # Check if image is stored as a dictionary with 'bytes' key
-#         if isinstance(image_data, dict) and 'bytes' in image_data:
-#             # Extract bytes and convert to numpy array
-#             image_bytes = image_data['bytes']
-#             if isinstance(image_bytes, bytes):
-#                 image = np.frombuffer(image_bytes, dtype=np.uint8)
-#             else:
-#                 image = np.array(image_bytes, dtype=np.uint8)
-#         elif isinstance(image_data, list):
-#             image = np.array(image_data, dtype=np.uint8)
-#         elif hasattr(image_data, 'numpy'):  # PIL Image or similar
-#             image = np.array(image_data)
-#         else:
-#             image = np.array(image_data, dtype=np.uint8)
-        
-#         # Debug print to understand the data structure
-#         if idx == 0:  # Print only for first sample
-#             print(f"Image data type: {type(image_data)}")
-#             if isinstance(image_data, dict):
-#                 print(f"Image dict keys: {image_data.keys()}")
-#             print(f"Processed image shape: {image.shape}")
-#             print(f"Image min/max: {image.min()}/{image.max()}")
-        
-#         # Reshape to 28x28 if it's flattened (MNIST is 784 pixels = 28*28)
-#         if len(image.shape) == 1 and len(image) == 784:
-#             image = image.reshape(28, 28)
-#         elif len(image.shape) == 1:
-#             print(f"Warning: Unexpected flattened image size: {len(image)}")
-#             # Try to infer square dimensions
-#             size = int(np.sqrt(len(image)))
-#             if size * size == len(image):
-#                 image = image.reshape(size, size)
-#             else:
-#                 raise ValueError(f"Cannot reshape image of size {len(image)} to square")
-        
-#         # Convert to tensor and normalize
-#         image = torch.tensor(image, dtype=torch.float32) / 255.0
-#         label = torch.tensor(row['label'], dtype=torch.long)
-        
-#         return {'image': image, 'label': label}
+# Load environment variables
+load_dotenv()
 
 def get_mnist_data_loaders(batch_size_train=128, batch_size_test=256):
-
-    train_files = ".data/ylecun/mnist/train*.parquet"
-    test_files = ".data/ylecun/mnist/test*.parquet"
+    # Get batch sizes from environment variables
+    batch_size_train = int(os.getenv('BATCH_SIZE_TRAIN', '128'))
+    batch_size_test = int(os.getenv('BATCH_SIZE_TEST', '256'))
+    
+    train_files = f"{os.getenv('MNIST_DATA_PATH', '.data/ylecun/mnist')}/train*.parquet"
+    test_files = f"{os.getenv('MNIST_DATA_PATH', '.data/ylecun/mnist')}/test*.parquet"
 
     # 1. Load from local directory (no download)
     train_ds = load_dataset("parquet", data_files=train_files)["train"]
@@ -242,20 +185,64 @@ class VitMNISTEncoder(nn.Module):
         logits = self.head(x[:, 0])              # take [CLS] (index 0)
         return logits
 
+    def save(self, filepath, epoch, optimizer=None, loss=None, accuracy=None):
+        """Save model checkpoint"""
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
+        
+        checkpoint = {
+            'epoch': epoch,
+            'model_state_dict': self.state_dict(),
+            'loss': loss,
+            'accuracy': accuracy,
+            'model_config': {
+                'd_model': getattr(self, 'd_model', 128),
+                'n_heads': getattr(self, 'n_heads', 4),
+                'depth': getattr(self, 'depth', 4),
+                'patch': getattr(self, 'patch', 4)
+            }
+        }
+        
+        if optimizer is not None:
+            checkpoint['optimizer_state_dict'] = optimizer.state_dict()
+            
+        torch.save(checkpoint, filepath)
+        print(f"Model checkpoint saved to {filepath}")
+
 def train(train_loader, test_loader):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
+    # Get configuration from environment variables (all uppercase)
+    models_folder = os.getenv('MODELS_FOLDER', '.data/models')
+    learning_rate = float(os.getenv('LEARNING_RATE', '3e-4'))
+    num_epochs = int(os.getenv('NUM_EPOCHS', '5'))
+    
+    # Initialize model and optimizer
     model = VitMNISTEncoder().to(device)
-    optim = torch.optim.AdamW(model.parameters(), lr=3e-4)
+    optim = torch.optim.AdamW(model.parameters(), lr=learning_rate)
     criterion = nn.CrossEntropyLoss()
+    
+    # Initialize wandb logger
+    config = {
+        'learning_rate': learning_rate,
+        'epochs': num_epochs,
+        'batch_size_train': train_loader.batch_size,
+        'batch_size_test': test_loader.batch_size,
+        'device': str(device),
+        'model_params': sum(p.numel() for p in model.parameters()),
+    }
+    
+    wandb_logger = WandbLogger(config)
+    wandb_logger.log_model(model)
 
     model.train()
-    for epoch in range(5):  # Add epoch loop
+    for epoch in range(num_epochs):
         total_loss = 0
-        # Wrap train_loader with tqdm for progress bar
-        for batch_idx, batch in enumerate(tqdm(train_loader, desc=f"Epoch {epoch}")):
-            # Fix: Handle batch structure - image is already normalized and needs channel dimension
-            img = batch['image'].unsqueeze(1)  # Add channel dimension: (B, 28, 28) -> (B, 1, 28, 28)
+        correct_train = 0
+        total_train = 0
+        
+        # Training loop
+        for batch_idx, batch in enumerate(tqdm(train_loader, desc=f"Epoch {epoch+1}/{num_epochs}")):
+            img = batch['image'].unsqueeze(1)
             label = batch['label']
             
             img, label = img.to(device), label.to(device)
@@ -268,27 +255,72 @@ def train(train_loader, test_loader):
             
             total_loss += loss.item()
             
-            if batch_idx % 100 == 0:
-                print(f'Epoch {epoch}, Batch {batch_idx}, Loss: {loss.item():.4f}')
-    
-        print(f'Epoch {epoch} completed, Average Loss: {total_loss/len(train_loader):.4f}')
-    
-    # Evaluation
-    model.eval()
-    correct = 0
-    total = 0
-    with torch.no_grad():
-        for batch in test_loader:
-            img = batch['image'].unsqueeze(1)  # Add channel dimension
-            label = batch['label']
-            img, label = img.to(device), label.to(device)
-            
-            logits = model(img)
+            # Calculate training accuracy
             _, predicted = torch.max(logits.data, 1)
-            total += label.size(0)
-            correct += (predicted == label).sum().item()
+            total_train += label.size(0)
+            correct_train += (predicted == label).sum().item()
+            
+            if batch_idx % 100 == 0:
+                print(f'Epoch {epoch+1}, Batch {batch_idx}, Loss: {loss.item():.4f}')
+                
+                # Log batch metrics to wandb
+                wandb_logger.log_metrics({
+                    'batch_loss': loss.item(),
+                    'batch_idx': batch_idx,
+                    'epoch': epoch + 1
+                })
+        
+        # Calculate epoch metrics
+        avg_train_loss = total_loss / len(train_loader)
+        train_accuracy = 100 * correct_train / total_train
+        
+        # Evaluate on test set
+        model.eval()
+        test_loss = 0
+        correct_test = 0
+        total_test = 0
+        
+        with torch.no_grad():
+            for batch in test_loader:
+                img = batch['image'].unsqueeze(1)
+                label = batch['label']
+                img, label = img.to(device), label.to(device)
+                
+                logits = model(img)
+                loss = criterion(logits, label)
+                test_loss += loss.item()
+                
+                _, predicted = torch.max(logits.data, 1)
+                total_test += label.size(0)
+                correct_test += (predicted == label).sum().item()
+        
+        avg_test_loss = test_loss / len(test_loader)
+        test_accuracy = 100 * correct_test / total_test
+        
+        print(f'Epoch {epoch+1} completed:')
+        print(f'  Train Loss: {avg_train_loss:.4f}, Train Accuracy: {train_accuracy:.2f}%')
+        print(f'  Test Loss: {avg_test_loss:.4f}, Test Accuracy: {test_accuracy:.2f}%')
+        
+        # Log epoch metrics to wandb
+        wandb_logger.log_metrics({
+            'epoch': epoch + 1,
+            'train_loss': avg_train_loss,
+            'train_accuracy': train_accuracy,
+            'test_loss': avg_test_loss,
+            'test_accuracy': test_accuracy,
+        })
+        
+        # Save model checkpoint
+        checkpoint_path = os.path.join(models_folder, f'vit_mnist_epoch_{epoch + 1}.pth')
+        model.save(checkpoint_path, epoch + 1, optim, avg_test_loss, test_accuracy)
+        
+        # Log model artifact to wandb
+        wandb_logger.save_artifact(checkpoint_path, f'model_epoch_{epoch + 1}')
+        
+        model.train()  # Set back to training mode
     
-    print(f'Test Accuracy: {100 * correct / total:.2f}%')
+    print(f'Training completed. Final Test Accuracy: {test_accuracy:.2f}%')
+    wandb_logger.finish()
 
 # Usage example
 if __name__ == "__main__":
