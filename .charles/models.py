@@ -7,65 +7,90 @@ import glob
 from tqdm import tqdm
 import numpy as np
 
-class MNISTDataset(Dataset):
-    def __init__(self, parquet_files):
-        # Load all parquet files and combine them
-        dfs = []
-        for file in parquet_files:
-            df = pd.read_parquet(file)
-            dfs.append(df)
+from datasets import load_dataset
+
+# class MNISTDataset(Dataset):
+#     def __init__(self, parquet_files):
+#         # Load all parquet files and combine them
+#         dfs = []
+#         for file in parquet_files:
+#             df = pd.read_parquet(file)
+#             dfs.append(df)
         
-        if dfs:
-            self.data = pd.concat(dfs, ignore_index=True)
-        else:
-            raise ValueError(f"No parquet files found: {parquet_files}")
+#         if dfs:
+#             self.data = pd.concat(dfs, ignore_index=True)
+#         else:
+#             raise ValueError(f"No parquet files found: {parquet_files}")
         
-        print(f"Loaded {len(self.data)} samples")
+#         print(f"Loaded {len(self.data)} samples")
         
-    def __len__(self):
-        return len(self.data)
+#     def __len__(self):
+#         return len(self.data)
     
-    def __getitem__(self, idx):
-        row = self.data.iloc[idx]
+#     def __getitem__(self, idx):
+#         row = self.data.iloc[idx]
         
-        # Handle image data - convert from list/array to tensor
-        image = row['image']
-        if isinstance(image, list):
-            image = np.array(image)
+#         # Handle image data - MNIST in HF parquet format stores images differently
+#         image_data = row['image']
         
-        # Reshape to 28x28 if it's flattened
-        if len(image.shape) == 1:
-            image = image.reshape(28, 28)
+#         # Check if image is stored as a dictionary with 'bytes' key
+#         if isinstance(image_data, dict) and 'bytes' in image_data:
+#             # Extract bytes and convert to numpy array
+#             image_bytes = image_data['bytes']
+#             if isinstance(image_bytes, bytes):
+#                 image = np.frombuffer(image_bytes, dtype=np.uint8)
+#             else:
+#                 image = np.array(image_bytes, dtype=np.uint8)
+#         elif isinstance(image_data, list):
+#             image = np.array(image_data, dtype=np.uint8)
+#         elif hasattr(image_data, 'numpy'):  # PIL Image or similar
+#             image = np.array(image_data)
+#         else:
+#             image = np.array(image_data, dtype=np.uint8)
         
-        # Convert to tensor and normalize
-        image = torch.tensor(image, dtype=torch.float32) / 255.0
-        label = torch.tensor(row['label'], dtype=torch.long)
+#         # Debug print to understand the data structure
+#         if idx == 0:  # Print only for first sample
+#             print(f"Image data type: {type(image_data)}")
+#             if isinstance(image_data, dict):
+#                 print(f"Image dict keys: {image_data.keys()}")
+#             print(f"Processed image shape: {image.shape}")
+#             print(f"Image min/max: {image.min()}/{image.max()}")
         
-        return {'image': image, 'label': label}
+#         # Reshape to 28x28 if it's flattened (MNIST is 784 pixels = 28*28)
+#         if len(image.shape) == 1 and len(image) == 784:
+#             image = image.reshape(28, 28)
+#         elif len(image.shape) == 1:
+#             print(f"Warning: Unexpected flattened image size: {len(image)}")
+#             # Try to infer square dimensions
+#             size = int(np.sqrt(len(image)))
+#             if size * size == len(image):
+#                 image = image.reshape(size, size)
+#             else:
+#                 raise ValueError(f"Cannot reshape image of size {len(image)} to square")
+        
+#         # Convert to tensor and normalize
+#         image = torch.tensor(image, dtype=torch.float32) / 255.0
+#         label = torch.tensor(row['label'], dtype=torch.long)
+        
+#         return {'image': image, 'label': label}
 
 def get_mnist_data_loaders(batch_size_train=128, batch_size_test=256):
-    # Debug: Check what files exist
-    print("Files in .data/ylecun/mnist/:")
-    if os.path.exists(".data/ylecun/mnist/"):
-        for root, dirs, files in os.walk(".data/ylecun/mnist/"):
-            for file in files:
-                print(os.path.join(root, file))
 
-    # Try with exact file paths
-    train_files = glob.glob(".data/ylecun/mnist/**/train-*.parquet", recursive=True)
-    test_files = glob.glob(".data/ylecun/mnist/**/test-*.parquet", recursive=True)
+    # 1. Load from local directory (no download)
+    train_ds = load_dataset("parquet", data_files=train_files)["train"]
+    test_ds = load_dataset("parquet", data_files=test_files)["train"]
 
-    print(f"Found train files: {train_files}")
-    print(f"Found test files: {test_files}")
+    train_ds = train_ds.with_format(
+        "torch", 
+        columns=["image", "label"],
+        output_all_columns=False 
+    )
+    test_ds = test_ds.with_format(
+        "torch", 
+        columns=["image", "label"],
+        output_all_columns=False
+    )
 
-    if not train_files or not test_files:
-        raise ValueError("No parquet files found. Make sure the dataset is properly downloaded.")
-
-    # Create custom datasets
-    train_ds = MNISTDataset(train_files)
-    test_ds = MNISTDataset(test_files)
-    
-    # Build PyTorch loaders
     train_loader = DataLoader(
         train_ds, batch_size=batch_size_train, shuffle=True,
         num_workers=4, pin_memory=True)
