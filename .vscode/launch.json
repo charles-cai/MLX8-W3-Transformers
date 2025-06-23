@@ -7,7 +7,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/.charles/models.py",
             "console": "integratedTerminal",
-            "python": "${workspaceFolder}/.venv/bin/python",
+            "pythonPath": "${workspaceFolder}/.venv/bin/python",
             "cwd": "${workspaceFolder}/.charles"
         }
     ]
