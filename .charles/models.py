@@ -76,20 +76,36 @@ from datasets import load_dataset
 
 def get_mnist_data_loaders(batch_size_train=128, batch_size_test=256):
 
+    train_files = ".data/ylecun/mnist/train*.parquet"
+    test_files = ".data/ylecun/mnist/test*.parquet"
+
     # 1. Load from local directory (no download)
     train_ds = load_dataset("parquet", data_files=train_files)["train"]
     test_ds = load_dataset("parquet", data_files=test_files)["train"]
 
-    train_ds = train_ds.with_format(
-        "torch", 
-        columns=["image", "label"],
-        output_all_columns=False 
-    )
-    test_ds = test_ds.with_format(
-        "torch", 
-        columns=["image", "label"],
-        output_all_columns=False
-    )
+    # Transform function to normalize images
+    def transform_batch(batch):
+        # Convert PIL images to numpy arrays, then to tensors and normalize to [0, 1]
+        images = []
+        for img in batch['image']:
+            if hasattr(img, 'numpy'):  # PIL Image
+                img_array = np.array(img)
+            elif isinstance(img, np.ndarray):
+                img_array = img
+            else:
+                # Try to convert to numpy array
+                img_array = np.array(img)
+            
+            # Convert to float32 tensor and normalize
+            img_tensor = torch.tensor(img_array, dtype=torch.float32) / 255.0
+            images.append(img_tensor)
+        
+        images = torch.stack(images)
+        labels = torch.tensor(batch['label'], dtype=torch.long)
+        return {'image': images, 'label': labels}
+
+    train_ds = train_ds.with_transform(transform_batch)
+    test_ds = test_ds.with_transform(transform_batch)
 
     train_loader = DataLoader(
         train_ds, batch_size=batch_size_train, shuffle=True,
@@ -238,8 +254,8 @@ def train(train_loader, test_loader):
         total_loss = 0
         # Wrap train_loader with tqdm for progress bar
         for batch_idx, batch in enumerate(tqdm(train_loader, desc=f"Epoch {epoch}")):
-            # Fix: Handle batch structure - image is already normalized
-            img = batch['image'].unsqueeze(1)  # Add channel dimension
+            # Fix: Handle batch structure - image is already normalized and needs channel dimension
+            img = batch['image'].unsqueeze(1)  # Add channel dimension: (B, 28, 28) -> (B, 1, 28, 28)
             label = batch['label']
             
             img, label = img.to(device), label.to(device)
