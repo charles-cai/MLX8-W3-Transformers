@@ -4,13 +4,13 @@ from dotenv import load_dotenv
 import torch
 
 class WandbLogger:
-    def __init__(self, config=None):
+    def __init__(self, config=None, run_name=None):
         # Load environment variables
         load_dotenv()
         
         self._WANDB_API_KEY = os.getenv('WANDB_API_KEY')
         self._WANDB_PROJECT = os.getenv('WANDB_PROJECT', 'mlx8-week2-transformers')
-        self._WANDB_RUN_NAME = os.getenv('WANDB_RUN_NAME', 'vit-mnist-encoder-only')
+        self._WANDB_RUN_NAME = run_name or os.getenv('WANDB_RUN_NAME', 'vit-mnist-encoder-only')
         self._WANDB_ENTITY = os.getenv('WANDB_ENTITY')
         
         # Initialize wandb
