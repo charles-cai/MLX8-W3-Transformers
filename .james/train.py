@@ -248,7 +248,7 @@ def evaluate_model(model_path='best_model.pth'):
 def create_sweep_config():
     """Create wandb sweep configuration for hyperparameter optimization."""
     sweep_config = {
-        'method': 'random',  # or 'grid', 'bayes'
+        'method': 'bayes',  # or 'grid', 'bayes'
         'name': 'vit-hyperparameter-sweep',
         'metric': {
             'name': 'val/accuracy',
