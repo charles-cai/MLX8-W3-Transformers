@@ -20,7 +20,7 @@ def create_4digit_dataset(single_digit_dataset, num_samples=10000):
     samples = []
     
     for _ in range(num_samples):
-        # Sample 4 random digits
+        # Sample 4 random digits - THIS IS RANDOM, NOT SEQUENTIAL
         indices = random.choices(range(len(single_digit_dataset)), k=4)
         digits = []
         labels = []
@@ -68,9 +68,13 @@ def get_4digit_mnist_loaders(batch_size_train=64, batch_size_test=128):
     train_ds = train_ds.with_transform(transform_batch)
     test_ds = test_ds.with_transform(transform_batch)
     
-    # Create 4-digit datasets
-    train_4digit = create_4digit_dataset(train_ds, num_samples=20000)
-    test_4digit = create_4digit_dataset(test_ds, num_samples=4000)
+    # Get sample numbers from environment variables
+    train_samples = int(os.getenv('TRAIN_4DIGIT_SAMPLES', '20000'))
+    test_samples = int(os.getenv('TEST_4DIGIT_SAMPLES', '4000'))
+    
+    # Create 4-digit datasets with configurable sample sizes
+    train_4digit = create_4digit_dataset(train_ds, num_samples=train_samples)
+    test_4digit = create_4digit_dataset(test_ds, num_samples=test_samples)
     
     class FourDigitDataset(Dataset):
         def __init__(self, samples):
@@ -430,7 +434,71 @@ def train_encoder_decoder(train_loader, test_loader):
 
     print(f'Training completed. Final Validation Accuracy: {val_acc:.2f}%')
     wandb_logger.finish()
+    
+    # Return components needed for final evaluation
+    return model, device, test_loader
+
+def test_encoder_decoder(model, device, test_loader):
+    """Final comprehensive evaluation on test dataset"""
+    print("\n" + "="*50)
+    print("FINAL EVALUATION ON TEST DATASET")
+    print("="*50)
+    
+    model.eval()
+    final_correct = 0
+    final_total = 0
+    digit_correct = [0] * 4  # Track accuracy per digit position
+    digit_total = [0] * 4
+    
+    with torch.no_grad():
+        for batch in tqdm(test_loader, desc="Final Evaluation"):
+            img = batch['image'].unsqueeze(1).to(device)
+            labels = batch['labels'].to(device)
+            
+            # Generate sequences
+            generated = model.generate(img)
+            
+            # Overall sequence accuracy
+            sequence_correct = (generated == labels).all(dim=1)
+            final_correct += sequence_correct.sum().item()
+            final_total += img.size(0)
+            
+            # Per-digit accuracy
+            for i in range(4):
+                digit_correct[i] += (generated[:, i] == labels[:, i]).sum().item()
+                digit_total[i] += img.size(0)
+    
+    final_accuracy = 100 * final_correct / final_total
+    print(f"Final Test Accuracy (Complete Sequences): {final_accuracy:.2f}%")
+    print(f"Correct Sequences: {final_correct}/{final_total}")
+    
+    # Print per-digit accuracies  
+    for i in range(4):
+        digit_acc = 100 * digit_correct[i] / digit_total[i]
+        print(f"Digit {i+1} Accuracy: {digit_acc:.2f}%")
+    
+    # Initialize wandb logger for final metrics
+    config = {
+        'evaluation': 'final_test',
+        'architecture': 'encoder_decoder_4digit'
+    }
+    
+    run_name = os.getenv('WANDB_RUN_NAME_ENCODER_DECODER_TEST', 'vit-mnist-encoder-decoder-test')
+    wandb_logger = WandbLogger(config, run_name=run_name)
+    
+    # Log final metrics
+    wandb_logger.log_metrics({
+        'final_test_accuracy': final_accuracy,
+        'final_digit_1_accuracy': 100 * digit_correct[0] / digit_total[0],
+        'final_digit_2_accuracy': 100 * digit_correct[1] / digit_total[1],
+        'final_digit_3_accuracy': 100 * digit_correct[2] / digit_total[2],
+        'final_digit_4_accuracy': 100 * digit_correct[3] / digit_total[3],
+    })
+    
+    wandb_logger.finish()
+    return final_accuracy
 
 if __name__ == "__main__":
     train_loader, test_loader = get_4digit_mnist_loaders()
-    train_encoder_decoder(train_loader, test_loader)
+    model, device, test_loader = train_encoder_decoder(train_loader, test_loader)
+    test_encoder_decoder(model, device, test_loader)
