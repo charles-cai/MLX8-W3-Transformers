@@ -21,14 +21,16 @@ def train_model(config=None):
     # Use wandb config if provided, otherwise use defaults
     if config is None:
         config = {
-            'batch_size': [16, 32, 64],
+            'batch_size': 32,  # Single value, not list
             'epochs': 3,
-            'learning_rate': [0.001, 0.01, 0.1],
-            'embed_dim': [32, 64, 128],
+            'learning_rate': 0.001,  # Single value, not list
+            'weight_decay': 0.01,
+            'embed_dim': 64,  # Single value, not list
             'depth': 6,
             'num_heads': 8,
             'mlp_ratio': 4.0,
-            'patch_size': [7, 14, 28],
+            'dropout': 0.1,
+            'patch_size': 7,  # Single value, not list
             'use_cls_token': True
         }
     
