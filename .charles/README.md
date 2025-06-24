@@ -99,6 +99,68 @@ graph TD
     style FF fill:#fce4ec
 ```
 
+Encoder-Decoder Transformer Architecture:
+
+```mermaid
+graph TD
+    A[Input Image 56×56<br/>2×2 Grid of Digits] --> B[PatchEmbed Conv2d<br/>patch=7]
+    B --> C[Patches 8×8 = 64 tokens]
+    C --> D[Positional Embedding]
+    D --> E[Encoder Stack<br/>6 TransformerBlocks]
+    E --> F[Pool to 4 Quadrants<br/>4 digit representations]
+    
+    G[Start Token: 10] --> H[Token Embedding]
+    H --> I[Decoder Input<br/>+ Positional Embedding]
+    I --> J[Decoder Stack<br/>6 TransformerBlocks]
+    
+    F --> K[Cross-Attention<br/>Encoder → Decoder]
+    J --> K
+    K --> L[Output Projection]
+    L --> M[4-Digit Sequence<br/>0-9 each position]
+    
+    N[Causal Mask] --> J
+    
+    subgraph ENC ["Encoder Architecture"]
+        E1[Input Patches] --> E2[Self-Attention]
+        E2 --> E3[+ Residual & LayerNorm]
+        E3 --> E4[FeedForward]
+        E4 --> E5[+ Residual & LayerNorm]
+        E5 --> E6[Quadrant Pooling]
+        E6 --> E7[4 Digit Encodings]
+    end
+    
+    subgraph DEC ["Decoder Architecture"]
+        D1[Target Tokens] --> D2[Masked Self-Attention]
+        D2 --> D3[+ Residual & LayerNorm]
+        D3 --> D4[Cross-Attention<br/>with Encoder]
+        D4 --> D5[+ Residual & LayerNorm]
+        D5 --> D6[FeedForward]
+        D6 --> D7[+ Residual & LayerNorm]
+    end
+    
+    subgraph GEN ["Autoregressive Generation"]
+        G1[START] --> G2[Predict Digit 1]
+        G2 --> G3[Predict Digit 2]
+        G3 --> G4[Predict Digit 3]
+        G4 --> G5[Predict Digit 4]
+        G5 --> G6[Complete Sequence]
+    end
+    
+    subgraph QUAD ["Quadrant Pooling"]
+        Q1[64 Patches<br/>8×8 Grid] --> Q2[Top-Left 4×4<br/>→ Digit 1 Encoding]
+        Q1 --> Q3[Top-Right 4×4<br/>→ Digit 2 Encoding]
+        Q1 --> Q4[Bottom-Left 4×4<br/>→ Digit 3 Encoding]
+        Q1 --> Q5[Bottom-Right 4×4<br/>→ Digit 4 Encoding]
+    end
+    
+    style A fill:#e1f5fe
+    style M fill:#f3e5f5
+    style ENC fill:#fff3e0
+    style DEC fill:#e8f5e8
+    style GEN fill:#fce4ec
+    style QUAD fill:#f1f8e9
+```
+
 ---
 
 ## Usage
@@ -112,8 +174,10 @@ bash clone-mnist.sh
 
 ### 2. Install Requirements
 
+Inside the repo folder,
+
 ```bash
-pip install -r requirements.txt
+uv sync
 ```
 
 ### 3. Configure Environment
@@ -123,7 +187,14 @@ Copy `.env.example` to `.env` and set your parameters (especially for Weights & 
 ### 4. Train the Model
 
 ```bash
-python .charles/encoder_decode_models.py
+cd .charles
+
+# Encoder only model
+uv run encoder_only_models.py
+
+# Encoder + Decoder model
+uv run encoder_decode_models.py
+
 ```
 
 - Training and validation progress will be logged to Weights & Biases (wandb).
@@ -133,7 +204,8 @@ python .charles/encoder_decode_models.py
 
 ## Results
 
-- The encoder-decoder model achieves high accuracy on 4-digit recognition.
+- The encoder only model achieves high accuracy on a single digit recognition on par with CNN (Foundation Project), 97.57%, before sweeping.
+- The encoder-decoder model achieves high accuracy on 4-digit recognition, valuation accuracy 87.5% before sweeping.
 - Validation includes visualizations of predictions using a Braille-style display for easy inspection.
 
 ---
