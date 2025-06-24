@@ -90,41 +90,6 @@ class BrailleUtils:
             threshold=threshold
         )
     
-    def display_batch_samples(self,
-                            stacked_images: np.ndarray,
-                            expected_labels: np.ndarray,
-                            predicted_labels: np.ndarray,
-                            epoch: Optional[int] = None,
-                            max_samples: int = 10,
-                            threshold: float = 0.5) -> None:
-        """
-        Display multiple stacked image samples from a batch with 2x2 grid extraction.
-        
-        Args:
-            stacked_images: (B, 56, 56) numpy array of stacked images
-            expected_labels: (B, 4) numpy array of expected digit labels
-            predicted_labels: (B, 4) numpy array of predicted digit labels
-            epoch: Optional epoch number for display
-            max_samples: Maximum number of samples to display
-            threshold: Threshold for binary conversion
-        """
-        batch_size = min(stacked_images.shape[0], max_samples)
-        
-        # Display legend once at the beginning
-        print(f"\nLegend: {self._white_text('Expected')} | {self._green_text('Predicted Correct')} | {self._red_text('Predicted Wrong')}")
-        print("=" * 70)
-        
-        for sample_idx in range(batch_size):
-            # Extract 2x2 layout and display (silently)
-            self.display_stacked_image_sample(
-                stacked_images[sample_idx],           # Single 56x56 stacked image
-                expected_labels[sample_idx].tolist(), # 4 expected digits [TL, TR, BL, BR]
-                predicted_labels[sample_idx].tolist(), # 4 predicted digits [TL, TR, BL, BR]
-                epoch=epoch,
-                sample_idx=sample_idx + 1,
-                threshold=threshold
-            )
-    
     def image_to_braille(self, image: np.ndarray, threshold: float = 0.5) -> str:
         """
         Convert a 28x28 image to braille representation.
@@ -185,25 +150,114 @@ class BrailleUtils:
         
         return '\n'.join(result_lines)
     
+    def ascii_border_58x58(self, image: np.ndarray, label: str = "", pred: str = "", threshold: float = 0.5) -> str:
+        """
+        Draw a 56x56 image with a 58x58 ASCII border and optional label/prediction.
+        """
+        # Normalize and threshold image
+        img = image
+        if img.max() > 1:
+            img = img / 255.0
+        binary = (img > threshold).astype(int)
+
+        # Convert to braille for inside (28x28 braille chars for 56x56 image)
+        braille_lines = []
+        for row in range(0, 56, 4):
+            line = ""
+            for col in range(0, 56, 2):
+                block = binary[row:row+4, col:col+2]
+                pattern = 0
+                if block.shape[0] > 0 and block.shape[1] > 0:
+                    if block[0, 0]: pattern |= 0b00000001
+                if block.shape[0] > 1 and block.shape[1] > 0:
+                    if block[1, 0]: pattern |= 0b00000010
+                if block.shape[0] > 2 and block.shape[1] > 0:
+                    if block[2, 0]: pattern |= 0b00000100
+                if block.shape[0] > 3 and block.shape[1] > 0:
+                    if block[3, 0]: pattern |= 0b01000000
+                if block.shape[0] > 0 and block.shape[1] > 1:
+                    if block[0, 1]: pattern |= 0b00001000
+                if block.shape[0] > 1 and block.shape[1] > 1:
+                    if block[1, 1]: pattern |= 0b00010000
+                if block.shape[0] > 2 and block.shape[1] > 1:
+                    if block[2, 1]: pattern |= 0b00100000
+                if block.shape[0] > 3 and block.shape[1] > 1:
+                    if block[3, 1]: pattern |= 0b10000000
+                line += self.braille_patterns[pattern]
+            braille_lines.append(line)
+
+        # Build ASCII border (box-drawing)
+        top = "┌" + "─" * 28 + "┐"
+        bottom = "└" + "─" * 28 + "┘"
+        bordered = [top]
+        for l in braille_lines:
+            bordered.append("│" + l + "│")
+        bordered.append(bottom)
+
+        # Add label/prediction below
+        label_line = ""
+        if label:
+            label_line += self._white_text(f"GT:{label}")
+        if pred:
+            label_line += " " + (self._green_text(f"P:{pred}") if label == pred else self._red_text(f"P:{pred}"))
+        if label_line:
+            bordered.append(label_line)
+        return "\n".join(bordered)
+
+    def digit_with_ascii_border(self, digit_img: np.ndarray, expected: int, predicted: int, threshold: float = 0.5) -> list:
+        """
+        Render a single 28x28 digit as a compact ASCII box with expected (top-left) and predicted (bottom-right) digits.
+        Returns a list of strings (lines) - compact version.
+        """
+        # Resize if needed
+        if digit_img.shape != (28, 28):
+            digit_img = self._resize_image(digit_img, (28, 28))
+        
+        # Convert to braille representation (14x7 braille characters for 28x28 image)
+        braille_str = self.image_to_braille(digit_img, threshold)
+        braille_lines = braille_str.split('\n')
+        
+        # Ensure we have exactly 7 lines, pad if needed
+        while len(braille_lines) < 7:
+            braille_lines.append(" " * 14)
+        
+        # Ensure each line is exactly 14 characters
+        braille_lines = [line.ljust(14)[:14] for line in braille_lines]
+        
+        # Create compact bordered box (9 lines total: 1 top + 7 content + 1 bottom)
+        top_border = "┌" + "─" * 14 + "┐"
+        bottom_border = "└" + "─" * 14 + "┘"
+        
+        bordered = [top_border]  # Line 0 (top border)
+        
+        # Add 7 content lines (one per braille line)
+        for braille_line in braille_lines:
+            content_line = "│" + braille_line + "│"
+            bordered.append(content_line)
+        
+        bordered.append(bottom_border)  # Line 8 (bottom border)
+        
+        # Insert expected digit at top-left corner (line 1, position 1)
+        if len(bordered) > 1:
+            line = bordered[1]
+            bordered[1] = line[:1] + self._white_text(str(expected)) + line[2:]
+        
+        # Insert predicted digit at bottom-right corner (line 7, position 14)
+        if len(bordered) > 7:
+            line = bordered[7]
+            pred_color = self._green_text if predicted == expected else self._red_text
+            bordered[7] = line[:-2] + pred_color(str(predicted)) + line[-1:]
+        
+        return bordered
+
     def display_2x2_digits_with_labels(self, 
                                      digits: List[np.ndarray],
                                      expected_digits: List[int],
                                      predicted_digits: Optional[List[int]] = None,
-                                     digit_size: int = 14, 
+                                     digit_size: int = 28, 
                                      threshold: float = 0.5) -> str:
         """
-        Display a 2x2 grid of digits with colored labels.
-        White = Expected, Green = Predicted Correct, Red = Predicted Wrong
-        
-        Args:
-            digits: List of 4 digit image arrays
-            expected_digits: List of 4 expected digit labels
-            predicted_digits: Optional list of 4 predicted digit labels
-            digit_size: Size of each digit display
-            threshold: Threshold for binary conversion
-        
-        Returns:
-            String representation of 2x2 grid with colored labels
+        Display a 2x2 grid of digits, each with compact ASCII border and colored corner digits.
         """
         if len(digits) != 4:
             raise ValueError("Must provide exactly 4 digit images")
@@ -211,68 +265,75 @@ class BrailleUtils:
             raise ValueError("Must provide exactly 4 expected digit labels")
         if predicted_digits is not None and len(predicted_digits) != 4:
             raise ValueError("Must provide exactly 4 predicted digit labels or None")
+        if predicted_digits is None:
+            predicted_digits = expected_digits
+
+        # Render each digit as compact bordered ASCII art (9 lines each)
+        bordered = [
+            self.digit_with_ascii_border(digits[0], expected_digits[0], predicted_digits[0], threshold),
+            self.digit_with_ascii_border(digits[1], expected_digits[1], predicted_digits[1], threshold),
+            self.digit_with_ascii_border(digits[2], expected_digits[2], predicted_digits[2], threshold),
+            self.digit_with_ascii_border(digits[3], expected_digits[3], predicted_digits[3], threshold),
+        ]
         
-        # Convert digits to braille strings
-        digit_brailles = []
-        for i, digit in enumerate(digits):
-            # Convert image to braille
-            if digit.shape[0] != digit_size or digit.shape[1] != digit_size:
-                digit = self._resize_image(digit, (digit_size, digit_size))
-            braille_str = self.image_to_braille(digit, threshold)
+        # Compose 2x2 grid: top row (digits 0,1) + bottom row (digits 2,3)
+        lines = []
+        grid_height = 9  # Each digit has 9 lines
+        
+        # Top row: digits 0 and 1 side by side
+        for i in range(grid_height):
+            lines.append(bordered[0][i] + " " + bordered[1][i])
+        
+        # Bottom row: digits 2 and 3 side by side  
+        for i in range(grid_height):
+            lines.append(bordered[2][i] + " " + bordered[3][i])
+        
+        return "\n".join(lines)
+
+    def display_batch_samples(self,
+                            stacked_images: np.ndarray,
+                            expected_labels: np.ndarray,
+                            predicted_labels: np.ndarray,
+                            epoch: Optional[int] = None,
+                            max_samples: int = 10,
+                            threshold: float = 0.5) -> None:
+        """
+        Display 10 samples as 2 rows of 5, each as a 2x2 grid with corner labels.
+        Each sample shows 4 digits from a 56x56 stacked image in a 2x2 arrangement.
+        """
+        batch_size = min(stacked_images.shape[0], max_samples)
+        n_cols = 5
+        n_rows = 2
+        samples_per_row = n_cols
+
+        print(f"\nLegend: {self._white_text('Expected (top-left)')} | {self._green_text('Predicted Correct (bottom-right)')} | {self._red_text('Predicted Wrong (bottom-right)')}")
+        print("=" * 200)
+        if epoch is not None:
+            print(f"Epoch {epoch} - Batch Display (10 samples, 5 per row, each sample shows 2x2 digits)\n")
+
+        # For each sample, extract 2x2 digits and build 2x2 grid display
+        sample_grids = []
+        for sample_idx in range(batch_size):
+            # Extract 4 individual digits from the 56x56 stacked image
+            digits = self.extract_2x2_digits_from_stacked_image(stacked_images[sample_idx])
             
-            # Add labels to each cell
-            braille_lines = braille_str.split('\n')
-            
-            # Add expected digit (white) at top-left of first line
-            expected_label = self._white_text(f"{expected_digits[i]}")
-            if braille_lines:
-                braille_lines[0] = expected_label + braille_lines[0][1:]  # Replace first character
-            
-            # Add predicted digit (green if correct, red if wrong) at bottom-right if provided
-            if predicted_digits is not None:
-                is_correct = predicted_digits[i] == expected_digits[i]
-                if is_correct:
-                    predicted_label = self._green_text(f"{predicted_digits[i]}")
-                else:
-                    predicted_label = self._red_text(f"{predicted_digits[i]}")
-                
-                if braille_lines:
-                    last_line = braille_lines[-1]
-                    braille_lines[-1] = last_line[:-1] + predicted_label  # Replace last character
-            
-            digit_brailles.append('\n'.join(braille_lines))
-        
-        # Combine into 2x2 layout
-        top_left, top_right, bottom_left, bottom_right = digit_brailles
-        
-        # Split each braille representation into lines
-        tl_lines = top_left.split('\n')
-        tr_lines = top_right.split('\n')
-        bl_lines = bottom_left.split('\n')
-        br_lines = bottom_right.split('\n')
-        
-        # Combine top row
-        result_lines = []
-        max_top_lines = max(len(tl_lines), len(tr_lines))
-        
-        for i in range(max_top_lines):
-            left_part = tl_lines[i] if i < len(tl_lines) else ' ' * 10  # Approximate width
-            right_part = tr_lines[i] if i < len(tr_lines) else ' ' * 10
-            result_lines.append(left_part + ' | ' + right_part)
-        
-        # Add separator
-        separator_width = len(result_lines[0]) if result_lines else 25
-        result_lines.append('-' * separator_width)
-        
-        # Combine bottom row
-        max_bottom_lines = max(len(bl_lines), len(br_lines))
-        
-        for i in range(max_bottom_lines):
-            left_part = bl_lines[i] if i < len(bl_lines) else ' ' * 10
-            right_part = br_lines[i] if i < len(br_lines) else ' ' * 10
-            result_lines.append(left_part + ' | ' + right_part)
-        
-        return '\n'.join(result_lines)
+            # Create 2x2 grid display for this sample
+            grid_str = self.display_2x2_digits_with_labels(
+                list(digits),                           # 4 individual 28x28 digit images
+                list(expected_labels[sample_idx]),       # 4 expected digit labels
+                list(predicted_labels[sample_idx]),      # 4 predicted digit labels
+                digit_size=28,
+                threshold=threshold
+            )
+            sample_grids.append(grid_str.split('\n'))
+
+        # Display grids in 2 rows of 5
+        grid_height = len(sample_grids[0])
+        for row in range(n_rows):
+            row_grids = sample_grids[row * samples_per_row:(row + 1) * samples_per_row]
+            for line_idx in range(grid_height):
+                print("    ".join(grid[line_idx] for grid in row_grids if line_idx < len(grid)))
+            print()  # Blank line between rows
     
     def display_2x2_digits(self, digits: List[Union[np.ndarray, int]], 
                           digit_size: int = 14, 
@@ -320,20 +381,20 @@ class BrailleUtils:
         max_top_lines = max(len(tl_lines), len(tr_lines))
         
         for i in range(max_top_lines):
-            left_part = tl_lines[i] if i < len(tl_lines) else ' ' * len(tl_lines[0])
-            right_part = tr_lines[i] if i < len(tr_lines) else ' ' * len(tr_lines[0])
+            left_part = tl_lines[i] if i < len(tl_lines) else ' ' * 10  # Approximate width
+            right_part = tr_lines[i] if i < len(tr_lines) else ' ' * 10
             result_lines.append(left_part + ' | ' + right_part)
         
         # Add separator
-        separator_width = len(result_lines[0]) if result_lines else 20
+        separator_width = len(result_lines[0]) if result_lines else 25
         result_lines.append('-' * separator_width)
         
         # Combine bottom row
         max_bottom_lines = max(len(bl_lines), len(br_lines))
         
         for i in range(max_bottom_lines):
-            left_part = bl_lines[i] if i < len(bl_lines) else ' ' * len(bl_lines[0])
-            right_part = br_lines[i] if i < len(br_lines) else ' ' * len(br_lines[0])
+            left_part = bl_lines[i] if i < len(bl_lines) else ' ' * 10
+            right_part = br_lines[i] if i < len(br_lines) else ' ' * 10
             result_lines.append(left_part + ' | ' + right_part)
         
         return '\n'.join(result_lines)

@@ -414,19 +414,19 @@ def train_encoder_decoder(train_loader, test_loader):
                 
                 # Display first 10 samples as 2 rows of 5, each as a 2x2 grid with corner labels
                 if batch_idx == 0:
-                    stacked_images_np = img[:, 0].cpu().numpy()  # (B, 56, 56) - 10 stacked images
-                    expected_labels_np = labels.cpu().numpy()    # (B, 4) - 4 labels per stacked image
-                    predicted_labels_np = generated.cpu().numpy()  # (B, 4) - 4 predictions per stacked image
+                    stacked_images_np = img[:, 0].cpu().numpy()  # (B, 56, 56)
+                    expected_labels_np = labels.cpu().numpy()    # (B, 4)
+                    predicted_labels_np = generated.cpu().numpy()  # (B, 4)
                     
                     braille_utils.display_batch_samples(
-                        stacked_images_np,     # 10 samples of 56x56 stacked images
-                        expected_labels_np,    # 10 samples of 4 labels each
-                        predicted_labels_np,   # 10 samples of 4 predictions each  
+                        stacked_images_np,
+                        expected_labels_np,
+                        predicted_labels_np,
                         epoch=epoch+1,
                         max_samples=10,
                         threshold=0.3
                     )
-
+                
                 if batch_idx == 0:
                     break
             
