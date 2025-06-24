@@ -22,15 +22,13 @@ def train_model(config=None):
     if config is None:
         config = {
             'batch_size': [16, 32, 64],
-            'epochs': 1,
-            'learning_rate': 0.001,
-            'weight_decay': 0.01,
-            'embed_dim': 64,
+            'epochs': 3,
+            'learning_rate': [0.001, 0.01, 0.1],
+            'embed_dim': [32, 64, 128],
             'depth': 6,
             'num_heads': 8,
             'mlp_ratio': 4.0,
-            'dropout': 0.1,
-            'patch_size': 7,
+            'patch_size': [7, 14, 28],
             'use_cls_token': True
         }
     
@@ -303,26 +301,8 @@ def sweep_agent():
     """Agent function for wandb sweep."""
     wandb.init()
     
-    # Get the hyperparameters from wandb
-    config = wandb.config
-    
-    # Convert wandb config to dictionary format
-    config_dict = {
-        'batch_size': config.batch_size,
-        'epochs': config.epochs,
-        'learning_rate': config.learning_rate,
-        'weight_decay': config.weight_decay,
-        'embed_dim': config.embed_dim,
-        'depth': config.depth,
-        'num_heads': config.num_heads,
-        'mlp_ratio': config.mlp_ratio,
-        'dropout': config.dropout,
-        'patch_size': config.patch_size,
-        'use_cls_token': config.use_cls_token
-    }
-    
-    # Train the model
-    model, best_acc = train_model(config_dict)
+    # Train the model directly with wandb.config
+    model, best_acc = train_model(wandb.config)
     
     # Log final results
     wandb.log({
