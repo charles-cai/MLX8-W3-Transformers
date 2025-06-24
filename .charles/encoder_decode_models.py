@@ -11,6 +11,7 @@ import random
 
 from datasets import load_dataset
 from wandb_utils import WandbLogger
+from braille_utils import BrailleUtils
 
 # Load environment variables
 load_dotenv()
@@ -331,8 +332,9 @@ def train_encoder_decoder(train_loader, test_loader):
     learning_rate = float(os.getenv('LEARNING_RATE', '1e-4'))
     num_epochs = int(os.getenv('NUM_EPOCHS', '10'))
     
-    # Initialize model
+    # Initialize model and braille utils
     model = EncoderDecoderModel().to(device)
+    braille_utils = BrailleUtils()
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
     criterion = nn.CrossEntropyLoss(ignore_index=-1)
     
@@ -388,14 +390,54 @@ def train_encoder_decoder(train_loader, test_loader):
             if batch_idx % 50 == 0:
                 print(f'Epoch {epoch+1}, Batch {batch_idx}, Loss: {loss.item():.4f}')
         
-        # Validation
+        # Enhanced Validation with Centralized Braille Display
         model.eval()
         val_loss = 0
         val_correct = 0
         val_total = 0
         
+        print(f"\n{'='*60}")
+        print(f"EPOCH {epoch+1} VALIDATION - FIRST 10 SAMPLES")
+        print(f"{'='*60}")
+        
         with torch.no_grad():
-            for batch in test_loader:
+            for batch_idx, batch in enumerate(test_loader):
+                img = batch['image'].unsqueeze(1).to(device)  # (B, 1, 56, 56) - STACKED 2x2 IMAGES
+                labels = batch['labels'].to(device)  # (B, 4) - 4 DIGIT LABELS PER SAMPLE
+                
+                # Generate sequences
+                generated = model.generate(img)
+                
+                # Calculate accuracy
+                val_correct += (generated == labels).all(dim=1).sum().item()
+                val_total += img.size(0)
+                
+                # Display first 10 samples using centralized braille layout
+                if batch_idx == 0:  # Only first batch
+                    # Convert to numpy for braille display
+                    stacked_images_np = img[:, 0].cpu().numpy()  # (B, 56, 56) - REMOVE CHANNEL DIM
+                    expected_labels_np = labels.cpu().numpy()    # (B, 4) - EXPECTED DIGITS
+                    predicted_labels_np = generated.cpu().numpy()  # (B, 4) - PREDICTED DIGITS
+                    
+                    # Use centralized batch display method - THIS HANDLES 2x2 EXTRACTION AND DISPLAY
+                    braille_utils.display_batch_samples(
+                        stacked_images_np,      # Each sample is 56x56 containing 2x2 digit grid
+                        expected_labels_np,     # Expected: [digit0, digit1, digit2, digit3]
+                        predicted_labels_np,    # Predicted: [digit0, digit1, digit2, digit3]
+                        epoch=epoch+1,
+                        max_samples=10,
+                        threshold=0.3
+                    )
+                
+                # Only process first batch for display
+                if batch_idx == 0:
+                    break
+            
+            # Continue with remaining validation batches for metrics
+            for batch_idx, batch in enumerate(test_loader):
+                if batch_idx == 0:  # Skip first batch as we already processed it
+                    continue
+                    
                 img = batch['image'].unsqueeze(1).to(device)
                 labels = batch['labels'].to(device)
                 
@@ -410,7 +452,7 @@ def train_encoder_decoder(train_loader, test_loader):
         val_acc = 100 * val_correct / val_total
         avg_loss = total_loss / len(train_loader)
         
-        print(f'Epoch {epoch+1}: Train Loss: {avg_loss:.4f}, Train Acc: {train_acc:.2f}%, Val Acc: {val_acc:.2f}%')
+        print(f'\nEpoch {epoch+1}: Train Loss: {avg_loss:.4f}, Train Acc: {train_acc:.2f}%, Val Acc: {val_acc:.2f}%')
         
         # Log metrics
         wandb_logger.log_metrics({
@@ -438,67 +480,6 @@ def train_encoder_decoder(train_loader, test_loader):
     # Return components needed for final evaluation
     return model, device, test_loader
 
-def test_encoder_decoder(model, device, test_loader):
-    """Final comprehensive evaluation on test dataset"""
-    print("\n" + "="*50)
-    print("FINAL EVALUATION ON TEST DATASET")
-    print("="*50)
-    
-    model.eval()
-    final_correct = 0
-    final_total = 0
-    digit_correct = [0] * 4  # Track accuracy per digit position
-    digit_total = [0] * 4
-    
-    with torch.no_grad():
-        for batch in tqdm(test_loader, desc="Final Evaluation"):
-            img = batch['image'].unsqueeze(1).to(device)
-            labels = batch['labels'].to(device)
-            
-            # Generate sequences
-            generated = model.generate(img)
-            
-            # Overall sequence accuracy
-            sequence_correct = (generated == labels).all(dim=1)
-            final_correct += sequence_correct.sum().item()
-            final_total += img.size(0)
-            
-            # Per-digit accuracy
-            for i in range(4):
-                digit_correct[i] += (generated[:, i] == labels[:, i]).sum().item()
-                digit_total[i] += img.size(0)
-    
-    final_accuracy = 100 * final_correct / final_total
-    print(f"Final Test Accuracy (Complete Sequences): {final_accuracy:.2f}%")
-    print(f"Correct Sequences: {final_correct}/{final_total}")
-    
-    # Print per-digit accuracies  
-    for i in range(4):
-        digit_acc = 100 * digit_correct[i] / digit_total[i]
-        print(f"Digit {i+1} Accuracy: {digit_acc:.2f}%")
-    
-    # Initialize wandb logger for final metrics
-    config = {
-        'evaluation': 'final_test',
-        'architecture': 'encoder_decoder_4digit'
-    }
-    
-    run_name = os.getenv('WANDB_RUN_NAME_ENCODER_DECODER_TEST', 'vit-mnist-encoder-decoder-test')
-    wandb_logger = WandbLogger(config, run_name=run_name)
-    
-    # Log final metrics
-    wandb_logger.log_metrics({
-        'final_test_accuracy': final_accuracy,
-        'final_digit_1_accuracy': 100 * digit_correct[0] / digit_total[0],
-        'final_digit_2_accuracy': 100 * digit_correct[1] / digit_total[1],
-        'final_digit_3_accuracy': 100 * digit_correct[2] / digit_total[2],
-        'final_digit_4_accuracy': 100 * digit_correct[3] / digit_total[3],
-    })
-    
-    wandb_logger.finish()
-    return final_accuracy
-
 if __name__ == "__main__":
     train_loader, test_loader = get_4digit_mnist_loaders()
-    model, device, test_loader = train_encoder_decoder(train_loader, test_loader)
-    test_encoder_decoder(model, device, test_loader)
+    train_encoder_decoder(train_loader, test_loader)
