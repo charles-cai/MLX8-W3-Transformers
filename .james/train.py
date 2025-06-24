@@ -248,6 +248,7 @@ def create_sweep_config():
     sweep_config = {
         'method': 'bayes',  # or 'grid', 'bayes'
         'name': 'vit-hyperparameter-sweep',
+        'max_runs': 30, 
         'metric': {
             'name': 'val/accuracy',
             'goal': 'maximize'
