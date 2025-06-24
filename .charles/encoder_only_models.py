@@ -7,6 +7,7 @@ import glob
 from tqdm import tqdm
 import numpy as np
 from dotenv import load_dotenv
+import wandb
 
 from datasets import load_dataset
 from wandb_utils import WandbLogger
@@ -15,6 +16,10 @@ from wandb_utils import WandbLogger
 load_dotenv()
 
 def get_mnist_data_loaders(batch_size_train=128, batch_size_test=256):
+    print("="*60)
+    print("STARTING DATA PREPARATION - ENCODER ONLY")
+    print("="*60)
+    
     # Get batch sizes from environment variables
     batch_size_train = int(os.getenv('BATCH_SIZE_TRAIN', '128'))
     batch_size_test = int(os.getenv('BATCH_SIZE_TEST', '256'))
@@ -22,9 +27,15 @@ def get_mnist_data_loaders(batch_size_train=128, batch_size_test=256):
     train_files = f"{os.getenv('MNIST_DATA_PATH', '.data/ylecun/mnist')}/train*.parquet"
     test_files = f"{os.getenv('MNIST_DATA_PATH', '.data/ylecun/mnist')}/test*.parquet"
 
+    print(f"Loading MNIST data from:")
+    print(f"  Train files: {train_files}")
+    print(f"  Test files: {test_files}")
+
     # 1. Load from local directory (no download)
+    print("Loading single digit datasets...")
     train_ds = load_dataset("parquet", data_files=train_files)["train"]
     test_ds = load_dataset("parquet", data_files=test_files)["train"]
+    print(f"Loaded {len(train_ds)} training samples and {len(test_ds)} test samples")
 
     # Transform function to normalize images
     def transform_batch(batch):
@@ -50,6 +61,10 @@ def get_mnist_data_loaders(batch_size_train=128, batch_size_test=256):
     train_ds = train_ds.with_transform(transform_batch)
     test_ds = test_ds.with_transform(transform_batch)
 
+    print(f"Creating data loaders:")
+    print(f"  Training batch size: {batch_size_train}")
+    print(f"  Test batch size: {batch_size_test}")
+
     train_loader = DataLoader(
         train_ds, batch_size=batch_size_train, shuffle=True,
         num_workers=4, pin_memory=True)
@@ -57,6 +72,9 @@ def get_mnist_data_loaders(batch_size_train=128, batch_size_test=256):
     test_loader = DataLoader(
         test_ds, batch_size=batch_size_test, shuffle=False,
         num_workers=2)
+    
+    print("Data preparation completed!")
+    print("="*60)
     
     return train_loader, test_loader
 
@@ -144,24 +162,23 @@ class VitMNISTEncoder(nn.Module):
     """
     [PatchEmbed] → [Pos] → [Encoder×L] → optional [CLS] pooling → logits(10)
     """
-    def __init__(self, d_model=128, n_heads=4, depth=4, patch=4):
+    def __init__(self, d_model=128, n_heads=4, depth=4, patch=4, dropout=0.1):
         super().__init__()
+        # Store config for checkpointing
+        self.d_model = d_model
+        self.n_heads = n_heads 
+        self.depth = depth
+        self.patch_size = patch
+        
         self.patch = PatchEmbed(patch, d_model)
         # Fix: Account for CLS token in positioning (49 patches + 1 CLS = 50 tokens)
         self.pos   = LearnablePos(50, d_model)
         
-        # Option 1: Use custom transformer blocks
         self.transformer_blocks = nn.ModuleList([
-            TransformerBlock(d_model, n_heads, dropout=0.1) 
+            TransformerBlock(d_model, n_heads, dropout=dropout) 
             for _ in range(depth)
         ])
-        
-        # Option 2: Keep PyTorch's built-in (commented out)
-        # enc_layer  = nn.TransformerEncoderLayer(
-        #                 d_model, n_heads, 4*d_model, 0.1, batch_first=True)
-        # self.encoder = nn.TransformerEncoder(enc_layer, depth)
 
-        # Use a dedicated [CLS] token to aggregate sequence information
         self.cls_token = nn.Parameter(torch.zeros(1, 1, d_model))
         self.head = nn.Linear(d_model, 10)
 
@@ -211,30 +228,67 @@ class VitMNISTEncoder(nn.Module):
 def train(train_loader, test_loader):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
-    # Get configuration from environment variables (all uppercase)
-    models_folder = os.getenv('MODELS_FOLDER', '.data/models')
-    learning_rate = float(os.getenv('LEARNING_RATE', '3e-4'))
-    num_epochs = int(os.getenv('NUM_EPOCHS', '5'))
+    # Check if running in wandb sweep mode
+    if wandb.run is not None:
+        # Use wandb config (sweep mode)
+        config = wandb.config
+        learning_rate = config.learning_rate
+        num_epochs = config.get('num_epochs', 10)
+        d_model = config.get('d_model', 128)
+        n_heads = config.get('n_heads', 4)
+        depth = config.get('depth', 4)
+        patch_size = config.get('patch_size', 4)
+        dropout = config.get('dropout', 0.1)
+        print("Running in wandb sweep mode")
+    else:
+        # Use environment variables (default mode)
+        learning_rate = float(os.getenv('LEARNING_RATE', '3e-4'))
+        num_epochs = int(os.getenv('NUM_EPOCHS', '8'))
+        d_model = 128
+        n_heads = 4
+        depth = 4
+        patch_size = 4
+        dropout = 0.1
+        print("Running in default mode from .env")
     
-    # Initialize model and optimizer
-    model = VitMNISTEncoder().to(device)
+    models_folder = os.getenv('MODELS_FOLDER', '.data/models')
+    
+    # Initialize model with parameters
+    model = VitMNISTEncoder(
+        d_model=d_model,
+        n_heads=n_heads,
+        depth=depth,
+        patch=patch_size,
+        dropout=dropout
+    ).to(device)
+    
     optim = torch.optim.AdamW(model.parameters(), lr=learning_rate)
     criterion = nn.CrossEntropyLoss()
     
-    # Initialize wandb logger
-    config = {
+    # Update config for logging
+    wandb_config = {
         'learning_rate': learning_rate,
         'epochs': num_epochs,
         'batch_size_train': train_loader.batch_size,
         'batch_size_test': test_loader.batch_size,
+        'd_model': d_model,
+        'n_heads': n_heads,
+        'depth': depth,
+        'patch_size': patch_size,
+        'dropout': dropout,
         'device': str(device),
         'model_params': sum(p.numel() for p in model.parameters()),
     }
     
-    # Use encoder-only specific run name
-    run_name = os.getenv('WANDB_RUN_NAME_ENCODER_ONLY', 'vit-mnist-encoder-only')
-    wandb_logger = WandbLogger(config, run_name=run_name)
-    wandb_logger.log_model(model)
+    # Initialize wandb logger only if not already in sweep
+    if wandb.run is None:
+        run_name = os.getenv('WANDB_RUN_NAME_ENCODER_ONLY', 'vit-mnist-encoder-only')
+        wandb_logger = WandbLogger(wandb_config, run_name=run_name)
+        wandb_logger.log_model(model)
+    else:
+        # In sweep mode, wandb is already initialized
+        wandb_logger = WandbLogger(config=None)  # Don't reinitialize
+        wandb.watch(model, log="all")
 
     model.train()
     for epoch in range(num_epochs):
@@ -243,7 +297,9 @@ def train(train_loader, test_loader):
         total_train = 0
         
         # Training loop
-        for batch_idx, batch in enumerate(tqdm(train_loader, desc=f"Epoch {epoch+1}/{num_epochs}")):
+        for batch_idx, batch in enumerate(tqdm(train_loader, desc=f"Epoch {epoch+1}/{num_epochs}", 
+                                               unit="batch", 
+                                               postfix={'loss': 0, 'acc': 0})):
             img = batch['image'].unsqueeze(1)
             label = batch['label']
             
@@ -262,8 +318,10 @@ def train(train_loader, test_loader):
             total_train += label.size(0)
             correct_train += (predicted == label).sum().item()
             
-            if batch_idx % 100 == 0:
-                print(f'Epoch {epoch+1}, Batch {batch_idx}, Loss: {loss.item():.4f}')
+            # Update tqdm postfix with current metrics
+            if batch_idx % 50 == 0:
+                current_acc = 100 * correct_train / total_train if total_train > 0 else 0
+                tqdm.write(f'Epoch {epoch+1}/{num_epochs}, Batch {batch_idx}, Loss: {loss.item():.4f}, Acc: {current_acc:.2f}%')
                 
                 # Log batch metrics to wandb
                 wandb_logger.log_metrics({

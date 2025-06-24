@@ -8,6 +8,7 @@ from tqdm import tqdm
 import numpy as np
 from dotenv import load_dotenv
 import random
+import wandb
 
 from datasets import load_dataset
 from wandb_utils import WandbLogger
@@ -18,9 +19,10 @@ load_dotenv()
 
 def create_4digit_dataset(single_digit_dataset, num_samples=10000):
     """Create dataset of 4 stacked digits from single MNIST digits"""
+    print(f"Creating 4-digit dataset with {num_samples} samples...")
     samples = []
     
-    for _ in range(num_samples):
+    for i in tqdm(range(num_samples), desc="Generating 4-digit samples"):
         # Sample 4 random digits - THIS IS RANDOM, NOT SEQUENTIAL
         indices = random.choices(range(len(single_digit_dataset)), k=4)
         digits = []
@@ -45,15 +47,25 @@ def create_4digit_dataset(single_digit_dataset, num_samples=10000):
 
 def get_4digit_mnist_loaders(batch_size_train=64, batch_size_test=128):
     """Create data loaders for 4-digit stacked MNIST"""
+    print("="*60)
+    print("STARTING DATA PREPARATION")
+    print("="*60)
+    
     batch_size_train = int(os.getenv('BATCH_SIZE_TRAIN', '64'))
     batch_size_test = int(os.getenv('BATCH_SIZE_TEST', '128'))
     
     train_files = f"{os.getenv('MNIST_DATA_PATH', '.data/ylecun/mnist')}/train*.parquet"
     test_files = f"{os.getenv('MNIST_DATA_PATH', '.data/ylecun/mnist')}/test*.parquet"
 
+    print(f"Loading MNIST data from:")
+    print(f"  Train files: {train_files}")
+    print(f"  Test files: {test_files}")
+
     # Load single digit datasets
+    print("Loading single digit datasets...")
     train_ds = load_dataset("parquet", data_files=train_files)["train"]
     test_ds = load_dataset("parquet", data_files=test_files)["train"]
+    print(f"Loaded {len(train_ds)} training samples and {len(test_ds)} test samples")
 
     def transform_batch(batch):
         images = []
@@ -73,6 +85,11 @@ def get_4digit_mnist_loaders(batch_size_train=64, batch_size_test=128):
     train_samples = int(os.getenv('TRAIN_4DIGIT_SAMPLES', '20000'))
     test_samples = int(os.getenv('TEST_4DIGIT_SAMPLES', '4000'))
     
+    print(f"Creating datasets:")
+    print(f"  Training samples: {train_samples}")
+    print(f"  Test samples: {test_samples}")
+    print(f"  Batch sizes: train={batch_size_train}, test={batch_size_test}")
+    
     # Create 4-digit datasets with configurable sample sizes
     train_4digit = create_4digit_dataset(train_ds, num_samples=train_samples)
     test_4digit = create_4digit_dataset(test_ds, num_samples=test_samples)
@@ -89,6 +106,9 @@ def get_4digit_mnist_loaders(batch_size_train=64, batch_size_test=128):
     
     train_loader = DataLoader(FourDigitDataset(train_4digit), batch_size=batch_size_train, shuffle=True, num_workers=4)
     test_loader = DataLoader(FourDigitDataset(test_4digit), batch_size=batch_size_test, shuffle=False, num_workers=2)
+    
+    print("Data preparation completed!")
+    print("="*60)
     
     return train_loader, test_loader
 
@@ -209,13 +229,13 @@ class TransformerDecoderBlock(nn.Module):
 
 class FourDigitEncoder(nn.Module):
     """Encoder for 4-digit stacked images"""
-    def __init__(self, d_model=256, n_heads=8, depth=6, patch=7):
+    def __init__(self, d_model=256, n_heads=8, depth=6, patch=7, dropout=0.1):
         super().__init__()
         self.patch_embed = FourDigitPatchEmbed(patch, d_model)
         self.pos_embed = LearnablePos(64, d_model)  # 8x8 patches
         
         self.encoder_blocks = nn.ModuleList([
-            TransformerEncoderBlock(d_model, n_heads, dropout=0.1)
+            TransformerEncoderBlock(d_model, n_heads, dropout=dropout)
             for _ in range(depth)
         ])
         
@@ -246,7 +266,7 @@ class FourDigitEncoder(nn.Module):
 
 class FourDigitDecoder(nn.Module):
     """Decoder for generating 4-digit sequence"""
-    def __init__(self, d_model=256, n_heads=8, depth=6, vocab_size=11):  # 0-9 + special tokens
+    def __init__(self, d_model=256, n_heads=8, depth=6, vocab_size=11, dropout=0.1):
         super().__init__()
         self.d_model = d_model
         self.vocab_size = vocab_size
@@ -256,7 +276,7 @@ class FourDigitDecoder(nn.Module):
         self.pos_embed = LearnablePos(5, d_model)  # Changed back to 5 for generation
         
         self.decoder_blocks = nn.ModuleList([
-            TransformerDecoderBlock(d_model, n_heads, dropout=0.1)
+            TransformerDecoderBlock(d_model, n_heads, dropout=dropout)
             for _ in range(depth)
         ])
         
@@ -282,13 +302,18 @@ def create_causal_mask(size):
     return mask == 0
 
 class EncoderDecoderModel(nn.Module):
-    """Complete Encoder-Decoder model for 4-digit recognition"""
-    def __init__(self, d_model=256, n_heads=8, enc_depth=6, dec_depth=6):
+    def __init__(self, d_model=256, n_heads=8, enc_depth=6, dec_depth=6, dropout=0.1, patch_size=7):
         super().__init__()
-        self.encoder = FourDigitEncoder(d_model, n_heads, enc_depth)
-        self.decoder = FourDigitDecoder(d_model, n_heads, dec_depth)
+        # Store config for checkpointing
         self.d_model = d_model
+        self.n_heads = n_heads
+        self.enc_depth = enc_depth
+        self.dec_depth = dec_depth
+        self.patch_size = patch_size
         
+        self.encoder = FourDigitEncoder(d_model, n_heads, enc_depth, patch_size, dropout)
+        self.decoder = FourDigitDecoder(d_model, n_heads, dec_depth, dropout=dropout)
+    
     def forward(self, src_img, tgt_tokens):
         # Encode 4-digit image
         encoder_output = self.encoder(src_img)  # (B, 4, d_model)
@@ -327,31 +352,72 @@ class EncoderDecoderModel(nn.Module):
 def train_encoder_decoder(train_loader, test_loader):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
-    # Configuration
-    models_folder = os.getenv('MODELS_FOLDER', '.data/models')
-    learning_rate = float(os.getenv('LEARNING_RATE', '1e-4'))
-    num_epochs = int(os.getenv('NUM_EPOCHS', '10'))
+    # Check if running in wandb sweep mode
+    if wandb.run is not None:
+        # Use wandb config (sweep mode)
+        config = wandb.config
+        learning_rate = config.learning_rate
+        num_epochs = config.get('num_epochs', 12)
+        d_model = config.get('d_model', 256)
+        n_heads = config.get('n_heads', 8)
+        enc_depth = config.get('enc_depth', 6)
+        dec_depth = config.get('dec_depth', 6)
+        dropout = config.get('dropout', 0.1)
+        patch_size = config.get('patch_size', 7)
+        print("Running in wandb sweep mode")
+    else:
+        # Use environment variables (default mode)
+        learning_rate = float(os.getenv('LEARNING_RATE', '1e-4'))
+        num_epochs = int(os.getenv('NUM_EPOCHS', '10'))
+        d_model = 256
+        n_heads = 8
+        enc_depth = 6
+        dec_depth = 6
+        dropout = 0.1
+        patch_size = 7
+        print("Running in default mode from .env")
     
-    # Initialize model and braille utils
-    model = EncoderDecoderModel().to(device)
+    models_folder = os.getenv('MODELS_FOLDER', '.data/models')
+    
+    # Initialize model with parameters
+    model = EncoderDecoderModel(
+        d_model=d_model,
+        n_heads=n_heads,
+        enc_depth=enc_depth,
+        dec_depth=dec_depth,
+        dropout=dropout,
+        patch_size=patch_size
+    ).to(device)
+    
+    # Initialize braille utils
     braille_utils = BrailleUtils()
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
     criterion = nn.CrossEntropyLoss(ignore_index=-1)
     
-    # Wandb config
-    config = {
+    # Update config for logging
+    wandb_config = {
         'learning_rate': learning_rate,
         'epochs': num_epochs,
         'batch_size_train': train_loader.batch_size,
+        'd_model': d_model,
+        'n_heads': n_heads,
+        'enc_depth': enc_depth,
+        'dec_depth': dec_depth,
+        'dropout': dropout,
+        'patch_size': patch_size,
         'model_params': sum(p.numel() for p in model.parameters()),
         'architecture': 'encoder_decoder_4digit'
     }
     
-    # Use encoder-decoder specific run name
-    run_name = os.getenv('WANDB_RUN_NAME_ENCODER_DECODER', 'vit-mnist-encoder-decoder')
-    wandb_logger = WandbLogger(config, run_name=run_name)
-    
-    wandb_logger.log_model(model)
+    # Initialize wandb logger only if not already in sweep
+    if wandb.run is None:
+        run_name = os.getenv('WANDB_RUN_NAME_ENCODER_DECODER', 'vit-mnist-encoder-decoder')
+        wandb_logger = WandbLogger(wandb_config, run_name=run_name)
+        wandb_logger.log_model(model)
+    else:
+        # In sweep mode, wandb is already initialized
+        wandb_logger = WandbLogger(config=None)  # Don't reinitialize
+        wandb.watch(model, log="all")
 
     for epoch in range(num_epochs):
         model.train()
@@ -359,7 +425,9 @@ def train_encoder_decoder(train_loader, test_loader):
         correct_sequences = 0
         total_sequences = 0
         
-        for batch_idx, batch in enumerate(tqdm(train_loader, desc=f"Epoch {epoch+1}")):
+        for batch_idx, batch in enumerate(tqdm(train_loader, desc=f"Epoch {epoch+1}/{num_epochs}", 
+                                               unit="batch", 
+                                               postfix={'loss': 0, 'acc': 0})):
             img = batch['image'].unsqueeze(1).to(device)  # (B, 1, 56, 56)
             labels = batch['labels'].to(device)  # (B, 4)
             
@@ -387,8 +455,10 @@ def train_encoder_decoder(train_loader, test_loader):
             correct_sequences += (pred_sequences == labels).all(dim=1).sum().item()
             total_sequences += B
             
-            if batch_idx % 50 == 0:
-                print(f'Epoch {epoch+1}, Batch {batch_idx}, Loss: {loss.item():.4f}')
+            # Update tqdm postfix with current metrics
+            if batch_idx % 10 == 0:
+                current_acc = 100 * correct_sequences / total_sequences if total_sequences > 0 else 0
+                tqdm.write(f'Epoch {epoch+1}/{num_epochs}, Batch {batch_idx}, Loss: {loss.item():.4f}, Acc: {current_acc:.2f}%')
         
         # Enhanced Validation with Centralized Braille Display
         model.eval()

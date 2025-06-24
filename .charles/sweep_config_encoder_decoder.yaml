@@ -1,0 +1,31 @@
+program: encoder_decoder_models.py
+method: bayes
+metric:
+  name: val_accuracy
+  goal: maximize
+parameters:
+  learning_rate:
+    distribution: log_uniform_values
+    min: 5e-5
+    max: 5e-3
+  batch_size_train:
+    values: [32, 64, 128]
+  d_model:
+    values: [256, 384, 512]
+  n_heads:
+    values: [8, 12, 16]
+  enc_depth:
+    values: [6, 8, 10]
+  dec_depth:
+    values: [6, 8, 10]
+  patch_size:
+    values: [7, 8]
+  dropout:
+    distribution: uniform
+    min: 0.1
+    max: 0.3
+  num_epochs:
+    value: 12
+early_terminate:
+  type: hyperband
+  min_iter: 4
