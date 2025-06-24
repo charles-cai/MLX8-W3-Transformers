@@ -1,0 +1,24 @@
+wandb_version: 1
+
+batch_size:
+  value: 32
+depth:
+  value: 8
+dropout:
+  value: 0.08580316212045193
+embed_dim:
+  value: 128
+epochs:
+  value: 1
+learning_rate:
+  value: 0.0022362004039124103
+mlp_ratio:
+  value: 8
+num_heads:
+  value: 4
+patch_size:
+  value: 7
+use_cls_token:
+  value: true
+weight_decay:
+  value: 0.013847924571429311

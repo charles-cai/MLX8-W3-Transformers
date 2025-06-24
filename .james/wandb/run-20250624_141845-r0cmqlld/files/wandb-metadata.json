@@ -1,0 +1,21 @@
+{
+  "os":  "macOS-14.6.1-x86_64-i386-64bit",
+  "python":  "CPython 3.12.5",
+  "startedAt":  "2025-06-24T13:18:47.816509Z",
+  "args":  [
+    "--model-path",
+    "./best_model.pth",
+    "--wandb"
+  ],
+  "program":  "/Users/jamescarter/codes/MLX8-W3-Transformers/.james/eval.py",
+  "codePath":  ".james/eval.py",
+  "git":  {
+    "remote":  "git@github.com:charles-cai/MLX8-W3-Transformers.git",
+    "commit":  "8ece60f5ce7ae6b910c8717d9cb7e9b67d62a217"
+  },
+  "email":  "jamesascarter@googlemail.com",
+  "root":  "/Users/jamescarter/codes/MLX8-W3-Transformers/.james",
+  "host":  "Jamess-MacBook-Pro-2.local",
+  "executable":  "/Users/jamescarter/codes/MLX8-W3-Transformers/.venv/bin/python",
+  "codePathLocal":  "eval.py"
+}

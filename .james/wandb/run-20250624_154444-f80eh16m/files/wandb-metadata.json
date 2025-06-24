@@ -1,0 +1,50 @@
+{
+  "os":  "macOS-14.6.1-x86_64-i386-64bit",
+  "python":  "CPython 3.12.5",
+  "startedAt":  "2025-06-24T14:44:44.724669Z",
+  "args":  [
+    "--mode",
+    "sweep",
+    "--sweep-id",
+    "3xc9532z"
+  ],
+  "program":  "/Users/jamescarter/codes/MLX8-W3-Transformers/.james/train.py",
+  "codePath":  ".james/train.py",
+  "git":  {
+    "remote":  "git@github.com:charles-cai/MLX8-W3-Transformers.git",
+    "commit":  "8ece60f5ce7ae6b910c8717d9cb7e9b67d62a217"
+  },
+  "email":  "jamesascarter@googlemail.com",
+  "root":  "/Users/jamescarter/codes/MLX8-W3-Transformers/.james",
+  "host":  "Jamess-MacBook-Pro-2.local",
+  "executable":  "/Users/jamescarter/codes/MLX8-W3-Transformers/.venv/bin/python",
+  "codePathLocal":  "train.py",
+  "cpu_count":  8,
+  "cpu_count_logical":  8,
+  "disk":  {
+    "/":  {
+      "total":  "494384795648",
+      "used":  "242549403648"
+    },
+    "/System/Volumes/Data":  {
+      "total":  "494384795648",
+      "used":  "242549403648"
+    }
+  },
+  "memory":  {
+    "total":  "17179869184"
+  },
+  "cpu":  {
+    "count":  8,
+    "countLogical":  8
+  },
+  "apple":  {
+    "name":  "Unknown",
+    "ecpuCores":  4,
+    "pcpuCores":  4,
+    "gpuCores":  8,
+    "memoryGb":  16,
+    "swapTotalBytes":  "7516192768",
+    "ramTotalBytes":  "17179869184"
+  }
+}
