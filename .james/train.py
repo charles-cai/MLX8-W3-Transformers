@@ -285,7 +285,7 @@ def create_sweep_config():
                 'distribution': 'log_uniform_values'
             },
             'epochs': {
-                'value': 1
+                'value': 3
             },
             'patch_size': {
                 'value': 7
