@@ -9,6 +9,36 @@
             "console": "integratedTerminal",
             "pythonPath": "${workspaceFolder}/.venv/bin/python",
             "cwd": "${workspaceFolder}/.charles"
+        },
+        {
+            "name": "Debug wandb_run_sweep.py - Encoder Only",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/.charles/wandb_run_sweep.py",
+            "args": ["--model", "encoder_only", "--count", "3"],
+            "console": "integratedTerminal",
+            "pythonPath": "${workspaceFolder}/.venv/bin/python",
+            "cwd": "${workspaceFolder}/.charles"
+        },
+        {
+            "name": "Debug wandb_run_sweep.py - Encoder Decoder",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/.charles/wandb_run_sweep.py",
+            "args": ["--model", "encoder_decoder", "--count", "2"],
+            "console": "integratedTerminal",
+            "pythonPath": "${workspaceFolder}/.venv/bin/python",
+            "cwd": "${workspaceFolder}/.charles"
+        },
+        {
+            "name": "Debug wandb_run_sweep.py - Create Only",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/.charles/wandb_run_sweep.py",
+            "args": ["--model", "encoder_only", "--create-only"],
+            "console": "integratedTerminal",
+            "pythonPath": "${workspaceFolder}/.venv/bin/python",
+            "cwd": "${workspaceFolder}/.charles"
         }
     ]
 }

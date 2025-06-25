@@ -8,6 +8,7 @@ from tqdm import tqdm
 import numpy as np
 from dotenv import load_dotenv
 import wandb
+import argparse
 
 from datasets import load_dataset
 from wandb_utils import WandbLogger
@@ -15,14 +16,10 @@ from wandb_utils import WandbLogger
 # Load environment variables
 load_dotenv()
 
-def get_mnist_data_loaders(batch_size_train=128, batch_size_test=256):
+def get_mnist_data_loaders(batch_size_train=128, batch_size_test=256, train_samples=None, test_samples=None):
     print("="*60)
     print("STARTING DATA PREPARATION - ENCODER ONLY")
     print("="*60)
-    
-    # Get batch sizes from environment variables
-    batch_size_train = int(os.getenv('BATCH_SIZE_TRAIN', '128'))
-    batch_size_test = int(os.getenv('BATCH_SIZE_TEST', '256'))
     
     train_files = f"{os.getenv('MNIST_DATA_PATH', '.data/ylecun/mnist')}/train*.parquet"
     test_files = f"{os.getenv('MNIST_DATA_PATH', '.data/ylecun/mnist')}/test*.parquet"
@@ -35,6 +32,16 @@ def get_mnist_data_loaders(batch_size_train=128, batch_size_test=256):
     print("Loading single digit datasets...")
     train_ds = load_dataset("parquet", data_files=train_files)["train"]
     test_ds = load_dataset("parquet", data_files=test_files)["train"]
+    
+    # Apply sample size limits if specified
+    if train_samples:
+        train_ds = train_ds.select(range(min(train_samples, len(train_ds))))
+        print(f"Limited training samples to: {len(train_ds)}")
+    
+    if test_samples:
+        test_ds = test_ds.select(range(min(test_samples, len(test_ds))))
+        print(f"Limited test samples to: {len(test_ds)}")
+    
     print(f"Loaded {len(train_ds)} training samples and {len(test_ds)} test samples")
 
     # Transform function to normalize images
@@ -65,13 +72,17 @@ def get_mnist_data_loaders(batch_size_train=128, batch_size_test=256):
     print(f"  Training batch size: {batch_size_train}")
     print(f"  Test batch size: {batch_size_test}")
 
+    # Adjust num_workers and pin_memory based on batch size to avoid memory issues
+    num_workers_train = 0 if batch_size_train > 4096 else (2 if batch_size_train > 1024 else 4)
+    pin_memory = batch_size_train <= 1024
+
     train_loader = DataLoader(
         train_ds, batch_size=batch_size_train, shuffle=True,
-        num_workers=4, pin_memory=True)
+        num_workers=num_workers_train, pin_memory=pin_memory)
 
     test_loader = DataLoader(
         test_ds, batch_size=batch_size_test, shuffle=False,
-        num_workers=2)
+        num_workers=0 if batch_size_test > 1024 else 2, pin_memory=pin_memory)
     
     print("Data preparation completed!")
     print("="*60)
@@ -162,7 +173,7 @@ class VitMNISTEncoder(nn.Module):
     """
     [PatchEmbed] → [Pos] → [Encoder×L] → optional [CLS] pooling → logits(10)
     """
-    def __init__(self, d_model=128, n_heads=4, depth=4, patch=4, dropout=0.1):
+    def __init__(self, d_model=128, n_heads=4, depth=4, patch=7, dropout=0.1):
         super().__init__()
         # Store config for checkpointing
         self.d_model = d_model
@@ -171,8 +182,14 @@ class VitMNISTEncoder(nn.Module):
         self.patch_size = patch
         
         self.patch = PatchEmbed(patch, d_model)
-        # Fix: Account for CLS token in positioning (49 patches + 1 CLS = 50 tokens)
-        self.pos   = LearnablePos(50, d_model)
+        
+        # Calculate number of patches dynamically based on patch size
+        # For 28x28 image with patch size p: (28//p) * (28//p) patches
+        patches_per_dim = 28 // patch
+        n_patches = patches_per_dim * patches_per_dim
+        n_tokens = n_patches + 1  # +1 for CLS token
+        
+        self.pos = LearnablePos(n_tokens, d_model)
         
         self.transformer_blocks = nn.ModuleList([
             TransformerBlock(d_model, n_heads, dropout=dropout) 
@@ -215,7 +232,7 @@ class VitMNISTEncoder(nn.Module):
                 'd_model': getattr(self, 'd_model', 128),
                 'n_heads': getattr(self, 'n_heads', 4),
                 'depth': getattr(self, 'depth', 4),
-                'patch': getattr(self, 'patch', 4)
+                'patch': getattr(self, 'patch', 7)
             }
         }
         
@@ -225,10 +242,26 @@ class VitMNISTEncoder(nn.Module):
         torch.save(checkpoint, filepath)
         print(f"Model checkpoint saved to {filepath}")
 
-def train(train_loader, test_loader):
+def parse_args():
+    """Parse command line arguments for wandb sweep compatibility"""
+    parser = argparse.ArgumentParser(description='Train encoder-only transformer')
+    parser.add_argument('--learning_rate', type=float, help='Learning rate')
+    parser.add_argument('--batch_size_train', type=int, help='Training batch size')
+    parser.add_argument('--d_model', type=int, help='Model dimension')
+    parser.add_argument('--n_heads', type=int, help='Number of attention heads')
+    parser.add_argument('--depth', type=int, help='Number of transformer layers')
+    parser.add_argument('--patch_size', type=int, help='Patch size')
+    parser.add_argument('--dropout', type=float, help='Dropout rate')
+    parser.add_argument('--num_epochs', type=int, help='Number of epochs')
+    parser.add_argument('--train_samples', type=int, help='Number of training samples')
+    parser.add_argument('--test_samples', type=int, help='Number of test samples')
+    
+    return parser.parse_args()
+
+def train(train_loader, test_loader, args=None):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
-    # Check if running in wandb sweep mode
+    # Check if running in wandb sweep mode or with command line args
     if wandb.run is not None:
         # Use wandb config (sweep mode)
         config = wandb.config
@@ -237,9 +270,25 @@ def train(train_loader, test_loader):
         d_model = config.get('d_model', 128)
         n_heads = config.get('n_heads', 4)
         depth = config.get('depth', 4)
-        patch_size = config.get('patch_size', 4)
+        patch_size = config.get('patch_size', 7)
         dropout = config.get('dropout', 0.1)
+        batch_size_train = config.get('batch_size_train', 128)
+        train_samples = config.get('train_samples', None)
+        test_samples = config.get('test_samples', None)
         print("Running in wandb sweep mode")
+    elif args is not None:
+        # Use command line arguments
+        learning_rate = args.learning_rate or float(os.getenv('LEARNING_RATE', '3e-4'))
+        num_epochs = args.num_epochs or int(os.getenv('NUM_EPOCHS', '8'))
+        d_model = args.d_model or 128
+        n_heads = args.n_heads or 4
+        depth = args.depth or 4
+        patch_size = args.patch_size or 4
+        dropout = args.dropout or 0.1
+        batch_size_train = args.batch_size_train or 128
+        train_samples = args.train_samples
+        test_samples = args.test_samples
+        print("Running with command line arguments")
     else:
         # Use environment variables (default mode)
         learning_rate = float(os.getenv('LEARNING_RATE', '3e-4'))
@@ -247,8 +296,11 @@ def train(train_loader, test_loader):
         d_model = 128
         n_heads = 4
         depth = 4
-        patch_size = 4
+        patch_size = 7
         dropout = 0.1
+        batch_size_train = 128
+        train_samples = None
+        test_samples = None
         print("Running in default mode from .env")
     
     models_folder = os.getenv('MODELS_FOLDER', '.data/models')
@@ -278,6 +330,8 @@ def train(train_loader, test_loader):
         'dropout': dropout,
         'device': str(device),
         'model_params': sum(p.numel() for p in model.parameters()),
+        'train_samples': train_samples or len(train_loader.dataset),
+        'test_samples': test_samples or len(test_loader.dataset),
     }
     
     # Initialize wandb logger only if not already in sweep
@@ -382,7 +436,39 @@ def train(train_loader, test_loader):
     print(f'Training completed. Final Test Accuracy: {test_accuracy:.2f}%')
     wandb_logger.finish()
 
+def main(params_dict=None):
+    """Main function that accepts parameters dictionary for wandb sweep compatibility"""
+    if params_dict:
+        # Convert dict to argparse.Namespace for compatibility
+        class Args:
+            def __init__(self, **kwargs):
+                for key, value in kwargs.items():
+                    setattr(self, key, value)
+        
+        args = Args(**params_dict)
+        print(f"Running with sweep parameters: {params_dict}")
+    else:
+        # Parse command line arguments for normal usage
+        args = parse_args()
+    
+    # Get batch size from args, falling back to environment or default
+    batch_size_train = getattr(args, 'batch_size_train', None) or int(os.getenv('BATCH_SIZE_TRAIN', '128'))
+    batch_size_test = int(os.getenv('BATCH_SIZE_TEST', '128'))
+    
+    # Get sample sizes from args
+    train_samples = getattr(args, 'train_samples', None)
+    test_samples = getattr(args, 'test_samples', None)
+    
+    print(f"Using batch sizes - Train: {batch_size_train}, Test: {batch_size_test}")
+    if train_samples or test_samples:
+        print(f"Using sample limits - Train: {train_samples}, Test: {test_samples}")
+    
+    # Get data loaders with correct batch sizes and sample limits
+    train_loader, test_loader = get_mnist_data_loaders(
+        batch_size_train, batch_size_test, train_samples, test_samples
+    )
+    train(train_loader=train_loader, test_loader=test_loader, args=args)
+
 # Usage example
 if __name__ == "__main__":
-    train_loader, test_loader = get_mnist_data_loaders()
-    train(train_loader=train_loader, test_loader=test_loader)
+    main()

@@ -6,16 +6,16 @@ metric:
 parameters:
   learning_rate:
     distribution: log_uniform_values
-    min: 1e-5
-    max: 1e-2
+    min: 0.00001              # 1e-5
+    max: 0.01                 # 1e-2
   batch_size_train:
-    values: [64, 128, 256]
+    values: [64, 128, 4096, 16384]
   d_model:
-    values: [128, 256, 384]
+    values: [128, 256]
   n_heads:
-    values: [4, 8, 12]
+    values: [4, 8]
   depth:
-    values: [4, 6, 8]
+    values: [4, 6]
   patch_size:
     values: [4, 7]
   dropout:
@@ -23,7 +23,11 @@ parameters:
     min: 0.1
     max: 0.3
   num_epochs:
-    value: 10
+    values: [4, 8]  # Reduced epochs for faster iteration
+  train_samples:
+    values: [1200, 6000, 30000]  # Different sample sizes
+  test_samples:
+    values: [200, 1000, 5000]    # Corresponding test sizes
 early_terminate:
   type: hyperband
-  min_iter: 3
+  min_iter: 2  # Reduced minimum iterations
