@@ -229,10 +229,11 @@ class VitMNISTEncoder(nn.Module):
             'loss': loss,
             'accuracy': accuracy,
             'model_config': {
-                'd_model': getattr(self, 'd_model', 128),
-                'n_heads': getattr(self, 'n_heads', 4),
-                'depth': getattr(self, 'depth', 4),
-                'patch': getattr(self, 'patch', 7)
+                'd_model': int(getattr(self, 'd_model', 128)),
+                'n_heads': int(getattr(self, 'n_heads', 4)),
+                'depth': int(getattr(self, 'depth', 4)),
+                'patch': int(getattr(self, 'patch_size', 7)),
+                'patch_size': int(getattr(self, 'patch_size', 7))  # Include both for compatibility
             }
         }
         

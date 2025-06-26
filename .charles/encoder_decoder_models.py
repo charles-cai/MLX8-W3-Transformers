@@ -537,6 +537,14 @@ def train_encoder_decoder(train_loader, test_loader):
             'optimizer_state_dict': optimizer.state_dict(),
             'train_accuracy': train_acc,
             'val_accuracy': val_acc,
+            'model_config': {
+                'd_model': int(d_model),
+                'n_heads': int(n_heads),
+                'enc_depth': int(enc_depth),
+                'dec_depth': int(dec_depth),
+                'patch_size': int(patch_size),
+                'dropout': float(dropout)
+            }
         }, checkpoint_path)
         
         wandb_logger.save_artifact(checkpoint_path, f'model_epoch_{epoch + 1}')

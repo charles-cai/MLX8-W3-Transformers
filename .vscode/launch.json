@@ -39,6 +39,34 @@
             "console": "integratedTerminal",
             "pythonPath": "${workspaceFolder}/.venv/bin/python",
             "cwd": "${workspaceFolder}/.charles"
+        },
+        {
+            "name": "Debug viz.py - Encoder Only",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/.charles/viz.py",
+            "console": "integratedTerminal",
+            "pythonPath": "${workspaceFolder}/.venv/bin/python",
+            "env": {
+                "MODEL_TYPE": "encoder_only",
+                "MODEL_PATH": ".data/models/vit_mnist_epoch_8.pth",
+                "NUM_SAMPLES": "500"
+            },
+            "cwd": "${workspaceFolder}/.charles"
+        },
+        {
+            "name": "Debug viz.py - Encoder Decoder",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/.charles/viz.py",
+            "console": "integratedTerminal",
+            "pythonPath": "${workspaceFolder}/.venv/bin/python",
+            "env": {
+                "MODEL_TYPE": "encoder_decoder",
+                "MODEL_PATH": ".data/models/encoder_decoder_4digit_epoch_8.pth",
+                "NUM_SAMPLES": "500"
+            },
+            "cwd": "${workspaceFolder}/.charles"
         }
     ]
 }
