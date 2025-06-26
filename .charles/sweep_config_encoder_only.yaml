@@ -9,7 +9,7 @@ parameters:
     min: 0.00001              # 1e-5
     max: 0.01                 # 1e-2
   batch_size_train:
-    values: [64, 128, 4096, 16384]
+    values: [64, 128, 2048, 8192]
   d_model:
     values: [128, 256]
   n_heads:

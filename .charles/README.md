@@ -359,16 +359,16 @@ Use Weights & Biases sweeps to find optimal hyperparameters for both encoder-onl
 cd .charles
 
 # Encoder-only model sweep (20 runs)
-uv run wandb_run_sweep.py --model encoder_only --count 20
+uv run wandb_sweeper.py --model encoder_only --count 20
 
 # Encoder-decoder model sweep (15 runs)
-uv run wandb_run_sweep.py --model encoder_decoder --count 15
+uv run wandb_sweeper.py --model encoder_decoder --count 15
 ```
 
 #### 2. Create Sweep Only (for manual agent management)
 ```bash
 # Create sweep and get ID
-uv run wandb_run_sweep.py --model encoder_only --create-only
+uv run wandb_sweeper.py --model encoder_only --create-only
 
 # Run agents manually (can run multiple in parallel)
 wandb agent <sweep_id>
