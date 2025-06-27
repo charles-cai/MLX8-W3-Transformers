@@ -920,3 +920,105 @@ print(f"Best accuracy: {best_run.summary['val_accuracy']}")
 - [Vision Transformer (ViT)](https://arxiv.org/abs/2010.11929)
 - [HuggingFace Datasets: ylecun/mnist](https://huggingface.co/datasets/ylecun/mnist)
 - [PyTorch Documentation](https://pytorch.org/docs/stable/index.html)
+
+
+## Appendix: Braille Visualization per Epoch
+
+Braille sample predictions after each epoch:
+
+Epoch 2 - 10 Sample 2x2 Grids
+![Epoch 2 - 10 Sample 2x2 Grids](./visualizations/encoder_decoder_epoch2.png)
+
+Epoch 3 - 10 Sample 2x2 Grids
+![Epoch 3 - 10 Sample 2x2 Grids](./visualizations/encoder_decoder_epoch3.png)
+
+Epoch 4 - 10 Sample 2x2 Grids
+![Epoch 4 - 10 Sample 2x2 Grids](./visualizations/encoder_decoder_epoch4.png)
+
+Epoch 5 - 10 Sample 2x2 Grids
+![Epoch 5 - 10 Sample 2x2 Grids](./visualizations/encoder_decoder_epoch5.png)
+
+Epoch 6 - 10 Sample 2x2 Grids
+![Epoch 6 - 10 Sample 2x2 Grids](./visualizations/encoder_decoder_epoch6.png)
+
+Epoch 7 - 10 Sample 2x2 Grids
+![Epoch 7 - 10 Sample 2x2 Grids](./visualizations/encoder_decoder_epoch7.png)
+
+Epoch 8 - 10 Sample 2x2 Grids
+![Epoch 8 - 10 Sample 2x2 Grids](./visualizations/encoder_decoder_epoch8.png)
+
+Training output log sample:
+
+<pre><code style="
+    font-family: 'JetBrains Mono', 'Cascadia Code', 'Source Code Pro', 'Ubuntu Mono', 'Roboto Mono', 'Inconsolata', monospace;
+    font-size: 13px;
+    line-height: 1.2;
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    padding: 16px;
+    border-radius: 4px;
+    overflow-x: auto;
+    white-space: pre;
+">
+
+============================================================
+STARTING DATA PREPARATION
+============================================================
+Loading MNIST data from:
+  Train files: .data/ylecun/mnist/train*.parquet
+  Test files: .data/ylecun/mnist/test*.parquet
+Loading single digit datasets...
+Loaded 60000 training samples and 10000 test samples
+Creating datasets:
+  Training samples: 30000
+  Test samples: 5000
+  Batch sizes: train=128, test=128
+Creating 4-digit dataset with 30000 samples...
+Creating 4-digit dataset with 5000 samples...
+Data preparation completed!
+============================================================
+Running in default mode from .env
+Epoch 1/8, Batch 0, Loss: 2.5349, Acc: 0.00%
+Epoch 1/8, Batch 10, Loss: 2.3663, Acc: 0.00%
+Epoch 1/8, Batch 20, Loss: 2.3158, Acc: 0.04%
+Epoch 1/8, Batch 30, Loss: 2.3105, Acc: 0.03%
+Epoch 1/8, Batch 40, Loss: 2.3038, Acc: 0.02%
+Epoch 1/8, Batch 50, Loss: 2.3024, Acc: 0.05%
+Epoch 1/8, Batch 60, Loss: 2.3215, Acc: 0.05%
+Epoch 1/8, Batch 70, Loss: 2.3000, Acc: 0.04%
+Epoch 1/8, Batch 80, Loss: 2.3177, Acc: 0.04%
+Epoch 1/8, Batch 90, Loss: 2.3247, Acc: 0.03%
+Epoch 1/8, Batch 100, Loss: 2.2664, Acc: 0.03%
+Epoch 1/8, Batch 110, Loss: 2.2895, Acc: 0.04%
+Epoch 1/8, Batch 120, Loss: 2.2347, Acc: 0.04%
+Epoch 1/8, Batch 130, Loss: 2.2346, Acc: 0.04%
+Epoch 1/8, Batch 140, Loss: 2.2037, Acc: 0.03%
+Epoch 1/8, Batch 150, Loss: 2.1755, Acc: 0.03%
+Epoch 1/8, Batch 160, Loss: 2.1844, Acc: 0.03%
+Epoch 1/8, Batch 170, Loss: 2.1481, Acc: 0.03%
+Epoch 1/8, Batch 180, Loss: 2.1692, Acc: 0.03%
+Epoch 1/8, Batch 190, Loss: 2.1197, Acc: 0.04%
+Epoch 1/8, Batch 200, Loss: 2.1002, Acc: 0.04%
+Epoch 1/8, Batch 210, Loss: 2.0970, Acc: 0.04%
+Epoch 1/8, Batch 220, Loss: 2.0445, Acc: 0.04%
+Epoch 1/8, Batch 230, Loss: 2.0806, Acc: 0.04%
+
+============================================================
+EPOCH 1 VALIDATION - FIRST 10 SAMPLES
+============================================================
+
+Legend: <span style="filter: contrast(70%) brightness(190%);color:gray;">Expected (top-left)</span> | <span style="filter: contrast(70%) brightness(190%);color:green;">Predicted Correct (bottom-right)</span> | <span style="filter: contrast(70%) brightness(190%);color:red;">Predicted Wrong (bottom-right)</span>
+========================================================================================================================================================================================================
+Epoch 1 - Batch Display (10 samples, 5 per row, each sample shows 2x2 digits)
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣶⡄⢰⣶⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣰⣾⣿⣦⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣶⣶⣶⣤⣤⡀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣠⡄⠀⠀⢀⣄⠀│    │⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣤⣤⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⣀⣤⡶⠶⠶⠂⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣠⣤⣄⡀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣀⣤⡀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⡾⠿⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣿⡟⠀⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⢀⣴⣿⣿⠏⢹⣿⣷⠀⠀⠀│    │⠀⠀⠀⠐⣿⣧⣀⣠⣿⠿⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⣠⣾⠟⠁⢠⣾⠟⠁⠀│    │⠀⠀⠀⠀⠞⠋⠉⠉⢹⡿⠁⠀⠀⠀│ │⠀⠀⠀⢀⣴⠟⠉⠉⣷⡄⠀⠀⠀⠀│    │⠀⠀⠀⣼⠇⣀⣀⣀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣴⡿⠛⣩⣽⠗⠀⠀⠀│    │⠀⠀⠀⠀⢠⣿⠟⠻⣿⡄⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣰⣿⣁⣀⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⣼⣿⣷⣾⣿⡇⠀⠀⠀⠀│ │⠀⠀⣰⣿⣿⠏⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⠈⣹⣿⣿⣧⣀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⣿⣥⣤⣴⣿⣷⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⢠⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⢸⣏⠀⢀⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠰⠟⠋⠉⠉⠉⠛⠻⣦⠀⠀⠀│ │⠀⠀⠀⠀⢶⣿⣷⣾⣿⠋⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣧⣤⣾⣿⡏⠀⠀⠀⠀│ │⠀⠀⠀⠀⢰⡿⠙⠉⠛⢿⡆⠀⠀⠀│
+│⠀⠀⠀⠀⠛⠋⣹⣿⠋⠁⠀⠀⠀⠀│ │⠀⠀⣿⣿⣇⠀⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⣰⡿⠁⠀⠉⢻⣷⠀⠀⠀│ │⠀⠀⠀⠉⠉⣩⣿⠟⠋⠉⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⡿⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠋⠀⣿⡆⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣧⠀⠀│ │⠀⠀⠀⠀⠈⠉⣸⣿⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⢸⡇⠀⢀⣠⡿⠃⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠈⠛⠿⣿⣿⣶⣾⠿⠟⠀⠀⠀│    │⠀⠀⠀⠀⠙⣷⣤⣤⣤⣾⠟⠀⠀⠀│ │⠀⠀⠀⢠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣆⣀⣀⣀⣤⡟⠀⠀│ │⠀⠀⠀⠀⢀⣴⡟⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⠿⠶⠟⠉⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">0</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠈⠉⠉⠉⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">7</span>│ │⠀⠀⠀⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">1</span>│    │⠀⠀⠀⠀⠀⠀⠟⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">1</span>│    │⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">0</span>│ │⠀⠀⠀⠀⠚⠋⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠃⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">6</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+</code></pre>

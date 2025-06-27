@@ -166,6 +166,3 @@ uv run python examples/gpu_training.py
 </details>
 
 ---
-
-## 📚 Project Structure
-

@@ -1,5 +1,12 @@
 # UV Python Environment Management
 
+## Course Materials
+
+
+| Document | Description |
+|----------|-------------|
+| [bes-shared-code.py](bes-shared-code.py) | Shared code for Braille/Einops/MNIST dataset composition |
+
 This project uses [UV](https://docs.astral.sh/uv/) for fast, reliable Python package and environment management across multiple platforms and Python versions.
 
 ## Environment Overview
