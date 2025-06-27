@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- This file was created with the aha Ansi HTML Adapter. https://github.com/theZiz/aha -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xml+xhtml; charset=UTF-8"/>
+<title>stdin</title>
+</head>
+<body>
+<pre>
+============================================================
+STARTING DATA PREPARATION
+============================================================
+Loading MNIST data from:
+  Train files: .data/ylecun/mnist/train*.parquet
+  Test files: .data/ylecun/mnist/test*.parquet
+Loading single digit datasets...
+Loaded 60000 training samples and 10000 test samples
+Creating datasets:
+  Training samples: 30000
+  Test samples: 5000
+  Batch sizes: train=128, test=128
+Creating 4-digit dataset with 30000 samples...
+Creating 4-digit dataset with 5000 samples...
+Data preparation completed!
+============================================================
+Running in default mode from .env
+Epoch 1/8, Batch 0, Loss: 2.5349, Acc: 0.00%
+Epoch 1/8, Batch 10, Loss: 2.3663, Acc: 0.00%
+Epoch 1/8, Batch 20, Loss: 2.3158, Acc: 0.04%
+Epoch 1/8, Batch 30, Loss: 2.3105, Acc: 0.03%
+Epoch 1/8, Batch 40, Loss: 2.3038, Acc: 0.02%
+Epoch 1/8, Batch 50, Loss: 2.3024, Acc: 0.05%
+Epoch 1/8, Batch 60, Loss: 2.3215, Acc: 0.05%
+Epoch 1/8, Batch 70, Loss: 2.3000, Acc: 0.04%
+Epoch 1/8, Batch 80, Loss: 2.3177, Acc: 0.04%
+Epoch 1/8, Batch 90, Loss: 2.3247, Acc: 0.03%
+Epoch 1/8, Batch 100, Loss: 2.2664, Acc: 0.03%
+Epoch 1/8, Batch 110, Loss: 2.2895, Acc: 0.04%
+Epoch 1/8, Batch 120, Loss: 2.2347, Acc: 0.04%
+Epoch 1/8, Batch 130, Loss: 2.2346, Acc: 0.04%
+Epoch 1/8, Batch 140, Loss: 2.2037, Acc: 0.03%
+Epoch 1/8, Batch 150, Loss: 2.1755, Acc: 0.03%
+Epoch 1/8, Batch 160, Loss: 2.1844, Acc: 0.03%
+Epoch 1/8, Batch 170, Loss: 2.1481, Acc: 0.03%
+Epoch 1/8, Batch 180, Loss: 2.1692, Acc: 0.03%
+Epoch 1/8, Batch 190, Loss: 2.1197, Acc: 0.04%
+Epoch 1/8, Batch 200, Loss: 2.1002, Acc: 0.04%
+Epoch 1/8, Batch 210, Loss: 2.0970, Acc: 0.04%
+Epoch 1/8, Batch 220, Loss: 2.0445, Acc: 0.04%
+Epoch 1/8, Batch 230, Loss: 2.0806, Acc: 0.04%
+
+============================================================
+EPOCH 1 VALIDATION - FIRST 10 SAMPLES
+============================================================
+
+Legend: <span style="filter: contrast(70%) brightness(190%);color:gray;">Expected (top-left)</span> | <span style="filter: contrast(70%) brightness(190%);color:green;">Predicted Correct (bottom-right)</span> | <span style="filter: contrast(70%) brightness(190%);color:red;">Predicted Wrong (bottom-right)</span>
+========================================================================================================================================================================================================
+Epoch 1 - Batch Display (10 samples, 5 per row, each sample shows 2x2 digits)
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣶⡄⢰⣶⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣰⣾⣿⣦⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣶⣶⣶⣤⣤⡀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣠⡄⠀⠀⢀⣄⠀│    │⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣤⣤⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⣀⣤⡶⠶⠶⠂⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣠⣤⣄⡀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣀⣤⡀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⡾⠿⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣿⡟⠀⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⢀⣴⣿⣿⠏⢹⣿⣷⠀⠀⠀│    │⠀⠀⠀⠐⣿⣧⣀⣠⣿⠿⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⣠⣾⠟⠁⢠⣾⠟⠁⠀│    │⠀⠀⠀⠀⠞⠋⠉⠉⢹⡿⠁⠀⠀⠀│ │⠀⠀⠀⢀⣴⠟⠉⠉⣷⡄⠀⠀⠀⠀│    │⠀⠀⠀⣼⠇⣀⣀⣀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣴⡿⠛⣩⣽⠗⠀⠀⠀│    │⠀⠀⠀⠀⢠⣿⠟⠻⣿⡄⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣰⣿⣁⣀⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⣼⣿⣷⣾⣿⡇⠀⠀⠀⠀│ │⠀⠀⣰⣿⣿⠏⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⠈⣹⣿⣿⣧⣀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⣿⣥⣤⣴⣿⣷⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⢠⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⢸⣏⠀⢀⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠰⠟⠋⠉⠉⠉⠛⠻⣦⠀⠀⠀│ │⠀⠀⠀⠀⢶⣿⣷⣾⣿⠋⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣧⣤⣾⣿⡏⠀⠀⠀⠀│ │⠀⠀⠀⠀⢰⡿⠙⠉⠛⢿⡆⠀⠀⠀│
+│⠀⠀⠀⠀⠛⠋⣹⣿⠋⠁⠀⠀⠀⠀│ │⠀⠀⣿⣿⣇⠀⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⣰⡿⠁⠀⠉⢻⣷⠀⠀⠀│ │⠀⠀⠀⠉⠉⣩⣿⠟⠋⠉⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⡿⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠋⠀⣿⡆⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣧⠀⠀│ │⠀⠀⠀⠀⠈⠉⣸⣿⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⢸⡇⠀⢀⣠⡿⠃⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠈⠛⠿⣿⣿⣶⣾⠿⠟⠀⠀⠀│    │⠀⠀⠀⠀⠙⣷⣤⣤⣤⣾⠟⠀⠀⠀│ │⠀⠀⠀⢠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣆⣀⣀⣀⣤⡟⠀⠀│ │⠀⠀⠀⠀⢀⣴⡟⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⠿⠶⠟⠉⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">0</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠈⠉⠉⠉⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">7</span>│ │⠀⠀⠀⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">1</span>│    │⠀⠀⠀⠀⠀⠀⠟⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">1</span>│    │⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">0</span>│ │⠀⠀⠀⠀⠚⠋⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠃⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">6</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">2</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⢀⣤⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⣴⣶⣶⣶⣤⡀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣀⣤⣴⣿⣿⣿⡆⠀│    │⠀⠀⠀⠀⢀⣿⠏⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣴⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣶⡄⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣶⣶⠀⠀│    │⠀⠀⠀⠀⢰⣿⣿⣿⣷⣦⣄⠀⠀⠀│ │⠀⠀⠀⠀⢀⣴⣿⣿⣾⡿⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢀⣤⣤⣤⡀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠉⠻⣿⣦⠀⠀⠀⠀⠀│ │⠀⠀⠀⢀⣶⣿⣿⡿⠏⠀⠉⣿⡇⠀│    │⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣸⡿⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣿⣧⣼⡿⠃⠀⠀│ │⠀⠀⠀⠀⢀⣴⡿⠿⠛⠛⠉⠁⠀⠀│    │⠀⠀⠀⠀⣿⡟⠁⠀⠈⠙⣿⡆⠀⠀│ │⠀⠀⠀⠀⣼⡿⠋⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣴⡿⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⠀⠀⣀⣤⣤⣤⡀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢀⣻⣿⡆⠀⠀⠀⠀│ │⠀⠀⢰⣿⣿⠛⠉⠀⠀⣠⣾⣿⠃⠀│    │⠀⠀⠀⠀⣿⠀⢀⣴⣾⣿⣿⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣀⣾⣿⠟⠉⠀⠀⠀⠀│ │⠀⠀⠀⠰⣿⣿⣤⡀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢰⣿⡇⠀⠀⠀⢠⣿⡇⠀⠀│ │⠀⠀⠀⠀⣼⣿⢀⣀⣀⣀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣇⢀⣠⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⣀⡾⠋⠀⠀⠉⣧⠀⠀│
+│⠀⠀⠀⠀⠀⢾⣿⣿⣿⣷⣄⠀⠀⠀│ │⠀⠀⢸⣿⣿⣀⣠⣴⣾⣿⠟⠁⠀⠀│    │⠀⠀⠀⠀⢿⣼⣿⣛⣽⡾⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⣼⡏⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢀⣾⠟⣿⡇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠈⠙⢿⣦⠀⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⡇⠀⢀⣴⣿⡿⠀⠀⠀│ │⠀⠀⠀⠀⢻⣿⣿⢿⣿⣿⡧⠀⠀⠀│    │⠀⠀⠀⠀⠈⠛⠛⢉⣿⠇⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⣿⡷⠀⢀⣠⠾⠃⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠉⠁⢹⣿⡆⠀⠀│ │⠀⠀⠈⠿⣿⣿⡿⠟⠛⠁⠀⠀⠀⠀│    │⠀⠀⠀⠀⠈⠛⠛⠛⠉⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⣴⣿⠃⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣠⣶⣤⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠀⠈⠿⣿⣿⣿⠿⠋⠀⠀⠀⠀│ │⠀⠀⠀⠀⠈⠛⠿⡿⠟⠋⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠈⠛⠛⠋⠉⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀<span style="filter: contrast(70%) brightness(190%);color:red;">0</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">0</span>│ │⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">7</span>│    │⠀⠀⠀⠀⠈⠉⠁⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">7</span>│ │⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">7</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⡶⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣴⣿⠿⠿⠿⠶⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣽⡿⣷⣄⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣾⣷⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⡀⠀⢀⣴⣶⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣠⣶⣆⠀⠀⠀⠀│ │⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⡀⠀⠀⠀│    │⠀⠀⠀⠀⢀⡀⠀⠀⣄⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢠⣶⢶⣤⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⢠⣾⠏⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣿⣿⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢀⣴⠷⠶⠶⠶⠶⠶⠆│ │⠀⠀⠀⠀⠀⣴⡿⠋⠀⠸⣿⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣿⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⢠⣾⠟⢀⣾⡟⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⣠⡾⠋⠋⣿⡆⠀⠀⠀│ │⠀⠀⠘⠛⠛⠉⠉⠉⢉⣿⠇⠀⠀⠀│    │⠀⠀⠀⢀⣼⠏⠀⠀⣿⡀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣸⡿⢋⣸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠘⢿⣷⣄⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣴⣿⣅⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⠟⠁⠀⠀⢰⣿⠇⠀⠀│    │⠀⠀⠀⠀⠀⠀⣸⣿⠁⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⣯⣤⣾⣿⣤⣤⠀⠀⠀│    │⠀⠀⠀⠀⠀⢿⣤⣠⣾⡟⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⢀⣿⠏⠀⣀⡀⠀│    │⠀⠀⢠⣿⣯⣤⣤⣶⣿⣷⣶⠀⠀⠀│ │⠀⠀⠀⢸⣿⣷⣾⣿⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣙⣿⣷⠀⠀⠀⠀│    │⠀⠀⠀⢰⣶⣦⣽⡇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⣿⡏⠀⠀⣀⣴⡿⠏⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠉⢉⣿⡟⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣴⡿⣿⡁⠀⠀⠀⠀⠀│ │⠀⠀⢠⡶⠾⠿⢛⣿⠟⠛⠛⠉⠀⠀│    │⠀⠀⠈⠋⠉⠉⠁⠀⣿⡇⠀⠀⠀⠀│ │⠀⠀⠀⠈⠻⠿⠋⢸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠠⣿⠃⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠘⣿⣶⣿⡿⠟⠋⠁⠀⠀⠀⠀│    │⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠿⣷⣶⡿⠟⠋⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣾⡿⠁⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣼⣿⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⢸⡏⠀⣿⠇⠀⠀⠀⠀⠀│ │⠀⠀⠘⠇⠀⢀⣾⠋⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⡧⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">7</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│ │⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">1</span>│    │⠀⠀⠀⠀⠈⠉⠈⠉⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">7</span>│ │⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠋⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">7</span>│ │⠀⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">8</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">3</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢠⣤⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢀⣤⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">2</span>⠀⠀⠶⠒⠀⠀⠀⠤⣤⡀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢀⣤⡀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢠⣦⠐⠟⢻⡦⠀⠀│ │⠀⠀⠀⠀⠀⡀⣀⣀⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣠⣿⠟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⡀⣀⣀⢀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣰⣿⠋⠀⠀⣼⡇⠀⠀│ │⠀⠀⠻⣿⠛⠛⠛⠛⣿⣷⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣤⣾⣷⣿⣿⣿⣿⠃⠀│ │⠀⠰⠿⠻⠛⠛⠛⠻⣿⣿⣦⠀⠀⠀│    │⠀⠀⠀⠀⢀⣼⣿⠋⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⢀⣤⣿⠃⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡦⠀⠀⠀│ │⠀⠀⠀⢀⣤⣾⣶⠿⢿⣷⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣠⣿⠏⠀⠀⠀⠀⠀⠀│ │⠀⠀⢸⣿⣷⣤⣤⣤⣤⣴⣾⠇⠀⠀│
+│⠀⠀⠀⠀⣰⣿⠃⠀⠀⢠⡿⠁⠀⠀│ │⠀⠀⠀⠙⠃⠀⠀⢀⣿⡟⠀⠀⠀⠀│    │⠀⠀⠀⠘⡿⠟⠉⣡⣿⡿⠛⠁⠀⠀│ │⠀⠀⠀⠀⢠⣴⣶⣿⣿⣭⣄⡀⠀⠀│    │⠀⠀⠀⢀⣾⣿⢃⣴⣿⢿⣿⡆⠀⠀│ │⠀⠀⠀⢀⣼⡿⠉⣠⣤⣶⣆⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⣠⣼⣧⠀⠀⠀│ │⠀⠀⠀⣾⠿⠋⠁⠀⣸⡏⠀⠀⠀⠀│    │⠀⠀⠀⢀⣼⡿⢁⣠⣾⢿⣷⡄⠀⠀│ │⠀⠀⢸⣿⠙⠛⠻⠿⠛⢻⣿⠀⠀⠀│
+│⠀⠀⠀⣼⡿⠃⠀⢀⣴⡟⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣾⣿⠃⠀⠀⠀⠀│    │⠀⠀⠀⠀⢀⣴⣾⡿⠋⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠈⠉⣉⣩⣭⣿⠿⠃⠀⠀│    │⠀⠀⠀⢸⣿⣧⣿⣿⣴⣿⡟⠁⠀⠀│ │⠀⠀⠀⣼⣿⣁⣾⣿⣿⡿⠟⠁⠀⠀│    │⠀⠀⠀⢰⣿⢿⢿⡿⠟⠋⠉⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣰⣿⠁⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⣷⣿⣯⣵⡾⠋⠀⠀⠀│ │⠀⠀⠈⠉⠀⠀⠀⠀⠀⢰⣿⠀⠀⠀│
+│⠀⠀⠀⠿⣷⣶⠿⠟⠉⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀│    │⠀⠀⠀⣠⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⢰⣶⡾⠟⠛⠋⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠈⠛⠛⠛⠛⠉⠁⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠛⠋⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠛⠉⠁⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">7</span>│ │⠀⠀⠀⠀⠀⠀⠘⠿⠃⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">0</span>│    │⠀⠀⠸⠿⠛⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">0</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">1</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">7</span>│ │⠀⠀⠀⠀⠀⠀⠸⠏⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">7</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⠇⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">8</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+
+Epoch 1: Train Loss: 2.2291, Train Acc: 0.05%, Val Acc: 0.16%
+Epoch 2/8, Batch 0, Loss: 1.9793, Acc: 0.00%
+Epoch 2/8, Batch 10, Loss: 1.9416, Acc: 0.21%
+Epoch 2/8, Batch 20, Loss: 2.0544, Acc: 0.26%
+Epoch 2/8, Batch 30, Loss: 2.0342, Acc: 0.25%
+Epoch 2/8, Batch 40, Loss: 1.9342, Acc: 0.23%
+Epoch 2/8, Batch 50, Loss: 1.8816, Acc: 0.21%
+Epoch 2/8, Batch 60, Loss: 1.8895, Acc: 0.27%
+Epoch 2/8, Batch 70, Loss: 1.7483, Acc: 0.37%
+Epoch 2/8, Batch 80, Loss: 1.7356, Acc: 0.45%
+Epoch 2/8, Batch 90, Loss: 1.7341, Acc: 0.47%
+Epoch 2/8, Batch 100, Loss: 1.5532, Acc: 0.61%
+Epoch 2/8, Batch 110, Loss: 1.5370, Acc: 0.77%
+Epoch 2/8, Batch 120, Loss: 1.4152, Acc: 1.10%
+Epoch 2/8, Batch 130, Loss: 1.2731, Acc: 1.46%
+Epoch 2/8, Batch 140, Loss: 1.2757, Acc: 1.88%
+Epoch 2/8, Batch 150, Loss: 1.1323, Acc: 2.36%
+Epoch 2/8, Batch 160, Loss: 1.1071, Acc: 2.80%
+Epoch 2/8, Batch 170, Loss: 1.0015, Acc: 3.40%
+Epoch 2/8, Batch 180, Loss: 0.9059, Acc: 4.17%
+Epoch 2/8, Batch 190, Loss: 0.9412, Acc: 5.00%
+Epoch 2/8, Batch 200, Loss: 0.7964, Acc: 5.74%
+Epoch 2/8, Batch 210, Loss: 0.6850, Acc: 6.78%
+Epoch 2/8, Batch 220, Loss: 0.6325, Acc: 8.18%
+Epoch 2/8, Batch 230, Loss: 0.5167, Acc: 9.45%
+
+============================================================
+EPOCH 2 VALIDATION - FIRST 10 SAMPLES
+============================================================
+
+Legend: <span style="filter: contrast(70%) brightness(190%);color:gray;">Expected (top-left)</span> | <span style="filter: contrast(70%) brightness(190%);color:green;">Predicted Correct (bottom-right)</span> | <span style="filter: contrast(70%) brightness(190%);color:red;">Predicted Wrong (bottom-right)</span>
+========================================================================================================================================================================================================
+Epoch 2 - Batch Display (10 samples, 5 per row, each sample shows 2x2 digits)
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣶⡄⢰⣶⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣰⣾⣿⣦⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣶⣶⣶⣤⣤⡀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣠⡄⠀⠀⢀⣄⠀│    │⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣤⣤⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⣀⣤⡶⠶⠶⠂⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣠⣤⣄⡀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣀⣤⡀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⡾⠿⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣿⡟⠀⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⢀⣴⣿⣿⠏⢹⣿⣷⠀⠀⠀│    │⠀⠀⠀⠐⣿⣧⣀⣠⣿⠿⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⣠⣾⠟⠁⢠⣾⠟⠁⠀│    │⠀⠀⠀⠀⠞⠋⠉⠉⢹⡿⠁⠀⠀⠀│ │⠀⠀⠀⢀⣴⠟⠉⠉⣷⡄⠀⠀⠀⠀│    │⠀⠀⠀⣼⠇⣀⣀⣀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣴⡿⠛⣩⣽⠗⠀⠀⠀│    │⠀⠀⠀⠀⢠⣿⠟⠻⣿⡄⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣰⣿⣁⣀⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⣼⣿⣷⣾⣿⡇⠀⠀⠀⠀│ │⠀⠀⣰⣿⣿⠏⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⠈⣹⣿⣿⣧⣀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⣿⣥⣤⣴⣿⣷⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⢠⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⢸⣏⠀⢀⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠰⠟⠋⠉⠉⠉⠛⠻⣦⠀⠀⠀│ │⠀⠀⠀⠀⢶⣿⣷⣾⣿⠋⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣧⣤⣾⣿⡏⠀⠀⠀⠀│ │⠀⠀⠀⠀⢰⡿⠙⠉⠛⢿⡆⠀⠀⠀│
+│⠀⠀⠀⠀⠛⠋⣹⣿⠋⠁⠀⠀⠀⠀│ │⠀⠀⣿⣿⣇⠀⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⣰⡿⠁⠀⠉⢻⣷⠀⠀⠀│ │⠀⠀⠀⠉⠉⣩⣿⠟⠋⠉⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⡿⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠋⠀⣿⡆⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣧⠀⠀│ │⠀⠀⠀⠀⠈⠉⣸⣿⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⢸⡇⠀⢀⣠⡿⠃⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠈⠛⠿⣿⣿⣶⣾⠿⠟⠀⠀⠀│    │⠀⠀⠀⠀⠙⣷⣤⣤⣤⣾⠟⠀⠀⠀│ │⠀⠀⠀⢠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣆⣀⣀⣀⣤⡟⠀⠀│ │⠀⠀⠀⠀⢀⣴⡟⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⠿⠶⠟⠉⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠈⠉⠉⠉⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│    │⠀⠀⠀⠀⠀⠀⠟⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│    │⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">3</span>│ │⠀⠀⠀⠀⠚⠋⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠃⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">2</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⢀⣤⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⣴⣶⣶⣶⣤⡀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣀⣤⣴⣿⣿⣿⡆⠀│    │⠀⠀⠀⠀⢀⣿⠏⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣴⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣶⡄⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣶⣶⠀⠀│    │⠀⠀⠀⠀⢰⣿⣿⣿⣷⣦⣄⠀⠀⠀│ │⠀⠀⠀⠀⢀⣴⣿⣿⣾⡿⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢀⣤⣤⣤⡀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠉⠻⣿⣦⠀⠀⠀⠀⠀│ │⠀⠀⠀⢀⣶⣿⣿⡿⠏⠀⠉⣿⡇⠀│    │⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣸⡿⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣿⣧⣼⡿⠃⠀⠀│ │⠀⠀⠀⠀⢀⣴⡿⠿⠛⠛⠉⠁⠀⠀│    │⠀⠀⠀⠀⣿⡟⠁⠀⠈⠙⣿⡆⠀⠀│ │⠀⠀⠀⠀⣼⡿⠋⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣴⡿⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⠀⠀⣀⣤⣤⣤⡀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢀⣻⣿⡆⠀⠀⠀⠀│ │⠀⠀⢰⣿⣿⠛⠉⠀⠀⣠⣾⣿⠃⠀│    │⠀⠀⠀⠀⣿⠀⢀⣴⣾⣿⣿⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣀⣾⣿⠟⠉⠀⠀⠀⠀│ │⠀⠀⠀⠰⣿⣿⣤⡀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢰⣿⡇⠀⠀⠀⢠⣿⡇⠀⠀│ │⠀⠀⠀⠀⣼⣿⢀⣀⣀⣀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣇⢀⣠⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⣀⡾⠋⠀⠀⠉⣧⠀⠀│
+│⠀⠀⠀⠀⠀⢾⣿⣿⣿⣷⣄⠀⠀⠀│ │⠀⠀⢸⣿⣿⣀⣠⣴⣾⣿⠟⠁⠀⠀│    │⠀⠀⠀⠀⢿⣼⣿⣛⣽⡾⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⣼⡏⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢀⣾⠟⣿⡇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠈⠙⢿⣦⠀⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⡇⠀⢀⣴⣿⡿⠀⠀⠀│ │⠀⠀⠀⠀⢻⣿⣿⢿⣿⣿⡧⠀⠀⠀│    │⠀⠀⠀⠀⠈⠛⠛⢉⣿⠇⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⣿⡷⠀⢀⣠⠾⠃⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠉⠁⢹⣿⡆⠀⠀│ │⠀⠀⠈⠿⣿⣿⡿⠟⠛⠁⠀⠀⠀⠀│    │⠀⠀⠀⠀⠈⠛⠛⠛⠉⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⣴⣿⠃⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣠⣶⣤⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠀⠈⠿⣿⣿⣿⠿⠋⠀⠀⠀⠀│ │⠀⠀⠀⠀⠈⠛⠿⡿⠟⠋⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠈⠛⠛⠋⠉⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀<span style="filter: contrast(70%) brightness(190%);color:green;">2</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│    │⠀⠀⠀⠀⠈⠉⠁⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">2</span>│    │⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⡶⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣴⣿⠿⠿⠿⠶⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣽⡿⣷⣄⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣾⣷⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⡀⠀⢀⣴⣶⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣠⣶⣆⠀⠀⠀⠀│ │⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⡀⠀⠀⠀│    │⠀⠀⠀⠀⢀⡀⠀⠀⣄⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢠⣶⢶⣤⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⢠⣾⠏⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣿⣿⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢀⣴⠷⠶⠶⠶⠶⠶⠆│ │⠀⠀⠀⠀⠀⣴⡿⠋⠀⠸⣿⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣿⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⢠⣾⠟⢀⣾⡟⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⣠⡾⠋⠋⣿⡆⠀⠀⠀│ │⠀⠀⠘⠛⠛⠉⠉⠉⢉⣿⠇⠀⠀⠀│    │⠀⠀⠀⢀⣼⠏⠀⠀⣿⡀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣸⡿⢋⣸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠘⢿⣷⣄⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣴⣿⣅⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⠟⠁⠀⠀⢰⣿⠇⠀⠀│    │⠀⠀⠀⠀⠀⠀⣸⣿⠁⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⣯⣤⣾⣿⣤⣤⠀⠀⠀│    │⠀⠀⠀⠀⠀⢿⣤⣠⣾⡟⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⢀⣿⠏⠀⣀⡀⠀│    │⠀⠀⢠⣿⣯⣤⣤⣶⣿⣷⣶⠀⠀⠀│ │⠀⠀⠀⢸⣿⣷⣾⣿⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣙⣿⣷⠀⠀⠀⠀│    │⠀⠀⠀⢰⣶⣦⣽⡇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⣿⡏⠀⠀⣀⣴⡿⠏⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠉⢉⣿⡟⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣴⡿⣿⡁⠀⠀⠀⠀⠀│ │⠀⠀⢠⡶⠾⠿⢛⣿⠟⠛⠛⠉⠀⠀│    │⠀⠀⠈⠋⠉⠉⠁⠀⣿⡇⠀⠀⠀⠀│ │⠀⠀⠀⠈⠻⠿⠋⢸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠠⣿⠃⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠘⣿⣶⣿⡿⠟⠋⠁⠀⠀⠀⠀│    │⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠿⣷⣶⡿⠟⠋⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣾⡿⠁⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣼⣿⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⢸⡏⠀⣿⠇⠀⠀⠀⠀⠀│ │⠀⠀⠘⠇⠀⢀⣾⠋⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⡧⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">3</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">2</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│ │⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│    │⠀⠀⠀⠀⠈⠉⠈⠉⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">4</span>│ │⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">5</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠋⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│ │⠀⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">3</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢠⣤⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢀⣤⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">2</span>⠀⠀⠶⠒⠀⠀⠀⠤⣤⡀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢀⣤⡀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢠⣦⠐⠟⢻⡦⠀⠀│ │⠀⠀⠀⠀⠀⡀⣀⣀⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣠⣿⠟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⡀⣀⣀⢀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣰⣿⠋⠀⠀⣼⡇⠀⠀│ │⠀⠀⠻⣿⠛⠛⠛⠛⣿⣷⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣤⣾⣷⣿⣿⣿⣿⠃⠀│ │⠀⠰⠿⠻⠛⠛⠛⠻⣿⣿⣦⠀⠀⠀│    │⠀⠀⠀⠀⢀⣼⣿⠋⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⢀⣤⣿⠃⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡦⠀⠀⠀│ │⠀⠀⠀⢀⣤⣾⣶⠿⢿⣷⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣠⣿⠏⠀⠀⠀⠀⠀⠀│ │⠀⠀⢸⣿⣷⣤⣤⣤⣤⣴⣾⠇⠀⠀│
+│⠀⠀⠀⠀⣰⣿⠃⠀⠀⢠⡿⠁⠀⠀│ │⠀⠀⠀⠙⠃⠀⠀⢀⣿⡟⠀⠀⠀⠀│    │⠀⠀⠀⠘⡿⠟⠉⣡⣿⡿⠛⠁⠀⠀│ │⠀⠀⠀⠀⢠⣴⣶⣿⣿⣭⣄⡀⠀⠀│    │⠀⠀⠀⢀⣾⣿⢃⣴⣿⢿⣿⡆⠀⠀│ │⠀⠀⠀⢀⣼⡿⠉⣠⣤⣶⣆⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⣠⣼⣧⠀⠀⠀│ │⠀⠀⠀⣾⠿⠋⠁⠀⣸⡏⠀⠀⠀⠀│    │⠀⠀⠀⢀⣼⡿⢁⣠⣾⢿⣷⡄⠀⠀│ │⠀⠀⢸⣿⠙⠛⠻⠿⠛⢻⣿⠀⠀⠀│
+│⠀⠀⠀⣼⡿⠃⠀⢀⣴⡟⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣾⣿⠃⠀⠀⠀⠀│    │⠀⠀⠀⠀⢀⣴⣾⡿⠋⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠈⠉⣉⣩⣭⣿⠿⠃⠀⠀│    │⠀⠀⠀⢸⣿⣧⣿⣿⣴⣿⡟⠁⠀⠀│ │⠀⠀⠀⣼⣿⣁⣾⣿⣿⡿⠟⠁⠀⠀│    │⠀⠀⠀⢰⣿⢿⢿⡿⠟⠋⠉⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣰⣿⠁⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⣷⣿⣯⣵⡾⠋⠀⠀⠀│ │⠀⠀⠈⠉⠀⠀⠀⠀⠀⢰⣿⠀⠀⠀│
+│⠀⠀⠀⠿⣷⣶⠿⠟⠉⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀│    │⠀⠀⠀⣠⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⢰⣶⡾⠟⠛⠋⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠈⠛⠛⠛⠛⠉⠁⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠛⠋⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠛⠉⠁⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│ │⠀⠀⠀⠀⠀⠀⠘⠿⠃⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠸⠿⠛⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">5</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">7</span>│ │⠀⠀⠀⠀⠀⠀⠸⠏⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⠇⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+
+Epoch 2: Train Loss: 1.4072, Train Acc: 9.82%, Val Acc: 46.40%
+Epoch 3/8, Batch 0, Loss: 0.5704, Acc: 41.41%
+Epoch 3/8, Batch 10, Loss: 0.6155, Acc: 41.41%
+Epoch 3/8, Batch 20, Loss: 0.5841, Acc: 43.71%
+Epoch 3/8, Batch 30, Loss: 0.5247, Acc: 44.78%
+Epoch 3/8, Batch 40, Loss: 0.4729, Acc: 45.71%
+Epoch 3/8, Batch 50, Loss: 0.6044, Acc: 45.89%
+Epoch 3/8, Batch 60, Loss: 0.4252, Acc: 46.39%
+Epoch 3/8, Batch 70, Loss: 0.3078, Acc: 48.25%
+Epoch 3/8, Batch 80, Loss: 0.3484, Acc: 49.28%
+Epoch 3/8, Batch 90, Loss: 0.3649, Acc: 50.23%
+Epoch 3/8, Batch 100, Loss: 0.3088, Acc: 51.43%
+Epoch 3/8, Batch 110, Loss: 0.3557, Acc: 52.48%
+Epoch 3/8, Batch 120, Loss: 0.3395, Acc: 53.60%
+Epoch 3/8, Batch 130, Loss: 0.2566, Acc: 54.79%
+Epoch 3/8, Batch 140, Loss: 0.3069, Acc: 55.98%
+Epoch 3/8, Batch 150, Loss: 0.2659, Acc: 56.86%
+Epoch 3/8, Batch 160, Loss: 0.2717, Acc: 57.71%
+Epoch 3/8, Batch 170, Loss: 0.2523, Acc: 58.62%
+Epoch 3/8, Batch 180, Loss: 0.2545, Acc: 59.22%
+Epoch 3/8, Batch 190, Loss: 0.2124, Acc: 60.05%
+Epoch 3/8, Batch 200, Loss: 0.1880, Acc: 60.84%
+Epoch 3/8, Batch 210, Loss: 0.1631, Acc: 61.66%
+Epoch 3/8, Batch 220, Loss: 0.1840, Acc: 62.51%
+Epoch 3/8, Batch 230, Loss: 0.1644, Acc: 63.26%
+
+============================================================
+EPOCH 3 VALIDATION - FIRST 10 SAMPLES
+============================================================
+
+Legend: <span style="filter: contrast(70%) brightness(190%);color:gray;">Expected (top-left)</span> | <span style="filter: contrast(70%) brightness(190%);color:green;">Predicted Correct (bottom-right)</span> | <span style="filter: contrast(70%) brightness(190%);color:red;">Predicted Wrong (bottom-right)</span>
+========================================================================================================================================================================================================
+Epoch 3 - Batch Display (10 samples, 5 per row, each sample shows 2x2 digits)
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣶⡄⢰⣶⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣰⣾⣿⣦⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣶⣶⣶⣤⣤⡀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣠⡄⠀⠀⢀⣄⠀│    │⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣤⣤⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⣀⣤⡶⠶⠶⠂⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣠⣤⣄⡀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣀⣤⡀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⡾⠿⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣿⡟⠀⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⢀⣴⣿⣿⠏⢹⣿⣷⠀⠀⠀│    │⠀⠀⠀⠐⣿⣧⣀⣠⣿⠿⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⣠⣾⠟⠁⢠⣾⠟⠁⠀│    │⠀⠀⠀⠀⠞⠋⠉⠉⢹⡿⠁⠀⠀⠀│ │⠀⠀⠀⢀⣴⠟⠉⠉⣷⡄⠀⠀⠀⠀│    │⠀⠀⠀⣼⠇⣀⣀⣀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣴⡿⠛⣩⣽⠗⠀⠀⠀│    │⠀⠀⠀⠀⢠⣿⠟⠻⣿⡄⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣰⣿⣁⣀⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⣼⣿⣷⣾⣿⡇⠀⠀⠀⠀│ │⠀⠀⣰⣿⣿⠏⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⠈⣹⣿⣿⣧⣀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⣿⣥⣤⣴⣿⣷⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⢠⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⢸⣏⠀⢀⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠰⠟⠋⠉⠉⠉⠛⠻⣦⠀⠀⠀│ │⠀⠀⠀⠀⢶⣿⣷⣾⣿⠋⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣧⣤⣾⣿⡏⠀⠀⠀⠀│ │⠀⠀⠀⠀⢰⡿⠙⠉⠛⢿⡆⠀⠀⠀│
+│⠀⠀⠀⠀⠛⠋⣹⣿⠋⠁⠀⠀⠀⠀│ │⠀⠀⣿⣿⣇⠀⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⣰⡿⠁⠀⠉⢻⣷⠀⠀⠀│ │⠀⠀⠀⠉⠉⣩⣿⠟⠋⠉⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⡿⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠋⠀⣿⡆⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣧⠀⠀│ │⠀⠀⠀⠀⠈⠉⣸⣿⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⢸⡇⠀⢀⣠⡿⠃⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠈⠛⠿⣿⣿⣶⣾⠿⠟⠀⠀⠀│    │⠀⠀⠀⠀⠙⣷⣤⣤⣤⣾⠟⠀⠀⠀│ │⠀⠀⠀⢠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣆⣀⣀⣀⣤⡟⠀⠀│ │⠀⠀⠀⠀⢀⣴⡟⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⠿⠶⠟⠉⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠈⠉⠉⠉⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│    │⠀⠀⠀⠀⠀⠀⠟⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│    │⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│ │⠀⠀⠀⠀⠚⠋⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠃⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">2</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⢀⣤⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⣴⣶⣶⣶⣤⡀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣀⣤⣴⣿⣿⣿⡆⠀│    │⠀⠀⠀⠀⢀⣿⠏⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣴⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣶⡄⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣶⣶⠀⠀│    │⠀⠀⠀⠀⢰⣿⣿⣿⣷⣦⣄⠀⠀⠀│ │⠀⠀⠀⠀⢀⣴⣿⣿⣾⡿⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢀⣤⣤⣤⡀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠉⠻⣿⣦⠀⠀⠀⠀⠀│ │⠀⠀⠀⢀⣶⣿⣿⡿⠏⠀⠉⣿⡇⠀│    │⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣸⡿⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣿⣧⣼⡿⠃⠀⠀│ │⠀⠀⠀⠀⢀⣴⡿⠿⠛⠛⠉⠁⠀⠀│    │⠀⠀⠀⠀⣿⡟⠁⠀⠈⠙⣿⡆⠀⠀│ │⠀⠀⠀⠀⣼⡿⠋⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣴⡿⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⠀⠀⣀⣤⣤⣤⡀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢀⣻⣿⡆⠀⠀⠀⠀│ │⠀⠀⢰⣿⣿⠛⠉⠀⠀⣠⣾⣿⠃⠀│    │⠀⠀⠀⠀⣿⠀⢀⣴⣾⣿⣿⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣀⣾⣿⠟⠉⠀⠀⠀⠀│ │⠀⠀⠀⠰⣿⣿⣤⡀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢰⣿⡇⠀⠀⠀⢠⣿⡇⠀⠀│ │⠀⠀⠀⠀⣼⣿⢀⣀⣀⣀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣇⢀⣠⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⣀⡾⠋⠀⠀⠉⣧⠀⠀│
+│⠀⠀⠀⠀⠀⢾⣿⣿⣿⣷⣄⠀⠀⠀│ │⠀⠀⢸⣿⣿⣀⣠⣴⣾⣿⠟⠁⠀⠀│    │⠀⠀⠀⠀⢿⣼⣿⣛⣽⡾⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⣼⡏⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢀⣾⠟⣿⡇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠈⠙⢿⣦⠀⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⡇⠀⢀⣴⣿⡿⠀⠀⠀│ │⠀⠀⠀⠀⢻⣿⣿⢿⣿⣿⡧⠀⠀⠀│    │⠀⠀⠀⠀⠈⠛⠛⢉⣿⠇⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⣿⡷⠀⢀⣠⠾⠃⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠉⠁⢹⣿⡆⠀⠀│ │⠀⠀⠈⠿⣿⣿⡿⠟⠛⠁⠀⠀⠀⠀│    │⠀⠀⠀⠀⠈⠛⠛⠛⠉⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⣴⣿⠃⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣠⣶⣤⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠀⠈⠿⣿⣿⣿⠿⠋⠀⠀⠀⠀│ │⠀⠀⠀⠀⠈⠛⠿⡿⠟⠋⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠈⠛⠛⠋⠉⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀<span style="filter: contrast(70%) brightness(190%);color:green;">2</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│    │⠀⠀⠀⠀⠈⠉⠁⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│    │⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⡶⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣴⣿⠿⠿⠿⠶⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣽⡿⣷⣄⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣾⣷⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⡀⠀⢀⣴⣶⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣠⣶⣆⠀⠀⠀⠀│ │⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⡀⠀⠀⠀│    │⠀⠀⠀⠀⢀⡀⠀⠀⣄⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢠⣶⢶⣤⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⢠⣾⠏⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣿⣿⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢀⣴⠷⠶⠶⠶⠶⠶⠆│ │⠀⠀⠀⠀⠀⣴⡿⠋⠀⠸⣿⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣿⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⢠⣾⠟⢀⣾⡟⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⣠⡾⠋⠋⣿⡆⠀⠀⠀│ │⠀⠀⠘⠛⠛⠉⠉⠉⢉⣿⠇⠀⠀⠀│    │⠀⠀⠀⢀⣼⠏⠀⠀⣿⡀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣸⡿⢋⣸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠘⢿⣷⣄⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣴⣿⣅⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⠟⠁⠀⠀⢰⣿⠇⠀⠀│    │⠀⠀⠀⠀⠀⠀⣸⣿⠁⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⣯⣤⣾⣿⣤⣤⠀⠀⠀│    │⠀⠀⠀⠀⠀⢿⣤⣠⣾⡟⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⢀⣿⠏⠀⣀⡀⠀│    │⠀⠀⢠⣿⣯⣤⣤⣶⣿⣷⣶⠀⠀⠀│ │⠀⠀⠀⢸⣿⣷⣾⣿⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣙⣿⣷⠀⠀⠀⠀│    │⠀⠀⠀⢰⣶⣦⣽⡇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⣿⡏⠀⠀⣀⣴⡿⠏⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠉⢉⣿⡟⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣴⡿⣿⡁⠀⠀⠀⠀⠀│ │⠀⠀⢠⡶⠾⠿⢛⣿⠟⠛⠛⠉⠀⠀│    │⠀⠀⠈⠋⠉⠉⠁⠀⣿⡇⠀⠀⠀⠀│ │⠀⠀⠀⠈⠻⠿⠋⢸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠠⣿⠃⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠘⣿⣶⣿⡿⠟⠋⠁⠀⠀⠀⠀│    │⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠿⣷⣶⡿⠟⠋⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣾⡿⠁⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣼⣿⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⢸⡏⠀⣿⠇⠀⠀⠀⠀⠀│ │⠀⠀⠘⠇⠀⢀⣾⠋⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⡧⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│ │⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│    │⠀⠀⠀⠀⠈⠉⠈⠉⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">9</span>│ │⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠋⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│ │⠀⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">3</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢠⣤⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢀⣤⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">2</span>⠀⠀⠶⠒⠀⠀⠀⠤⣤⡀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢀⣤⡀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢠⣦⠐⠟⢻⡦⠀⠀│ │⠀⠀⠀⠀⠀⡀⣀⣀⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣠⣿⠟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⡀⣀⣀⢀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣰⣿⠋⠀⠀⣼⡇⠀⠀│ │⠀⠀⠻⣿⠛⠛⠛⠛⣿⣷⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣤⣾⣷⣿⣿⣿⣿⠃⠀│ │⠀⠰⠿⠻⠛⠛⠛⠻⣿⣿⣦⠀⠀⠀│    │⠀⠀⠀⠀⢀⣼⣿⠋⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⢀⣤⣿⠃⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡦⠀⠀⠀│ │⠀⠀⠀⢀⣤⣾⣶⠿⢿⣷⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣠⣿⠏⠀⠀⠀⠀⠀⠀│ │⠀⠀⢸⣿⣷⣤⣤⣤⣤⣴⣾⠇⠀⠀│
+│⠀⠀⠀⠀⣰⣿⠃⠀⠀⢠⡿⠁⠀⠀│ │⠀⠀⠀⠙⠃⠀⠀⢀⣿⡟⠀⠀⠀⠀│    │⠀⠀⠀⠘⡿⠟⠉⣡⣿⡿⠛⠁⠀⠀│ │⠀⠀⠀⠀⢠⣴⣶⣿⣿⣭⣄⡀⠀⠀│    │⠀⠀⠀⢀⣾⣿⢃⣴⣿⢿⣿⡆⠀⠀│ │⠀⠀⠀⢀⣼⡿⠉⣠⣤⣶⣆⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⣠⣼⣧⠀⠀⠀│ │⠀⠀⠀⣾⠿⠋⠁⠀⣸⡏⠀⠀⠀⠀│    │⠀⠀⠀⢀⣼⡿⢁⣠⣾⢿⣷⡄⠀⠀│ │⠀⠀⢸⣿⠙⠛⠻⠿⠛⢻⣿⠀⠀⠀│
+│⠀⠀⠀⣼⡿⠃⠀⢀⣴⡟⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣾⣿⠃⠀⠀⠀⠀│    │⠀⠀⠀⠀⢀⣴⣾⡿⠋⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠈⠉⣉⣩⣭⣿⠿⠃⠀⠀│    │⠀⠀⠀⢸⣿⣧⣿⣿⣴⣿⡟⠁⠀⠀│ │⠀⠀⠀⣼⣿⣁⣾⣿⣿⡿⠟⠁⠀⠀│    │⠀⠀⠀⢰⣿⢿⢿⡿⠟⠋⠉⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣰⣿⠁⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⣷⣿⣯⣵⡾⠋⠀⠀⠀│ │⠀⠀⠈⠉⠀⠀⠀⠀⠀⢰⣿⠀⠀⠀│
+│⠀⠀⠀⠿⣷⣶⠿⠟⠉⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀│    │⠀⠀⠀⣠⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⢰⣶⡾⠟⠛⠋⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠈⠛⠛⠛⠛⠉⠁⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠛⠋⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠛⠉⠁⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│ │⠀⠀⠀⠀⠀⠀⠘⠿⠃⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠸⠿⠛⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:red;">7</span>│ │⠀⠀⠀⠀⠀⠀⠸⠏⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⠇⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+
+Epoch 3: Train Loss: 0.3399, Train Acc: 63.52%, Val Acc: 77.80%
+Epoch 4/8, Batch 0, Loss: 0.1947, Acc: 78.91%
+Epoch 4/8, Batch 10, Loss: 0.2092, Acc: 79.62%
+Epoch 4/8, Batch 20, Loss: 0.1337, Acc: 77.72%
+Epoch 4/8, Batch 30, Loss: 0.2414, Acc: 77.60%
+Epoch 4/8, Batch 40, Loss: 0.1889, Acc: 78.73%
+Epoch 4/8, Batch 50, Loss: 0.1909, Acc: 79.03%
+Epoch 4/8, Batch 60, Loss: 0.1627, Acc: 79.73%
+Epoch 4/8, Batch 70, Loss: 0.1227, Acc: 80.01%
+Epoch 4/8, Batch 80, Loss: 0.1250, Acc: 80.39%
+Epoch 4/8, Batch 90, Loss: 0.1098, Acc: 80.69%
+Epoch 4/8, Batch 100, Loss: 0.1486, Acc: 80.68%
+Epoch 4/8, Batch 110, Loss: 0.1282, Acc: 80.75%
+Epoch 4/8, Batch 120, Loss: 0.1764, Acc: 80.97%
+Epoch 4/8, Batch 130, Loss: 0.1236, Acc: 81.09%
+Epoch 4/8, Batch 140, Loss: 0.1010, Acc: 81.27%
+Epoch 4/8, Batch 150, Loss: 0.1059, Acc: 81.37%
+Epoch 4/8, Batch 160, Loss: 0.1295, Acc: 81.60%
+Epoch 4/8, Batch 170, Loss: 0.1286, Acc: 81.78%
+Epoch 4/8, Batch 180, Loss: 0.0938, Acc: 82.13%
+Epoch 4/8, Batch 190, Loss: 0.0921, Acc: 82.31%
+Epoch 4/8, Batch 200, Loss: 0.3340, Acc: 81.09%
+Epoch 4/8, Batch 210, Loss: 0.4484, Acc: 79.01%
+Epoch 4/8, Batch 220, Loss: 0.3349, Acc: 78.33%
+Epoch 4/8, Batch 230, Loss: 0.1601, Acc: 78.29%
+
+============================================================
+EPOCH 4 VALIDATION - FIRST 10 SAMPLES
+============================================================
+
+Legend: <span style="filter: contrast(70%) brightness(190%);color:gray;">Expected (top-left)</span> | <span style="filter: contrast(70%) brightness(190%);color:green;">Predicted Correct (bottom-right)</span> | <span style="filter: contrast(70%) brightness(190%);color:red;">Predicted Wrong (bottom-right)</span>
+========================================================================================================================================================================================================
+Epoch 4 - Batch Display (10 samples, 5 per row, each sample shows 2x2 digits)
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣶⡄⢰⣶⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣰⣾⣿⣦⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣶⣶⣶⣤⣤⡀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣠⡄⠀⠀⢀⣄⠀│    │⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣤⣤⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⣀⣤⡶⠶⠶⠂⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣠⣤⣄⡀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣀⣤⡀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⡾⠿⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣿⡟⠀⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⢀⣴⣿⣿⠏⢹⣿⣷⠀⠀⠀│    │⠀⠀⠀⠐⣿⣧⣀⣠⣿⠿⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⣠⣾⠟⠁⢠⣾⠟⠁⠀│    │⠀⠀⠀⠀⠞⠋⠉⠉⢹⡿⠁⠀⠀⠀│ │⠀⠀⠀⢀⣴⠟⠉⠉⣷⡄⠀⠀⠀⠀│    │⠀⠀⠀⣼⠇⣀⣀⣀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣴⡿⠛⣩⣽⠗⠀⠀⠀│    │⠀⠀⠀⠀⢠⣿⠟⠻⣿⡄⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣰⣿⣁⣀⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⣼⣿⣷⣾⣿⡇⠀⠀⠀⠀│ │⠀⠀⣰⣿⣿⠏⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⠈⣹⣿⣿⣧⣀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⣿⣥⣤⣴⣿⣷⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⢠⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⢸⣏⠀⢀⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠰⠟⠋⠉⠉⠉⠛⠻⣦⠀⠀⠀│ │⠀⠀⠀⠀⢶⣿⣷⣾⣿⠋⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣧⣤⣾⣿⡏⠀⠀⠀⠀│ │⠀⠀⠀⠀⢰⡿⠙⠉⠛⢿⡆⠀⠀⠀│
+│⠀⠀⠀⠀⠛⠋⣹⣿⠋⠁⠀⠀⠀⠀│ │⠀⠀⣿⣿⣇⠀⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⣰⡿⠁⠀⠉⢻⣷⠀⠀⠀│ │⠀⠀⠀⠉⠉⣩⣿⠟⠋⠉⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⡿⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠋⠀⣿⡆⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣧⠀⠀│ │⠀⠀⠀⠀⠈⠉⣸⣿⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⢸⡇⠀⢀⣠⡿⠃⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠈⠛⠿⣿⣿⣶⣾⠿⠟⠀⠀⠀│    │⠀⠀⠀⠀⠙⣷⣤⣤⣤⣾⠟⠀⠀⠀│ │⠀⠀⠀⢠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣆⣀⣀⣀⣤⡟⠀⠀│ │⠀⠀⠀⠀⢀⣴⡟⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⠿⠶⠟⠉⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠈⠉⠉⠉⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│    │⠀⠀⠀⠀⠀⠀⠟⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│    │⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│ │⠀⠀⠀⠀⠚⠋⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠃⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">2</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⢀⣤⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⣴⣶⣶⣶⣤⡀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣀⣤⣴⣿⣿⣿⡆⠀│    │⠀⠀⠀⠀⢀⣿⠏⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣴⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣶⡄⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣶⣶⠀⠀│    │⠀⠀⠀⠀⢰⣿⣿⣿⣷⣦⣄⠀⠀⠀│ │⠀⠀⠀⠀⢀⣴⣿⣿⣾⡿⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢀⣤⣤⣤⡀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠉⠻⣿⣦⠀⠀⠀⠀⠀│ │⠀⠀⠀⢀⣶⣿⣿⡿⠏⠀⠉⣿⡇⠀│    │⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣸⡿⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣿⣧⣼⡿⠃⠀⠀│ │⠀⠀⠀⠀⢀⣴⡿⠿⠛⠛⠉⠁⠀⠀│    │⠀⠀⠀⠀⣿⡟⠁⠀⠈⠙⣿⡆⠀⠀│ │⠀⠀⠀⠀⣼⡿⠋⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣴⡿⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⠀⠀⣀⣤⣤⣤⡀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢀⣻⣿⡆⠀⠀⠀⠀│ │⠀⠀⢰⣿⣿⠛⠉⠀⠀⣠⣾⣿⠃⠀│    │⠀⠀⠀⠀⣿⠀⢀⣴⣾⣿⣿⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣀⣾⣿⠟⠉⠀⠀⠀⠀│ │⠀⠀⠀⠰⣿⣿⣤⡀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢰⣿⡇⠀⠀⠀⢠⣿⡇⠀⠀│ │⠀⠀⠀⠀⣼⣿⢀⣀⣀⣀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣇⢀⣠⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⣀⡾⠋⠀⠀⠉⣧⠀⠀│
+│⠀⠀⠀⠀⠀⢾⣿⣿⣿⣷⣄⠀⠀⠀│ │⠀⠀⢸⣿⣿⣀⣠⣴⣾⣿⠟⠁⠀⠀│    │⠀⠀⠀⠀⢿⣼⣿⣛⣽⡾⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⣼⡏⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢀⣾⠟⣿⡇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠈⠙⢿⣦⠀⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⡇⠀⢀⣴⣿⡿⠀⠀⠀│ │⠀⠀⠀⠀⢻⣿⣿⢿⣿⣿⡧⠀⠀⠀│    │⠀⠀⠀⠀⠈⠛⠛⢉⣿⠇⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⣿⡷⠀⢀⣠⠾⠃⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠉⠁⢹⣿⡆⠀⠀│ │⠀⠀⠈⠿⣿⣿⡿⠟⠛⠁⠀⠀⠀⠀│    │⠀⠀⠀⠀⠈⠛⠛⠛⠉⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⣴⣿⠃⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣠⣶⣤⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠀⠈⠿⣿⣿⣿⠿⠋⠀⠀⠀⠀│ │⠀⠀⠀⠀⠈⠛⠿⡿⠟⠋⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠈⠛⠛⠋⠉⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀<span style="filter: contrast(70%) brightness(190%);color:green;">2</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│    │⠀⠀⠀⠀⠈⠉⠁⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│    │⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⡶⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣴⣿⠿⠿⠿⠶⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣽⡿⣷⣄⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣾⣷⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⡀⠀⢀⣴⣶⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣠⣶⣆⠀⠀⠀⠀│ │⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⡀⠀⠀⠀│    │⠀⠀⠀⠀⢀⡀⠀⠀⣄⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢠⣶⢶⣤⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⢠⣾⠏⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣿⣿⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢀⣴⠷⠶⠶⠶⠶⠶⠆│ │⠀⠀⠀⠀⠀⣴⡿⠋⠀⠸⣿⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣿⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⢠⣾⠟⢀⣾⡟⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⣠⡾⠋⠋⣿⡆⠀⠀⠀│ │⠀⠀⠘⠛⠛⠉⠉⠉⢉⣿⠇⠀⠀⠀│    │⠀⠀⠀⢀⣼⠏⠀⠀⣿⡀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣸⡿⢋⣸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠘⢿⣷⣄⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣴⣿⣅⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⠟⠁⠀⠀⢰⣿⠇⠀⠀│    │⠀⠀⠀⠀⠀⠀⣸⣿⠁⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⣯⣤⣾⣿⣤⣤⠀⠀⠀│    │⠀⠀⠀⠀⠀⢿⣤⣠⣾⡟⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⢀⣿⠏⠀⣀⡀⠀│    │⠀⠀⢠⣿⣯⣤⣤⣶⣿⣷⣶⠀⠀⠀│ │⠀⠀⠀⢸⣿⣷⣾⣿⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣙⣿⣷⠀⠀⠀⠀│    │⠀⠀⠀⢰⣶⣦⣽⡇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⣿⡏⠀⠀⣀⣴⡿⠏⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠉⢉⣿⡟⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣴⡿⣿⡁⠀⠀⠀⠀⠀│ │⠀⠀⢠⡶⠾⠿⢛⣿⠟⠛⠛⠉⠀⠀│    │⠀⠀⠈⠋⠉⠉⠁⠀⣿⡇⠀⠀⠀⠀│ │⠀⠀⠀⠈⠻⠿⠋⢸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠠⣿⠃⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠘⣿⣶⣿⡿⠟⠋⠁⠀⠀⠀⠀│    │⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠿⣷⣶⡿⠟⠋⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣾⡿⠁⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣼⣿⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⢸⡏⠀⣿⠇⠀⠀⠀⠀⠀│ │⠀⠀⠘⠇⠀⢀⣾⠋⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⡧⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│ │⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│    │⠀⠀⠀⠀⠈⠉⠈⠉⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠋⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│ │⠀⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">3</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢠⣤⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢀⣤⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">2</span>⠀⠀⠶⠒⠀⠀⠀⠤⣤⡀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢀⣤⡀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢠⣦⠐⠟⢻⡦⠀⠀│ │⠀⠀⠀⠀⠀⡀⣀⣀⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣠⣿⠟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⡀⣀⣀⢀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣰⣿⠋⠀⠀⣼⡇⠀⠀│ │⠀⠀⠻⣿⠛⠛⠛⠛⣿⣷⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣤⣾⣷⣿⣿⣿⣿⠃⠀│ │⠀⠰⠿⠻⠛⠛⠛⠻⣿⣿⣦⠀⠀⠀│    │⠀⠀⠀⠀⢀⣼⣿⠋⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⢀⣤⣿⠃⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡦⠀⠀⠀│ │⠀⠀⠀⢀⣤⣾⣶⠿⢿⣷⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣠⣿⠏⠀⠀⠀⠀⠀⠀│ │⠀⠀⢸⣿⣷⣤⣤⣤⣤⣴⣾⠇⠀⠀│
+│⠀⠀⠀⠀⣰⣿⠃⠀⠀⢠⡿⠁⠀⠀│ │⠀⠀⠀⠙⠃⠀⠀⢀⣿⡟⠀⠀⠀⠀│    │⠀⠀⠀⠘⡿⠟⠉⣡⣿⡿⠛⠁⠀⠀│ │⠀⠀⠀⠀⢠⣴⣶⣿⣿⣭⣄⡀⠀⠀│    │⠀⠀⠀⢀⣾⣿⢃⣴⣿⢿⣿⡆⠀⠀│ │⠀⠀⠀⢀⣼⡿⠉⣠⣤⣶⣆⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⣠⣼⣧⠀⠀⠀│ │⠀⠀⠀⣾⠿⠋⠁⠀⣸⡏⠀⠀⠀⠀│    │⠀⠀⠀⢀⣼⡿⢁⣠⣾⢿⣷⡄⠀⠀│ │⠀⠀⢸⣿⠙⠛⠻⠿⠛⢻⣿⠀⠀⠀│
+│⠀⠀⠀⣼⡿⠃⠀⢀⣴⡟⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣾⣿⠃⠀⠀⠀⠀│    │⠀⠀⠀⠀⢀⣴⣾⡿⠋⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠈⠉⣉⣩⣭⣿⠿⠃⠀⠀│    │⠀⠀⠀⢸⣿⣧⣿⣿⣴⣿⡟⠁⠀⠀│ │⠀⠀⠀⣼⣿⣁⣾⣿⣿⡿⠟⠁⠀⠀│    │⠀⠀⠀⢰⣿⢿⢿⡿⠟⠋⠉⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣰⣿⠁⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⣷⣿⣯⣵⡾⠋⠀⠀⠀│ │⠀⠀⠈⠉⠀⠀⠀⠀⠀⢰⣿⠀⠀⠀│
+│⠀⠀⠀⠿⣷⣶⠿⠟⠉⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀│    │⠀⠀⠀⣠⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⢰⣶⡾⠟⠛⠋⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠈⠛⠛⠛⠛⠉⠁⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠛⠋⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠛⠉⠁⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│ │⠀⠀⠀⠀⠀⠀⠘⠿⠃⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠸⠿⠛⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">3</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">2</span>│ │⠀⠀⠀⠀⠀⠀⠸⠏⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⠇⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+
+Epoch 4: Train Loss: 0.2168, Train Acc: 78.33%, Val Acc: 80.30%
+Epoch 5/8, Batch 0, Loss: 0.1497, Acc: 79.69%
+Epoch 5/8, Batch 10, Loss: 0.1550, Acc: 81.96%
+Epoch 5/8, Batch 20, Loss: 0.1144, Acc: 83.78%
+Epoch 5/8, Batch 30, Loss: 0.0900, Acc: 84.93%
+Epoch 5/8, Batch 40, Loss: 0.1068, Acc: 85.31%
+Epoch 5/8, Batch 50, Loss: 0.0984, Acc: 85.65%
+Epoch 5/8, Batch 60, Loss: 0.0741, Acc: 86.04%
+Epoch 5/8, Batch 70, Loss: 0.0909, Acc: 86.38%
+Epoch 5/8, Batch 80, Loss: 0.0845, Acc: 86.70%
+Epoch 5/8, Batch 90, Loss: 0.1111, Acc: 86.98%
+Epoch 5/8, Batch 100, Loss: 0.0915, Acc: 87.06%
+Epoch 5/8, Batch 110, Loss: 0.1169, Acc: 87.17%
+Epoch 5/8, Batch 120, Loss: 0.0752, Acc: 87.43%
+Epoch 5/8, Batch 130, Loss: 0.0736, Acc: 87.64%
+Epoch 5/8, Batch 140, Loss: 0.0764, Acc: 87.78%
+Epoch 5/8, Batch 150, Loss: 0.0820, Acc: 87.83%
+Epoch 5/8, Batch 160, Loss: 0.1116, Acc: 87.79%
+Epoch 5/8, Batch 170, Loss: 0.0958, Acc: 87.84%
+Epoch 5/8, Batch 180, Loss: 0.0848, Acc: 87.94%
+Epoch 5/8, Batch 190, Loss: 0.0614, Acc: 87.98%
+Epoch 5/8, Batch 200, Loss: 0.0914, Acc: 88.08%
+Epoch 5/8, Batch 210, Loss: 0.0971, Acc: 88.24%
+Epoch 5/8, Batch 220, Loss: 0.0692, Acc: 88.32%
+Epoch 5/8, Batch 230, Loss: 0.0816, Acc: 88.37%
+
+============================================================
+EPOCH 5 VALIDATION - FIRST 10 SAMPLES
+============================================================
+
+Legend: <span style="filter: contrast(70%) brightness(190%);color:gray;">Expected (top-left)</span> | <span style="filter: contrast(70%) brightness(190%);color:green;">Predicted Correct (bottom-right)</span> | <span style="filter: contrast(70%) brightness(190%);color:red;">Predicted Wrong (bottom-right)</span>
+========================================================================================================================================================================================================
+Epoch 5 - Batch Display (10 samples, 5 per row, each sample shows 2x2 digits)
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣶⡄⢰⣶⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣰⣾⣿⣦⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣶⣶⣶⣤⣤⡀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣠⡄⠀⠀⢀⣄⠀│    │⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣤⣤⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⣀⣤⡶⠶⠶⠂⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣠⣤⣄⡀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣀⣤⡀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⡾⠿⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣿⡟⠀⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⢀⣴⣿⣿⠏⢹⣿⣷⠀⠀⠀│    │⠀⠀⠀⠐⣿⣧⣀⣠⣿⠿⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⣠⣾⠟⠁⢠⣾⠟⠁⠀│    │⠀⠀⠀⠀⠞⠋⠉⠉⢹⡿⠁⠀⠀⠀│ │⠀⠀⠀⢀⣴⠟⠉⠉⣷⡄⠀⠀⠀⠀│    │⠀⠀⠀⣼⠇⣀⣀⣀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣴⡿⠛⣩⣽⠗⠀⠀⠀│    │⠀⠀⠀⠀⢠⣿⠟⠻⣿⡄⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣰⣿⣁⣀⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⣼⣿⣷⣾⣿⡇⠀⠀⠀⠀│ │⠀⠀⣰⣿⣿⠏⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⠈⣹⣿⣿⣧⣀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⣿⣥⣤⣴⣿⣷⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⢠⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⢸⣏⠀⢀⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠰⠟⠋⠉⠉⠉⠛⠻⣦⠀⠀⠀│ │⠀⠀⠀⠀⢶⣿⣷⣾⣿⠋⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣧⣤⣾⣿⡏⠀⠀⠀⠀│ │⠀⠀⠀⠀⢰⡿⠙⠉⠛⢿⡆⠀⠀⠀│
+│⠀⠀⠀⠀⠛⠋⣹⣿⠋⠁⠀⠀⠀⠀│ │⠀⠀⣿⣿⣇⠀⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⣰⡿⠁⠀⠉⢻⣷⠀⠀⠀│ │⠀⠀⠀⠉⠉⣩⣿⠟⠋⠉⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⡿⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠋⠀⣿⡆⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣧⠀⠀│ │⠀⠀⠀⠀⠈⠉⣸⣿⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⢸⡇⠀⢀⣠⡿⠃⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠈⠛⠿⣿⣿⣶⣾⠿⠟⠀⠀⠀│    │⠀⠀⠀⠀⠙⣷⣤⣤⣤⣾⠟⠀⠀⠀│ │⠀⠀⠀⢠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣆⣀⣀⣀⣤⡟⠀⠀│ │⠀⠀⠀⠀⢀⣴⡟⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⠿⠶⠟⠉⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠈⠉⠉⠉⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│    │⠀⠀⠀⠀⠀⠀⠟⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│    │⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│ │⠀⠀⠀⠀⠚⠋⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠃⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">2</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⢀⣤⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⣴⣶⣶⣶⣤⡀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣀⣤⣴⣿⣿⣿⡆⠀│    │⠀⠀⠀⠀⢀⣿⠏⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣴⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣶⡄⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣶⣶⠀⠀│    │⠀⠀⠀⠀⢰⣿⣿⣿⣷⣦⣄⠀⠀⠀│ │⠀⠀⠀⠀⢀⣴⣿⣿⣾⡿⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢀⣤⣤⣤⡀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠉⠻⣿⣦⠀⠀⠀⠀⠀│ │⠀⠀⠀⢀⣶⣿⣿⡿⠏⠀⠉⣿⡇⠀│    │⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣸⡿⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣿⣧⣼⡿⠃⠀⠀│ │⠀⠀⠀⠀⢀⣴⡿⠿⠛⠛⠉⠁⠀⠀│    │⠀⠀⠀⠀⣿⡟⠁⠀⠈⠙⣿⡆⠀⠀│ │⠀⠀⠀⠀⣼⡿⠋⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣴⡿⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⠀⠀⣀⣤⣤⣤⡀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢀⣻⣿⡆⠀⠀⠀⠀│ │⠀⠀⢰⣿⣿⠛⠉⠀⠀⣠⣾⣿⠃⠀│    │⠀⠀⠀⠀⣿⠀⢀⣴⣾⣿⣿⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣀⣾⣿⠟⠉⠀⠀⠀⠀│ │⠀⠀⠀⠰⣿⣿⣤⡀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢰⣿⡇⠀⠀⠀⢠⣿⡇⠀⠀│ │⠀⠀⠀⠀⣼⣿⢀⣀⣀⣀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣇⢀⣠⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⣀⡾⠋⠀⠀⠉⣧⠀⠀│
+│⠀⠀⠀⠀⠀⢾⣿⣿⣿⣷⣄⠀⠀⠀│ │⠀⠀⢸⣿⣿⣀⣠⣴⣾⣿⠟⠁⠀⠀│    │⠀⠀⠀⠀⢿⣼⣿⣛⣽⡾⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⣼⡏⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢀⣾⠟⣿⡇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠈⠙⢿⣦⠀⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⡇⠀⢀⣴⣿⡿⠀⠀⠀│ │⠀⠀⠀⠀⢻⣿⣿⢿⣿⣿⡧⠀⠀⠀│    │⠀⠀⠀⠀⠈⠛⠛⢉⣿⠇⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⣿⡷⠀⢀⣠⠾⠃⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠉⠁⢹⣿⡆⠀⠀│ │⠀⠀⠈⠿⣿⣿⡿⠟⠛⠁⠀⠀⠀⠀│    │⠀⠀⠀⠀⠈⠛⠛⠛⠉⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⣴⣿⠃⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣠⣶⣤⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠀⠈⠿⣿⣿⣿⠿⠋⠀⠀⠀⠀│ │⠀⠀⠀⠀⠈⠛⠿⡿⠟⠋⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠈⠛⠛⠋⠉⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀<span style="filter: contrast(70%) brightness(190%);color:green;">2</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│    │⠀⠀⠀⠀⠈⠉⠁⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│    │⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⡶⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣴⣿⠿⠿⠿⠶⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣽⡿⣷⣄⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣾⣷⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⡀⠀⢀⣴⣶⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣠⣶⣆⠀⠀⠀⠀│ │⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⡀⠀⠀⠀│    │⠀⠀⠀⠀⢀⡀⠀⠀⣄⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢠⣶⢶⣤⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⢠⣾⠏⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣿⣿⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢀⣴⠷⠶⠶⠶⠶⠶⠆│ │⠀⠀⠀⠀⠀⣴⡿⠋⠀⠸⣿⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣿⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⢠⣾⠟⢀⣾⡟⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⣠⡾⠋⠋⣿⡆⠀⠀⠀│ │⠀⠀⠘⠛⠛⠉⠉⠉⢉⣿⠇⠀⠀⠀│    │⠀⠀⠀⢀⣼⠏⠀⠀⣿⡀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣸⡿⢋⣸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠘⢿⣷⣄⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣴⣿⣅⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⠟⠁⠀⠀⢰⣿⠇⠀⠀│    │⠀⠀⠀⠀⠀⠀⣸⣿⠁⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⣯⣤⣾⣿⣤⣤⠀⠀⠀│    │⠀⠀⠀⠀⠀⢿⣤⣠⣾⡟⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⢀⣿⠏⠀⣀⡀⠀│    │⠀⠀⢠⣿⣯⣤⣤⣶⣿⣷⣶⠀⠀⠀│ │⠀⠀⠀⢸⣿⣷⣾⣿⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣙⣿⣷⠀⠀⠀⠀│    │⠀⠀⠀⢰⣶⣦⣽⡇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⣿⡏⠀⠀⣀⣴⡿⠏⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠉⢉⣿⡟⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣴⡿⣿⡁⠀⠀⠀⠀⠀│ │⠀⠀⢠⡶⠾⠿⢛⣿⠟⠛⠛⠉⠀⠀│    │⠀⠀⠈⠋⠉⠉⠁⠀⣿⡇⠀⠀⠀⠀│ │⠀⠀⠀⠈⠻⠿⠋⢸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠠⣿⠃⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠘⣿⣶⣿⡿⠟⠋⠁⠀⠀⠀⠀│    │⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠿⣷⣶⡿⠟⠋⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣾⡿⠁⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣼⣿⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⢸⡏⠀⣿⠇⠀⠀⠀⠀⠀│ │⠀⠀⠘⠇⠀⢀⣾⠋⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⡧⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│ │⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│    │⠀⠀⠀⠀⠈⠉⠈⠉⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠋⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│ │⠀⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">3</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢠⣤⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢀⣤⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">2</span>⠀⠀⠶⠒⠀⠀⠀⠤⣤⡀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢀⣤⡀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢠⣦⠐⠟⢻⡦⠀⠀│ │⠀⠀⠀⠀⠀⡀⣀⣀⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣠⣿⠟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⡀⣀⣀⢀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣰⣿⠋⠀⠀⣼⡇⠀⠀│ │⠀⠀⠻⣿⠛⠛⠛⠛⣿⣷⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣤⣾⣷⣿⣿⣿⣿⠃⠀│ │⠀⠰⠿⠻⠛⠛⠛⠻⣿⣿⣦⠀⠀⠀│    │⠀⠀⠀⠀⢀⣼⣿⠋⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⢀⣤⣿⠃⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡦⠀⠀⠀│ │⠀⠀⠀⢀⣤⣾⣶⠿⢿⣷⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣠⣿⠏⠀⠀⠀⠀⠀⠀│ │⠀⠀⢸⣿⣷⣤⣤⣤⣤⣴⣾⠇⠀⠀│
+│⠀⠀⠀⠀⣰⣿⠃⠀⠀⢠⡿⠁⠀⠀│ │⠀⠀⠀⠙⠃⠀⠀⢀⣿⡟⠀⠀⠀⠀│    │⠀⠀⠀⠘⡿⠟⠉⣡⣿⡿⠛⠁⠀⠀│ │⠀⠀⠀⠀⢠⣴⣶⣿⣿⣭⣄⡀⠀⠀│    │⠀⠀⠀⢀⣾⣿⢃⣴⣿⢿⣿⡆⠀⠀│ │⠀⠀⠀⢀⣼⡿⠉⣠⣤⣶⣆⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⣠⣼⣧⠀⠀⠀│ │⠀⠀⠀⣾⠿⠋⠁⠀⣸⡏⠀⠀⠀⠀│    │⠀⠀⠀⢀⣼⡿⢁⣠⣾⢿⣷⡄⠀⠀│ │⠀⠀⢸⣿⠙⠛⠻⠿⠛⢻⣿⠀⠀⠀│
+│⠀⠀⠀⣼⡿⠃⠀⢀⣴⡟⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣾⣿⠃⠀⠀⠀⠀│    │⠀⠀⠀⠀⢀⣴⣾⡿⠋⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠈⠉⣉⣩⣭⣿⠿⠃⠀⠀│    │⠀⠀⠀⢸⣿⣧⣿⣿⣴⣿⡟⠁⠀⠀│ │⠀⠀⠀⣼⣿⣁⣾⣿⣿⡿⠟⠁⠀⠀│    │⠀⠀⠀⢰⣿⢿⢿⡿⠟⠋⠉⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣰⣿⠁⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⣷⣿⣯⣵⡾⠋⠀⠀⠀│ │⠀⠀⠈⠉⠀⠀⠀⠀⠀⢰⣿⠀⠀⠀│
+│⠀⠀⠀⠿⣷⣶⠿⠟⠉⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀│    │⠀⠀⠀⣠⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⢰⣶⡾⠟⠛⠋⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠈⠛⠛⠛⠛⠉⠁⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠛⠋⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠛⠉⠁⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│ │⠀⠀⠀⠀⠀⠀⠘⠿⠃⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠸⠿⠛⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">3</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">2</span>│ │⠀⠀⠀⠀⠀⠀⠸⠏⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⠇⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+
+Epoch 5: Train Loss: 0.0996, Train Acc: 88.41%, Val Acc: 87.20%
+Epoch 6/8, Batch 0, Loss: 0.0700, Acc: 90.62%
+Epoch 6/8, Batch 10, Loss: 0.0509, Acc: 90.70%
+Epoch 6/8, Batch 20, Loss: 0.0312, Acc: 90.96%
+Epoch 6/8, Batch 30, Loss: 0.0736, Acc: 90.65%
+Epoch 6/8, Batch 40, Loss: 0.0713, Acc: 90.28%
+Epoch 6/8, Batch 50, Loss: 0.0987, Acc: 89.91%
+Epoch 6/8, Batch 60, Loss: 0.0873, Acc: 89.97%
+Epoch 6/8, Batch 70, Loss: 0.0722, Acc: 89.99%
+Epoch 6/8, Batch 80, Loss: 0.0541, Acc: 90.25%
+Epoch 6/8, Batch 90, Loss: 0.0530, Acc: 90.43%
+Epoch 6/8, Batch 100, Loss: 0.0655, Acc: 90.46%
+Epoch 6/8, Batch 110, Loss: 0.0893, Acc: 90.42%
+Epoch 6/8, Batch 120, Loss: 0.0614, Acc: 90.52%
+Epoch 6/8, Batch 130, Loss: 0.0581, Acc: 90.57%
+Epoch 6/8, Batch 140, Loss: 0.0817, Acc: 90.52%
+Epoch 6/8, Batch 150, Loss: 0.0446, Acc: 90.57%
+Epoch 6/8, Batch 160, Loss: 0.0817, Acc: 90.62%
+Epoch 6/8, Batch 170, Loss: 0.0511, Acc: 90.74%
+Epoch 6/8, Batch 180, Loss: 0.0696, Acc: 90.79%
+Epoch 6/8, Batch 190, Loss: 0.0838, Acc: 90.83%
+Epoch 6/8, Batch 200, Loss: 0.0693, Acc: 90.90%
+Epoch 6/8, Batch 210, Loss: 0.0916, Acc: 90.84%
+Epoch 6/8, Batch 220, Loss: 0.0534, Acc: 90.89%
+Epoch 6/8, Batch 230, Loss: 0.0693, Acc: 90.95%
+
+============================================================
+EPOCH 6 VALIDATION - FIRST 10 SAMPLES
+============================================================
+
+Legend: <span style="filter: contrast(70%) brightness(190%);color:gray;">Expected (top-left)</span> | <span style="filter: contrast(70%) brightness(190%);color:green;">Predicted Correct (bottom-right)</span> | <span style="filter: contrast(70%) brightness(190%);color:red;">Predicted Wrong (bottom-right)</span>
+========================================================================================================================================================================================================
+Epoch 6 - Batch Display (10 samples, 5 per row, each sample shows 2x2 digits)
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣶⡄⢰⣶⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣰⣾⣿⣦⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣶⣶⣶⣤⣤⡀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣠⡄⠀⠀⢀⣄⠀│    │⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣤⣤⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⣀⣤⡶⠶⠶⠂⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣠⣤⣄⡀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣀⣤⡀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⡾⠿⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣿⡟⠀⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⢀⣴⣿⣿⠏⢹⣿⣷⠀⠀⠀│    │⠀⠀⠀⠐⣿⣧⣀⣠⣿⠿⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⣠⣾⠟⠁⢠⣾⠟⠁⠀│    │⠀⠀⠀⠀⠞⠋⠉⠉⢹⡿⠁⠀⠀⠀│ │⠀⠀⠀⢀⣴⠟⠉⠉⣷⡄⠀⠀⠀⠀│    │⠀⠀⠀⣼⠇⣀⣀⣀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣴⡿⠛⣩⣽⠗⠀⠀⠀│    │⠀⠀⠀⠀⢠⣿⠟⠻⣿⡄⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣰⣿⣁⣀⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⣼⣿⣷⣾⣿⡇⠀⠀⠀⠀│ │⠀⠀⣰⣿⣿⠏⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⠈⣹⣿⣿⣧⣀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⣿⣥⣤⣴⣿⣷⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⢠⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⢸⣏⠀⢀⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠰⠟⠋⠉⠉⠉⠛⠻⣦⠀⠀⠀│ │⠀⠀⠀⠀⢶⣿⣷⣾⣿⠋⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣧⣤⣾⣿⡏⠀⠀⠀⠀│ │⠀⠀⠀⠀⢰⡿⠙⠉⠛⢿⡆⠀⠀⠀│
+│⠀⠀⠀⠀⠛⠋⣹⣿⠋⠁⠀⠀⠀⠀│ │⠀⠀⣿⣿⣇⠀⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⣰⡿⠁⠀⠉⢻⣷⠀⠀⠀│ │⠀⠀⠀⠉⠉⣩⣿⠟⠋⠉⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⡿⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠋⠀⣿⡆⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣧⠀⠀│ │⠀⠀⠀⠀⠈⠉⣸⣿⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⢸⡇⠀⢀⣠⡿⠃⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠈⠛⠿⣿⣿⣶⣾⠿⠟⠀⠀⠀│    │⠀⠀⠀⠀⠙⣷⣤⣤⣤⣾⠟⠀⠀⠀│ │⠀⠀⠀⢠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣆⣀⣀⣀⣤⡟⠀⠀│ │⠀⠀⠀⠀⢀⣴⡟⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⠿⠶⠟⠉⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠈⠉⠉⠉⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│    │⠀⠀⠀⠀⠀⠀⠟⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│    │⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│ │⠀⠀⠀⠀⠚⠋⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠃⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">2</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⢀⣤⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⣴⣶⣶⣶⣤⡀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣀⣤⣴⣿⣿⣿⡆⠀│    │⠀⠀⠀⠀⢀⣿⠏⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣴⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣶⡄⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣶⣶⠀⠀│    │⠀⠀⠀⠀⢰⣿⣿⣿⣷⣦⣄⠀⠀⠀│ │⠀⠀⠀⠀⢀⣴⣿⣿⣾⡿⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢀⣤⣤⣤⡀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠉⠻⣿⣦⠀⠀⠀⠀⠀│ │⠀⠀⠀⢀⣶⣿⣿⡿⠏⠀⠉⣿⡇⠀│    │⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣸⡿⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣿⣧⣼⡿⠃⠀⠀│ │⠀⠀⠀⠀⢀⣴⡿⠿⠛⠛⠉⠁⠀⠀│    │⠀⠀⠀⠀⣿⡟⠁⠀⠈⠙⣿⡆⠀⠀│ │⠀⠀⠀⠀⣼⡿⠋⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣴⡿⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⠀⠀⣀⣤⣤⣤⡀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢀⣻⣿⡆⠀⠀⠀⠀│ │⠀⠀⢰⣿⣿⠛⠉⠀⠀⣠⣾⣿⠃⠀│    │⠀⠀⠀⠀⣿⠀⢀⣴⣾⣿⣿⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣀⣾⣿⠟⠉⠀⠀⠀⠀│ │⠀⠀⠀⠰⣿⣿⣤⡀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢰⣿⡇⠀⠀⠀⢠⣿⡇⠀⠀│ │⠀⠀⠀⠀⣼⣿⢀⣀⣀⣀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣇⢀⣠⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⣀⡾⠋⠀⠀⠉⣧⠀⠀│
+│⠀⠀⠀⠀⠀⢾⣿⣿⣿⣷⣄⠀⠀⠀│ │⠀⠀⢸⣿⣿⣀⣠⣴⣾⣿⠟⠁⠀⠀│    │⠀⠀⠀⠀⢿⣼⣿⣛⣽⡾⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⣼⡏⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢀⣾⠟⣿⡇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠈⠙⢿⣦⠀⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⡇⠀⢀⣴⣿⡿⠀⠀⠀│ │⠀⠀⠀⠀⢻⣿⣿⢿⣿⣿⡧⠀⠀⠀│    │⠀⠀⠀⠀⠈⠛⠛⢉⣿⠇⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⣿⡷⠀⢀⣠⠾⠃⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠉⠁⢹⣿⡆⠀⠀│ │⠀⠀⠈⠿⣿⣿⡿⠟⠛⠁⠀⠀⠀⠀│    │⠀⠀⠀⠀⠈⠛⠛⠛⠉⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⣴⣿⠃⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣠⣶⣤⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠀⠈⠿⣿⣿⣿⠿⠋⠀⠀⠀⠀│ │⠀⠀⠀⠀⠈⠛⠿⡿⠟⠋⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠈⠛⠛⠋⠉⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀<span style="filter: contrast(70%) brightness(190%);color:green;">2</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│    │⠀⠀⠀⠀⠈⠉⠁⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│    │⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⡶⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣴⣿⠿⠿⠿⠶⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣽⡿⣷⣄⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣾⣷⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⡀⠀⢀⣴⣶⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣠⣶⣆⠀⠀⠀⠀│ │⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⡀⠀⠀⠀│    │⠀⠀⠀⠀⢀⡀⠀⠀⣄⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢠⣶⢶⣤⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⢠⣾⠏⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣿⣿⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢀⣴⠷⠶⠶⠶⠶⠶⠆│ │⠀⠀⠀⠀⠀⣴⡿⠋⠀⠸⣿⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣿⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⢠⣾⠟⢀⣾⡟⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⣠⡾⠋⠋⣿⡆⠀⠀⠀│ │⠀⠀⠘⠛⠛⠉⠉⠉⢉⣿⠇⠀⠀⠀│    │⠀⠀⠀⢀⣼⠏⠀⠀⣿⡀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣸⡿⢋⣸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠘⢿⣷⣄⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣴⣿⣅⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⠟⠁⠀⠀⢰⣿⠇⠀⠀│    │⠀⠀⠀⠀⠀⠀⣸⣿⠁⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⣯⣤⣾⣿⣤⣤⠀⠀⠀│    │⠀⠀⠀⠀⠀⢿⣤⣠⣾⡟⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⢀⣿⠏⠀⣀⡀⠀│    │⠀⠀⢠⣿⣯⣤⣤⣶⣿⣷⣶⠀⠀⠀│ │⠀⠀⠀⢸⣿⣷⣾⣿⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣙⣿⣷⠀⠀⠀⠀│    │⠀⠀⠀⢰⣶⣦⣽⡇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⣿⡏⠀⠀⣀⣴⡿⠏⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠉⢉⣿⡟⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣴⡿⣿⡁⠀⠀⠀⠀⠀│ │⠀⠀⢠⡶⠾⠿⢛⣿⠟⠛⠛⠉⠀⠀│    │⠀⠀⠈⠋⠉⠉⠁⠀⣿⡇⠀⠀⠀⠀│ │⠀⠀⠀⠈⠻⠿⠋⢸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠠⣿⠃⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠘⣿⣶⣿⡿⠟⠋⠁⠀⠀⠀⠀│    │⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠿⣷⣶⡿⠟⠋⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣾⡿⠁⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣼⣿⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⢸⡏⠀⣿⠇⠀⠀⠀⠀⠀│ │⠀⠀⠘⠇⠀⢀⣾⠋⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⡧⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│ │⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│    │⠀⠀⠀⠀⠈⠉⠈⠉⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠋⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│ │⠀⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">3</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢠⣤⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢀⣤⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">2</span>⠀⠀⠶⠒⠀⠀⠀⠤⣤⡀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢀⣤⡀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢠⣦⠐⠟⢻⡦⠀⠀│ │⠀⠀⠀⠀⠀⡀⣀⣀⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣠⣿⠟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⡀⣀⣀⢀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣰⣿⠋⠀⠀⣼⡇⠀⠀│ │⠀⠀⠻⣿⠛⠛⠛⠛⣿⣷⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣤⣾⣷⣿⣿⣿⣿⠃⠀│ │⠀⠰⠿⠻⠛⠛⠛⠻⣿⣿⣦⠀⠀⠀│    │⠀⠀⠀⠀⢀⣼⣿⠋⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⢀⣤⣿⠃⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡦⠀⠀⠀│ │⠀⠀⠀⢀⣤⣾⣶⠿⢿⣷⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣠⣿⠏⠀⠀⠀⠀⠀⠀│ │⠀⠀⢸⣿⣷⣤⣤⣤⣤⣴⣾⠇⠀⠀│
+│⠀⠀⠀⠀⣰⣿⠃⠀⠀⢠⡿⠁⠀⠀│ │⠀⠀⠀⠙⠃⠀⠀⢀⣿⡟⠀⠀⠀⠀│    │⠀⠀⠀⠘⡿⠟⠉⣡⣿⡿⠛⠁⠀⠀│ │⠀⠀⠀⠀⢠⣴⣶⣿⣿⣭⣄⡀⠀⠀│    │⠀⠀⠀⢀⣾⣿⢃⣴⣿⢿⣿⡆⠀⠀│ │⠀⠀⠀⢀⣼⡿⠉⣠⣤⣶⣆⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⣠⣼⣧⠀⠀⠀│ │⠀⠀⠀⣾⠿⠋⠁⠀⣸⡏⠀⠀⠀⠀│    │⠀⠀⠀⢀⣼⡿⢁⣠⣾⢿⣷⡄⠀⠀│ │⠀⠀⢸⣿⠙⠛⠻⠿⠛⢻⣿⠀⠀⠀│
+│⠀⠀⠀⣼⡿⠃⠀⢀⣴⡟⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣾⣿⠃⠀⠀⠀⠀│    │⠀⠀⠀⠀⢀⣴⣾⡿⠋⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠈⠉⣉⣩⣭⣿⠿⠃⠀⠀│    │⠀⠀⠀⢸⣿⣧⣿⣿⣴⣿⡟⠁⠀⠀│ │⠀⠀⠀⣼⣿⣁⣾⣿⣿⡿⠟⠁⠀⠀│    │⠀⠀⠀⢰⣿⢿⢿⡿⠟⠋⠉⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣰⣿⠁⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⣷⣿⣯⣵⡾⠋⠀⠀⠀│ │⠀⠀⠈⠉⠀⠀⠀⠀⠀⢰⣿⠀⠀⠀│
+│⠀⠀⠀⠿⣷⣶⠿⠟⠉⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀│    │⠀⠀⠀⣠⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⢰⣶⡾⠟⠛⠋⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠈⠛⠛⠛⠛⠉⠁⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠛⠋⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠛⠉⠁⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│ │⠀⠀⠀⠀⠀⠀⠘⠿⠃⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠸⠿⠛⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">3</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">2</span>│ │⠀⠀⠀⠀⠀⠀⠸⠏⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⠇⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+
+Epoch 6: Train Loss: 0.0744, Train Acc: 90.96%, Val Acc: 89.92%
+Epoch 7/8, Batch 0, Loss: 0.0378, Acc: 96.88%
+Epoch 7/8, Batch 10, Loss: 0.0371, Acc: 92.68%
+Epoch 7/8, Batch 20, Loss: 0.0581, Acc: 92.60%
+Epoch 7/8, Batch 30, Loss: 0.0538, Acc: 93.40%
+Epoch 7/8, Batch 40, Loss: 0.0699, Acc: 93.77%
+Epoch 7/8, Batch 50, Loss: 0.0470, Acc: 94.00%
+Epoch 7/8, Batch 60, Loss: 0.0494, Acc: 93.89%
+Epoch 7/8, Batch 70, Loss: 0.0331, Acc: 93.69%
+Epoch 7/8, Batch 80, Loss: 0.0603, Acc: 93.71%
+Epoch 7/8, Batch 90, Loss: 0.0332, Acc: 93.69%
+Epoch 7/8, Batch 100, Loss: 0.0775, Acc: 93.61%
+Epoch 7/8, Batch 110, Loss: 0.0354, Acc: 93.62%
+Epoch 7/8, Batch 120, Loss: 0.0541, Acc: 93.62%
+Epoch 7/8, Batch 130, Loss: 0.0680, Acc: 93.60%
+Epoch 7/8, Batch 140, Loss: 0.0694, Acc: 93.62%
+Epoch 7/8, Batch 150, Loss: 0.0672, Acc: 93.70%
+Epoch 7/8, Batch 160, Loss: 0.0576, Acc: 93.70%
+Epoch 7/8, Batch 170, Loss: 0.0256, Acc: 93.68%
+Epoch 7/8, Batch 180, Loss: 0.0616, Acc: 93.62%
+Epoch 7/8, Batch 190, Loss: 0.0904, Acc: 93.53%
+Epoch 7/8, Batch 200, Loss: 0.0529, Acc: 93.44%
+Epoch 7/8, Batch 210, Loss: 0.0394, Acc: 93.32%
+Epoch 7/8, Batch 220, Loss: 0.0557, Acc: 93.25%
+Epoch 7/8, Batch 230, Loss: 0.0666, Acc: 93.22%
+
+============================================================
+EPOCH 7 VALIDATION - FIRST 10 SAMPLES
+============================================================
+
+Legend: <span style="filter: contrast(70%) brightness(190%);color:gray;">Expected (top-left)</span> | <span style="filter: contrast(70%) brightness(190%);color:green;">Predicted Correct (bottom-right)</span> | <span style="filter: contrast(70%) brightness(190%);color:red;">Predicted Wrong (bottom-right)</span>
+========================================================================================================================================================================================================
+Epoch 7 - Batch Display (10 samples, 5 per row, each sample shows 2x2 digits)
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣶⡄⢰⣶⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣰⣾⣿⣦⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣶⣶⣶⣤⣤⡀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣠⡄⠀⠀⢀⣄⠀│    │⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣤⣤⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⣀⣤⡶⠶⠶⠂⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣠⣤⣄⡀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣀⣤⡀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⡾⠿⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣿⡟⠀⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⢀⣴⣿⣿⠏⢹⣿⣷⠀⠀⠀│    │⠀⠀⠀⠐⣿⣧⣀⣠⣿⠿⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⣠⣾⠟⠁⢠⣾⠟⠁⠀│    │⠀⠀⠀⠀⠞⠋⠉⠉⢹⡿⠁⠀⠀⠀│ │⠀⠀⠀⢀⣴⠟⠉⠉⣷⡄⠀⠀⠀⠀│    │⠀⠀⠀⣼⠇⣀⣀⣀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣴⡿⠛⣩⣽⠗⠀⠀⠀│    │⠀⠀⠀⠀⢠⣿⠟⠻⣿⡄⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣰⣿⣁⣀⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⣼⣿⣷⣾⣿⡇⠀⠀⠀⠀│ │⠀⠀⣰⣿⣿⠏⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⠈⣹⣿⣿⣧⣀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⣿⣥⣤⣴⣿⣷⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⢠⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⢸⣏⠀⢀⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠰⠟⠋⠉⠉⠉⠛⠻⣦⠀⠀⠀│ │⠀⠀⠀⠀⢶⣿⣷⣾⣿⠋⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣧⣤⣾⣿⡏⠀⠀⠀⠀│ │⠀⠀⠀⠀⢰⡿⠙⠉⠛⢿⡆⠀⠀⠀│
+│⠀⠀⠀⠀⠛⠋⣹⣿⠋⠁⠀⠀⠀⠀│ │⠀⠀⣿⣿⣇⠀⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⣰⡿⠁⠀⠉⢻⣷⠀⠀⠀│ │⠀⠀⠀⠉⠉⣩⣿⠟⠋⠉⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⡿⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠋⠀⣿⡆⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣧⠀⠀│ │⠀⠀⠀⠀⠈⠉⣸⣿⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⢸⡇⠀⢀⣠⡿⠃⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠈⠛⠿⣿⣿⣶⣾⠿⠟⠀⠀⠀│    │⠀⠀⠀⠀⠙⣷⣤⣤⣤⣾⠟⠀⠀⠀│ │⠀⠀⠀⢠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣆⣀⣀⣀⣤⡟⠀⠀│ │⠀⠀⠀⠀⢀⣴⡟⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⠿⠶⠟⠉⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠈⠉⠉⠉⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│    │⠀⠀⠀⠀⠀⠀⠟⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│    │⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│ │⠀⠀⠀⠀⠚⠋⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠃⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">2</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⢀⣤⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⣴⣶⣶⣶⣤⡀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣀⣤⣴⣿⣿⣿⡆⠀│    │⠀⠀⠀⠀⢀⣿⠏⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣴⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣶⡄⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣶⣶⠀⠀│    │⠀⠀⠀⠀⢰⣿⣿⣿⣷⣦⣄⠀⠀⠀│ │⠀⠀⠀⠀⢀⣴⣿⣿⣾⡿⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢀⣤⣤⣤⡀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠉⠻⣿⣦⠀⠀⠀⠀⠀│ │⠀⠀⠀⢀⣶⣿⣿⡿⠏⠀⠉⣿⡇⠀│    │⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣸⡿⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣿⣧⣼⡿⠃⠀⠀│ │⠀⠀⠀⠀⢀⣴⡿⠿⠛⠛⠉⠁⠀⠀│    │⠀⠀⠀⠀⣿⡟⠁⠀⠈⠙⣿⡆⠀⠀│ │⠀⠀⠀⠀⣼⡿⠋⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣴⡿⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⠀⠀⣀⣤⣤⣤⡀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢀⣻⣿⡆⠀⠀⠀⠀│ │⠀⠀⢰⣿⣿⠛⠉⠀⠀⣠⣾⣿⠃⠀│    │⠀⠀⠀⠀⣿⠀⢀⣴⣾⣿⣿⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣀⣾⣿⠟⠉⠀⠀⠀⠀│ │⠀⠀⠀⠰⣿⣿⣤⡀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢰⣿⡇⠀⠀⠀⢠⣿⡇⠀⠀│ │⠀⠀⠀⠀⣼⣿⢀⣀⣀⣀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣇⢀⣠⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⣀⡾⠋⠀⠀⠉⣧⠀⠀│
+│⠀⠀⠀⠀⠀⢾⣿⣿⣿⣷⣄⠀⠀⠀│ │⠀⠀⢸⣿⣿⣀⣠⣴⣾⣿⠟⠁⠀⠀│    │⠀⠀⠀⠀⢿⣼⣿⣛⣽⡾⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⣼⡏⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢀⣾⠟⣿⡇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠈⠙⢿⣦⠀⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⡇⠀⢀⣴⣿⡿⠀⠀⠀│ │⠀⠀⠀⠀⢻⣿⣿⢿⣿⣿⡧⠀⠀⠀│    │⠀⠀⠀⠀⠈⠛⠛⢉⣿⠇⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⣿⡷⠀⢀⣠⠾⠃⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠉⠁⢹⣿⡆⠀⠀│ │⠀⠀⠈⠿⣿⣿⡿⠟⠛⠁⠀⠀⠀⠀│    │⠀⠀⠀⠀⠈⠛⠛⠛⠉⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⣴⣿⠃⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣠⣶⣤⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠀⠈⠿⣿⣿⣿⠿⠋⠀⠀⠀⠀│ │⠀⠀⠀⠀⠈⠛⠿⡿⠟⠋⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠈⠛⠛⠋⠉⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀<span style="filter: contrast(70%) brightness(190%);color:green;">2</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│    │⠀⠀⠀⠀⠈⠉⠁⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│    │⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⡶⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣴⣿⠿⠿⠿⠶⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣽⡿⣷⣄⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣾⣷⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⡀⠀⢀⣴⣶⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣠⣶⣆⠀⠀⠀⠀│ │⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⡀⠀⠀⠀│    │⠀⠀⠀⠀⢀⡀⠀⠀⣄⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢠⣶⢶⣤⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⢠⣾⠏⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣿⣿⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢀⣴⠷⠶⠶⠶⠶⠶⠆│ │⠀⠀⠀⠀⠀⣴⡿⠋⠀⠸⣿⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣿⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⢠⣾⠟⢀⣾⡟⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⣠⡾⠋⠋⣿⡆⠀⠀⠀│ │⠀⠀⠘⠛⠛⠉⠉⠉⢉⣿⠇⠀⠀⠀│    │⠀⠀⠀⢀⣼⠏⠀⠀⣿⡀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣸⡿⢋⣸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠘⢿⣷⣄⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣴⣿⣅⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⠟⠁⠀⠀⢰⣿⠇⠀⠀│    │⠀⠀⠀⠀⠀⠀⣸⣿⠁⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⣯⣤⣾⣿⣤⣤⠀⠀⠀│    │⠀⠀⠀⠀⠀⢿⣤⣠⣾⡟⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⢀⣿⠏⠀⣀⡀⠀│    │⠀⠀⢠⣿⣯⣤⣤⣶⣿⣷⣶⠀⠀⠀│ │⠀⠀⠀⢸⣿⣷⣾⣿⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣙⣿⣷⠀⠀⠀⠀│    │⠀⠀⠀⢰⣶⣦⣽⡇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⣿⡏⠀⠀⣀⣴⡿⠏⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠉⢉⣿⡟⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣴⡿⣿⡁⠀⠀⠀⠀⠀│ │⠀⠀⢠⡶⠾⠿⢛⣿⠟⠛⠛⠉⠀⠀│    │⠀⠀⠈⠋⠉⠉⠁⠀⣿⡇⠀⠀⠀⠀│ │⠀⠀⠀⠈⠻⠿⠋⢸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠠⣿⠃⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠘⣿⣶⣿⡿⠟⠋⠁⠀⠀⠀⠀│    │⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠿⣷⣶⡿⠟⠋⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣾⡿⠁⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣼⣿⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⢸⡏⠀⣿⠇⠀⠀⠀⠀⠀│ │⠀⠀⠘⠇⠀⢀⣾⠋⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⡧⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│ │⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│    │⠀⠀⠀⠀⠈⠉⠈⠉⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠋⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│ │⠀⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">3</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢠⣤⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢀⣤⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">2</span>⠀⠀⠶⠒⠀⠀⠀⠤⣤⡀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢀⣤⡀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢠⣦⠐⠟⢻⡦⠀⠀│ │⠀⠀⠀⠀⠀⡀⣀⣀⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣠⣿⠟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⡀⣀⣀⢀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣰⣿⠋⠀⠀⣼⡇⠀⠀│ │⠀⠀⠻⣿⠛⠛⠛⠛⣿⣷⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣤⣾⣷⣿⣿⣿⣿⠃⠀│ │⠀⠰⠿⠻⠛⠛⠛⠻⣿⣿⣦⠀⠀⠀│    │⠀⠀⠀⠀⢀⣼⣿⠋⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⢀⣤⣿⠃⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡦⠀⠀⠀│ │⠀⠀⠀⢀⣤⣾⣶⠿⢿⣷⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣠⣿⠏⠀⠀⠀⠀⠀⠀│ │⠀⠀⢸⣿⣷⣤⣤⣤⣤⣴⣾⠇⠀⠀│
+│⠀⠀⠀⠀⣰⣿⠃⠀⠀⢠⡿⠁⠀⠀│ │⠀⠀⠀⠙⠃⠀⠀⢀⣿⡟⠀⠀⠀⠀│    │⠀⠀⠀⠘⡿⠟⠉⣡⣿⡿⠛⠁⠀⠀│ │⠀⠀⠀⠀⢠⣴⣶⣿⣿⣭⣄⡀⠀⠀│    │⠀⠀⠀⢀⣾⣿⢃⣴⣿⢿⣿⡆⠀⠀│ │⠀⠀⠀⢀⣼⡿⠉⣠⣤⣶⣆⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⣠⣼⣧⠀⠀⠀│ │⠀⠀⠀⣾⠿⠋⠁⠀⣸⡏⠀⠀⠀⠀│    │⠀⠀⠀⢀⣼⡿⢁⣠⣾⢿⣷⡄⠀⠀│ │⠀⠀⢸⣿⠙⠛⠻⠿⠛⢻⣿⠀⠀⠀│
+│⠀⠀⠀⣼⡿⠃⠀⢀⣴⡟⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣾⣿⠃⠀⠀⠀⠀│    │⠀⠀⠀⠀⢀⣴⣾⡿⠋⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠈⠉⣉⣩⣭⣿⠿⠃⠀⠀│    │⠀⠀⠀⢸⣿⣧⣿⣿⣴⣿⡟⠁⠀⠀│ │⠀⠀⠀⣼⣿⣁⣾⣿⣿⡿⠟⠁⠀⠀│    │⠀⠀⠀⢰⣿⢿⢿⡿⠟⠋⠉⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣰⣿⠁⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⣷⣿⣯⣵⡾⠋⠀⠀⠀│ │⠀⠀⠈⠉⠀⠀⠀⠀⠀⢰⣿⠀⠀⠀│
+│⠀⠀⠀⠿⣷⣶⠿⠟⠉⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀│    │⠀⠀⠀⣠⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⢰⣶⡾⠟⠛⠋⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠈⠛⠛⠛⠛⠉⠁⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠛⠋⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠛⠉⠁⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│ │⠀⠀⠀⠀⠀⠀⠘⠿⠃⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠸⠿⠛⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">3</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">2</span>│ │⠀⠀⠀⠀⠀⠀⠸⠏⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⠇⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+
+Epoch 7: Train Loss: 0.0559, Train Acc: 93.19%, Val Acc: 89.36%
+Epoch 8/8, Batch 0, Loss: 0.0399, Acc: 96.09%
+Epoch 8/8, Batch 10, Loss: 0.0483, Acc: 94.18%
+Epoch 8/8, Batch 20, Loss: 0.0339, Acc: 94.53%
+Epoch 8/8, Batch 30, Loss: 0.0460, Acc: 94.51%
+Epoch 8/8, Batch 40, Loss: 0.0523, Acc: 94.82%
+Epoch 8/8, Batch 50, Loss: 0.0503, Acc: 95.14%
+Epoch 8/8, Batch 60, Loss: 0.0567, Acc: 95.25%
+Epoch 8/8, Batch 70, Loss: 0.0480, Acc: 95.15%
+Epoch 8/8, Batch 80, Loss: 0.0577, Acc: 94.98%
+Epoch 8/8, Batch 90, Loss: 0.0788, Acc: 94.97%
+Epoch 8/8, Batch 100, Loss: 0.0510, Acc: 94.94%
+Epoch 8/8, Batch 110, Loss: 0.0928, Acc: 94.81%
+Epoch 8/8, Batch 120, Loss: 0.0570, Acc: 94.81%
+Epoch 8/8, Batch 130, Loss: 0.0238, Acc: 94.87%
+Epoch 8/8, Batch 140, Loss: 0.0586, Acc: 94.70%
+Epoch 8/8, Batch 150, Loss: 0.0444, Acc: 94.57%
+Epoch 8/8, Batch 160, Loss: 0.0444, Acc: 94.59%
+Epoch 8/8, Batch 170, Loss: 0.0397, Acc: 94.48%
+Epoch 8/8, Batch 180, Loss: 0.1297, Acc: 94.35%
+Epoch 8/8, Batch 190, Loss: 0.0733, Acc: 94.07%
+Epoch 8/8, Batch 200, Loss: 0.0520, Acc: 94.00%
+Epoch 8/8, Batch 210, Loss: 0.0302, Acc: 94.00%
+Epoch 8/8, Batch 220, Loss: 0.0415, Acc: 93.97%
+Epoch 8/8, Batch 230, Loss: 0.0167, Acc: 94.02%
+
+============================================================
+EPOCH 8 VALIDATION - FIRST 10 SAMPLES
+============================================================
+
+Legend: <span style="filter: contrast(70%) brightness(190%);color:gray;">Expected (top-left)</span> | <span style="filter: contrast(70%) brightness(190%);color:green;">Predicted Correct (bottom-right)</span> | <span style="filter: contrast(70%) brightness(190%);color:red;">Predicted Wrong (bottom-right)</span>
+========================================================================================================================================================================================================
+Epoch 8 - Batch Display (10 samples, 5 per row, each sample shows 2x2 digits)
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣶⡄⢰⣶⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣰⣾⣿⣦⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣶⣶⣶⣤⣤⡀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣠⡄⠀⠀⢀⣄⠀│    │⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣤⣤⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⣀⣤⡶⠶⠶⠂⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣠⣤⣄⡀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣀⣤⡀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⡾⠿⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣿⡟⠀⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⢀⣴⣿⣿⠏⢹⣿⣷⠀⠀⠀│    │⠀⠀⠀⠐⣿⣧⣀⣠⣿⠿⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⣠⣾⠟⠁⢠⣾⠟⠁⠀│    │⠀⠀⠀⠀⠞⠋⠉⠉⢹⡿⠁⠀⠀⠀│ │⠀⠀⠀⢀⣴⠟⠉⠉⣷⡄⠀⠀⠀⠀│    │⠀⠀⠀⣼⠇⣀⣀⣀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣴⡿⠛⣩⣽⠗⠀⠀⠀│    │⠀⠀⠀⠀⢠⣿⠟⠻⣿⡄⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣰⣿⣁⣀⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⣼⣿⣷⣾⣿⡇⠀⠀⠀⠀│ │⠀⠀⣰⣿⣿⠏⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⠈⣹⣿⣿⣧⣀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⣿⣥⣤⣴⣿⣷⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⢠⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⢸⣏⠀⢀⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠰⠟⠋⠉⠉⠉⠛⠻⣦⠀⠀⠀│ │⠀⠀⠀⠀⢶⣿⣷⣾⣿⠋⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣧⣤⣾⣿⡏⠀⠀⠀⠀│ │⠀⠀⠀⠀⢰⡿⠙⠉⠛⢿⡆⠀⠀⠀│
+│⠀⠀⠀⠀⠛⠋⣹⣿⠋⠁⠀⠀⠀⠀│ │⠀⠀⣿⣿⣇⠀⠀⠀⢸⣿⣿⠀⠀⠀│    │⠀⠀⠀⠀⣰⡿⠁⠀⠉⢻⣷⠀⠀⠀│ │⠀⠀⠀⠉⠉⣩⣿⠟⠋⠉⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⡿⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠋⠀⣿⡆⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣧⠀⠀│ │⠀⠀⠀⠀⠈⠉⣸⣿⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⢸⡇⠀⢀⣠⡿⠃⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠈⠛⠿⣿⣿⣶⣾⠿⠟⠀⠀⠀│    │⠀⠀⠀⠀⠙⣷⣤⣤⣤⣾⠟⠀⠀⠀│ │⠀⠀⠀⢠⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣆⣀⣀⣀⣤⡟⠀⠀│ │⠀⠀⠀⠀⢀⣴⡟⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⠿⠶⠟⠉⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠈⠉⠉⠉⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│    │⠀⠀⠀⠀⠀⠀⠟⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│    │⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│ │⠀⠀⠀⠀⠚⠋⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠃⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">2</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⢀⣤⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⣴⣶⣶⣶⣤⡀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣀⣤⣴⣿⣿⣿⡆⠀│    │⠀⠀⠀⠀⢀⣿⠏⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⣴⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣶⡄⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣶⣶⠀⠀│    │⠀⠀⠀⠀⢰⣿⣿⣿⣷⣦⣄⠀⠀⠀│ │⠀⠀⠀⠀⢀⣴⣿⣿⣾⡿⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢀⣤⣤⣤⡀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠉⠻⣿⣦⠀⠀⠀⠀⠀│ │⠀⠀⠀⢀⣶⣿⣿⡿⠏⠀⠉⣿⡇⠀│    │⠀⠀⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣸⡿⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣿⣧⣼⡿⠃⠀⠀│ │⠀⠀⠀⠀⢀⣴⡿⠿⠛⠛⠉⠁⠀⠀│    │⠀⠀⠀⠀⣿⡟⠁⠀⠈⠙⣿⡆⠀⠀│ │⠀⠀⠀⠀⣼⡿⠋⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣴⡿⠋⠁⢸⣇⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⠀⠀⣀⣤⣤⣤⡀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢀⣻⣿⡆⠀⠀⠀⠀│ │⠀⠀⢰⣿⣿⠛⠉⠀⠀⣠⣾⣿⠃⠀│    │⠀⠀⠀⠀⣿⠀⢀⣴⣾⣿⣿⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣀⣾⣿⠟⠉⠀⠀⠀⠀│ │⠀⠀⠀⠰⣿⣿⣤⡀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢰⣿⡇⠀⠀⠀⢠⣿⡇⠀⠀│ │⠀⠀⠀⠀⣼⣿⢀⣀⣀⣀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣿⣇⢀⣠⣿⡿⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⣀⡾⠋⠀⠀⠉⣧⠀⠀│
+│⠀⠀⠀⠀⠀⢾⣿⣿⣿⣷⣄⠀⠀⠀│ │⠀⠀⢸⣿⣿⣀⣠⣴⣾⣿⠟⠁⠀⠀│    │⠀⠀⠀⠀⢿⣼⣿⣛⣽⡾⠋⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⣼⡏⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢀⣾⠟⣿⡇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠈⠙⢿⣦⠀⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⡇⠀⢀⣴⣿⡿⠀⠀⠀│ │⠀⠀⠀⠀⢻⣿⣿⢿⣿⣿⡧⠀⠀⠀│    │⠀⠀⠀⠀⠈⠛⠛⢉⣿⠇⠀⠀⠀⠀│ │⠀⠀⠀⠀⠘⣿⡷⠀⢀⣠⠾⠃⠀⠀│
+│⠀⠀⠀⠀⠀⠈⠉⠉⠁⢹⣿⡆⠀⠀│ │⠀⠀⠈⠿⣿⣿⡿⠟⠛⠁⠀⠀⠀⠀│    │⠀⠀⠀⠀⠈⠛⠛⠛⠉⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⣴⣿⠃⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣠⣶⣤⣴⣿⠃⠀⠀⠀⠀│    │⠀⠀⠀⠈⠿⣿⣿⣿⠿⠋⠀⠀⠀⠀│ │⠀⠀⠀⠀⠈⠛⠿⡿⠟⠋⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠈⠛⠛⠋⠉⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀<span style="filter: contrast(70%) brightness(190%);color:green;">2</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│    │⠀⠀⠀⠀⠈⠉⠁⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│    │⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">5</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">1</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">8</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">4</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">9</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⡶⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⣴⣿⠿⠿⠿⠶⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣽⡿⣷⣄⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣾⣷⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⡀⠀⢀⣴⣶⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⣠⣶⣆⠀⠀⠀⠀│ │⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⡀⠀⠀⠀│    │⠀⠀⠀⠀⢀⡀⠀⠀⣄⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⢠⣶⢶⣤⡀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⢠⣾⠏⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣿⣿⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⢀⣴⠷⠶⠶⠶⠶⠶⠆│ │⠀⠀⠀⠀⠀⣴⡿⠋⠀⠸⣿⡆⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣿⡟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⢠⣾⠟⢀⣾⡟⠁⠀⠀⠀│    │⠀⠀⠀⠀⠀⣠⡾⠋⠋⣿⡆⠀⠀⠀│ │⠀⠀⠘⠛⠛⠉⠉⠉⢉⣿⠇⠀⠀⠀│    │⠀⠀⠀⢀⣼⠏⠀⠀⣿⡀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣸⡿⢋⣸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠘⢿⣷⣄⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⣴⣿⣅⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⣠⣾⠟⠁⠀⠀⢰⣿⠇⠀⠀│    │⠀⠀⠀⠀⠀⠀⣸⣿⠁⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⣿⣯⣤⣾⣿⣤⣤⠀⠀⠀│    │⠀⠀⠀⠀⠀⢿⣤⣠⣾⡟⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⢀⣿⠏⠀⣀⡀⠀│    │⠀⠀⢠⣿⣯⣤⣤⣶⣿⣷⣶⠀⠀⠀│ │⠀⠀⠀⢸⣿⣷⣾⣿⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢀⣙⣿⣷⠀⠀⠀⠀│    │⠀⠀⠀⢰⣶⣦⣽⡇⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⣿⡏⠀⠀⣀⣴⡿⠏⠀⠀⠀│    │⠀⠀⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠉⢉⣿⡟⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣴⡿⣿⡁⠀⠀⠀⠀⠀│ │⠀⠀⢠⡶⠾⠿⢛⣿⠟⠛⠛⠉⠀⠀│    │⠀⠀⠈⠋⠉⠉⠁⠀⣿⡇⠀⠀⠀⠀│ │⠀⠀⠀⠈⠻⠿⠋⢸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠠⣿⠃⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠘⣿⣶⣿⡿⠟⠋⠁⠀⠀⠀⠀│    │⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠿⣷⣶⡿⠟⠋⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣾⡿⠁⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⣼⣿⠁⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⢸⡏⠀⣿⠇⠀⠀⠀⠀⠀│ │⠀⠀⠘⠇⠀⢀⣾⠋⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⢸⡧⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">5</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">1</span>│ │⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│    │⠀⠀⠀⠀⠈⠉⠈⠉⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">8</span>│ │⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠘⠋⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">4</span>│ │⠀⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">9</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐    ┌──────────────┐ ┌──────────────┐
+│<span style="filter: contrast(70%) brightness(190%);color:gray;">0</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">3</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢠⣤⠀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢀⣤⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">2</span>⠀⠀⠶⠒⠀⠀⠀⠤⣤⡀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │<span style="filter: contrast(70%) brightness(190%);color:gray;">6</span>⠀⠀⠀⠀⠀⠀⢀⣤⡀⠀⠀⠀⠀│ │<span style="filter: contrast(70%) brightness(190%);color:gray;">7</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⢠⣦⠐⠟⢻⡦⠀⠀│ │⠀⠀⠀⠀⠀⡀⣀⣀⡀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⣠⣿⠟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⢀⡀⣀⣀⢀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⢠⣾⠟⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀│
+│⠀⠀⠀⠀⠀⣰⣿⠋⠀⠀⣼⡇⠀⠀│ │⠀⠀⠻⣿⠛⠛⠛⠛⣿⣷⠀⠀⠀⠀│    │⠀⠀⠀⠀⣠⣤⣾⣷⣿⣿⣿⣿⠃⠀│ │⠀⠰⠿⠻⠛⠛⠛⠻⣿⣿⣦⠀⠀⠀│    │⠀⠀⠀⠀⢀⣼⣿⠋⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⢀⣤⣿⠃⠀⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡦⠀⠀⠀│ │⠀⠀⠀⢀⣤⣾⣶⠿⢿⣷⠀⠀⠀⠀│    │⠀⠀⠀⠀⠀⣠⣿⠏⠀⠀⠀⠀⠀⠀│ │⠀⠀⢸⣿⣷⣤⣤⣤⣤⣴⣾⠇⠀⠀│
+│⠀⠀⠀⠀⣰⣿⠃⠀⠀⢠⡿⠁⠀⠀│ │⠀⠀⠀⠙⠃⠀⠀⢀⣿⡟⠀⠀⠀⠀│    │⠀⠀⠀⠘⡿⠟⠉⣡⣿⡿⠛⠁⠀⠀│ │⠀⠀⠀⠀⢠⣴⣶⣿⣿⣭⣄⡀⠀⠀│    │⠀⠀⠀⢀⣾⣿⢃⣴⣿⢿⣿⡆⠀⠀│ │⠀⠀⠀⢀⣼⡿⠉⣠⣤⣶⣆⠀⠀⠀│    │⠀⠀⠀⠀⠀⠀⠀⠀⣠⣼⣧⠀⠀⠀│ │⠀⠀⠀⣾⠿⠋⠁⠀⣸⡏⠀⠀⠀⠀│    │⠀⠀⠀⢀⣼⡿⢁⣠⣾⢿⣷⡄⠀⠀│ │⠀⠀⢸⣿⠙⠛⠻⠿⠛⢻⣿⠀⠀⠀│
+│⠀⠀⠀⣼⡿⠃⠀⢀⣴⡟⠁⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣾⣿⠃⠀⠀⠀⠀│    │⠀⠀⠀⠀⢀⣴⣾⡿⠋⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠈⠉⣉⣩⣭⣿⠿⠃⠀⠀│    │⠀⠀⠀⢸⣿⣧⣿⣿⣴⣿⡟⠁⠀⠀│ │⠀⠀⠀⣼⣿⣁⣾⣿⣿⡿⠟⠁⠀⠀│    │⠀⠀⠀⢰⣿⢿⢿⡿⠟⠋⠉⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣰⣿⠁⠀⠀⠀⠀│    │⠀⠀⠀⢸⣿⣷⣿⣯⣵⡾⠋⠀⠀⠀│ │⠀⠀⠈⠉⠀⠀⠀⠀⠀⢰⣿⠀⠀⠀│
+│⠀⠀⠀⠿⣷⣶⠿⠟⠉⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀│    │⠀⠀⠀⣠⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⢰⣶⡾⠟⠛⠋⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠈⠛⠛⠛⠛⠉⠁⠀⠀⠀⠀│ │⠀⠀⠀⠈⠛⠛⠛⠋⠁⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⢠⣿⠇⠀⠀⠀⠀⠀│    │⠀⠀⠀⠀⠙⠛⠛⠉⠁⠀⠀⠀⠀⠀│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡇⠀⠀⠀│
+│⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">0</span>│ │⠀⠀⠀⠀⠀⠀⠘⠿⠃⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠸⠿⠛⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│ │⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">3</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">2</span>│ │⠀⠀⠀⠀⠀⠀⠸⠏⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│    │⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">6</span>│ │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⠇⠀⠀<span style="filter: contrast(70%) brightness(190%);color:green;">7</span>│
+└──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘    └──────────────┘ └──────────────┘
+
+
+Epoch 8: Train Loss: 0.0523, Train Acc: 94.02%, Val Acc: 89.98%
+Training completed. Final Validation Accuracy: 89.98%
+</pre>
+</body>
+</html>
